@@ -10,7 +10,7 @@
   <meta name="description" content="前言:最近工作公司電腦擋了一堆軟體安裝的權限，只好裝VM起來用，結果連在 VituralBox 上安裝 Guest Additions 也要申請權限。看著超小的畫面也不能共享剪貼簿痛苦萬分之時，前輩對我說怎麼不用 Xshell，反正也只需要 terminal 操作。那就來裝 Xshell 吧! 安裝 Xshell 前往 官網免費載點 填寫信箱後會把載點寄到你的信箱    下載後並安裝  確認 VM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用 Xshell 連線進 VituralBox">
-<meta property="og:url" content="https://youmu257.github.io/2020/07/31/20200728_Xshell_VM/index.html">
+<meta property="og:url" content="https://youmu257.github.io/2020/08/07/20200728_Xshell_VM/index.html">
 <meta property="og:site_name" content="Leo&#39;s Blog">
 <meta property="og:description" content="前言:最近工作公司電腦擋了一堆軟體安裝的權限，只好裝VM起來用，結果連在 VituralBox 上安裝 Guest Additions 也要申請權限。看著超小的畫面也不能共享剪貼簿痛苦萬分之時，前輩對我說怎麼不用 Xshell，反正也只需要 terminal 操作。那就來裝 Xshell 吧! 安裝 Xshell 前往 官網免費載點 填寫信箱後會把載點寄到你的信箱    下載後並安裝  確認 VM">
 <meta property="og:locale" content="zh_TW">
@@ -22,8 +22,8 @@
 <meta property="og:image" content="https://i.imgur.com/rE2yOu7.png">
 <meta property="og:image" content="https://i.imgur.com/iVv4aK8.png">
 <meta property="og:image" content="https://i.imgur.com/2DYDy0v.png">
-<meta property="article:published_time" content="2020-07-31T15:26:07.863Z">
-<meta property="article:modified_time" content="2020-07-31T15:26:07.863Z">
+<meta property="article:published_time" content="2020-08-06T17:11:24.510Z">
+<meta property="article:modified_time" content="2020-08-06T17:11:24.510Z">
 <meta property="article:author" content="Leo Li">
 <meta property="article:tag" content="技術筆記">
 <meta name="twitter:card" content="summary">
@@ -82,8 +82,8 @@
       <div class="outer">
         <section id="main"><article id="post-20200728_Xshell_VM" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/07/31/20200728_Xshell_VM/" class="article-date">
-  <time datetime="2020-07-31T15:26:07.863Z" itemprop="datePublished">2020-07-31</time>
+    <a href="/2020/08/07/20200728_Xshell_VM/" class="article-date">
+  <time datetime="2020-08-06T17:11:24.510Z" itemprop="datePublished">2020-08-07</time>
 </a>
     
   <div class="article-category">
@@ -160,7 +160,7 @@
 <li>目前的 IP 其實不是固定的，所以重開 VM 後可能會改變就要重調連線設定</li>
 <li><strong>那就設定成固定 IP 吧!</strong></li>
 <li>編輯網路設定 <code>vim /etc/network/interfaces</code></li>
-<li>輸入  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">auto enp0s3</span><br><span class="line">iface enp0s3 inet static</span><br><span class="line">address 192.168.1.103</span><br><span class="line">netmask 255.255.255.0</span><br><span class="line">gateway 192.168.1.254</span><br></pre></td></tr></table></figure></li>
+<li>輸入  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">iface enp0s3 inet static</span><br><span class="line">address 192.168.1.103</span><br><span class="line">netmask 255.255.255.0</span><br><span class="line">gateway 192.168.1.254</span><br></pre></td></tr></table></figure></li>
 <li>網路設定一樣看 <code>ip addr</code></li>
 <li>這時馬上就能用 Xshell，邊看設定邊編輯</li>
 </ul>
@@ -179,13 +179,23 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2020/07/31/20200728_Xshell_VM/" data-id="ckdaeugfy0000vgu64vhb0811" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2020/08/07/20200728_Xshell_VM/" data-id="ckdj272pn0000qku6foaqet9d" class="article-share-link">Share</a>
       
       
     </footer>
   </div>
   
     
+<nav id="article-nav">
+  
+  
+    <a href="/2020/08/07/20200807_laravel/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Laravel 安裝筆記</div>
+    </a>
+  
+</nav>
+
   
 </article>
 
@@ -197,7 +207,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E6%95%99%E5%AD%B8/">工具教學</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E6%95%99%E5%AD%B8/">工具教學</a></li></ul>
     </div>
   </div>
 
@@ -212,7 +222,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li></ul>
     </div>
   </div>
 
@@ -225,7 +235,15 @@
       <ul>
         
           <li>
-            <a href="/2020/07/31/20200728_Xshell_VM/">用 Xshell 連線進 VituralBox</a>
+            <a href="/2020/08/07/20200728_Xshell_VM/">用 Xshell 連線進 VituralBox</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/07/20200807_laravel/">Laravel 安裝筆記</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/01/20200807_nginx/">20200807_nginx</a>
           </li>
         
       </ul>
