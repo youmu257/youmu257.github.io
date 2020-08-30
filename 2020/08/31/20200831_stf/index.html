@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>openSTF 安裝筆記 | Leo&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言本來想先寫 laravel 的筆記，但工作上剛好碰到 openstf 就先來記錄一下安裝流程畢竟這專案沒有繼續維護了，有些套件需要限定版本才能安裝，安裝起來一堆麻煩問題簡單說一下，STF 是一套用 angular 和 nodejs 寫的手機控制系統讓你可以遠端操作實體手機做任何操作，甚至安裝app實現做法是透過 adb 對手機下指令，再搭配 rethinkdb 紀錄裝置資訊我後續也會再寫一篇">
+<meta property="og:type" content="article">
+<meta property="og:title" content="openSTF 安裝筆記">
+<meta property="og:url" content="https://youmu257.github.io/2020/08/31/20200831_stf/index.html">
+<meta property="og:site_name" content="Leo&#39;s Blog">
+<meta property="og:description" content="前言本來想先寫 laravel 的筆記，但工作上剛好碰到 openstf 就先來記錄一下安裝流程畢竟這專案沒有繼續維護了，有些套件需要限定版本才能安裝，安裝起來一堆麻煩問題簡單說一下，STF 是一套用 angular 和 nodejs 寫的手機控制系統讓你可以遠端操作實體手機做任何操作，甚至安裝app實現做法是透過 adb 對手機下指令，再搭配 rethinkdb 紀錄裝置資訊我後續也會再寫一篇">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/IkW72K0.png">
+<meta property="article:published_time" content="2020-08-30T17:27:03.884Z">
+<meta property="article:modified_time" content="2020-08-30T17:27:03.884Z">
+<meta property="article:author" content="Leo Li">
+<meta property="article:tag" content="技術筆記">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/IkW72K0.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Leo&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Leo&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">替健忘的自己做的筆記</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://youmu257.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-20200831_stf" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/31/20200831_stf/" class="article-date">
+  <time datetime="2020-08-30T17:27:03.884Z" itemprop="datePublished">2020-08-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7%E6%95%99%E5%AD%B8/">工具教學</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      openSTF 安裝筆記
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本來想先寫 laravel 的筆記，但工作上剛好碰到 openstf 就先來記錄一下安裝流程<br>畢竟這專案沒有繼續維護了，有些套件需要限定版本才能安裝，安裝起來一堆麻煩問題<br>簡單說一下，STF 是一套用 angular 和 nodejs 寫的手機控制系統<br>讓你可以遠端操作實體手機做任何操作，甚至安裝app<br>實現做法是透過 adb 對手機下指令，再搭配 rethinkdb 紀錄裝置資訊<br>我後續也會再寫一篇 rethinkdb 的簡易教學(用法太特別了，跟SQL完全不同) </p>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><ul>
+<li>OS : Debian 10</li>
+<li>VMware Workstation 15 Player</li>
+</ul>
+<h1 id="安裝流程"><a href="#安裝流程" class="headerlink" title="安裝流程"></a>安裝流程</h1><h2 id="安裝-NVM"><a href="#安裝-NVM" class="headerlink" title="安裝 NVM"></a>安裝 NVM</h2><ul>
+<li>下載NVM<ul>
+<li>curl -o- <a href="https://raw.githubusercontent.com/creationix/nvm/v0.33.5/install.sh" target="_blank" rel="noopener">https://raw.githubusercontent.com/creationix/nvm/v0.33.5/install.sh</a> | bash</li>
+</ul>
+</li>
+<li>source ~/.bashrc</li>
+<li>nvm install 8.8.1 –delete-prefix</li>
+<li>確認 NVM 是否安裝成功，安裝成功的話 npm 就可以使用了<ul>
+<li>nvm –version</li>
+<li>npm -v</li>
+</ul>
+</li>
+</ul>
+<h2 id="開始安裝和設定-NPM"><a href="#開始安裝和設定-NPM" class="headerlink" title="開始安裝和設定 NPM"></a>開始安裝和設定 NPM</h2><ul>
+<li>mkdir ~/.npm-global</li>
+<li>安裝 npm 為 6.14.5 版本太新後續會有問題<ul>
+<li>npm install -g <a href="mailto:npm@6.14.5">npm@6.14.5</a></li>
+</ul>
+</li>
+<li>npm config set prefix ‘~/.npm-global’</li>
+<li>vi ~/.profile<ul>
+<li>添加 PATH=~/.npm-global/bin:$PATH</li>
+</ul>
+</li>
+<li>nvm use –delete-prefix v8.8.1 –silent</li>
+<li>source ~/.profile</li>
+<li>NPM_CONFIG=~/.npm-global</li>
+</ul>
+<h2 id="安裝必要套件"><a href="#安裝必要套件" class="headerlink" title="安裝必要套件"></a>安裝必要套件</h2><ul>
+<li>nvm use –delete-prefix v8.8.1</li>
+<li>npm install -g bower gulp<ul>
+<li>確認安裝是否成功<ul>
+<li>bower -v</li>
+<li>gulp -v</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>npm install -g node-sass</li>
+<li>npm install -g gulp-sourcemaps/map-sources</li>
+<li>sudo apt-get install -y yasm pkg-config</li>
+</ul>
+<h2 id="安裝-ADB"><a href="#安裝-ADB" class="headerlink" title="安裝 ADB"></a>安裝 ADB</h2><ul>
+<li>sudo mkdir -p /usr/local/android-sdk</li>
+<li>cd /usr/local/android-sdk/</li>
+<li>sudo curl -OL <a href="https://dl.google.com/android/repository/platform-tools-latest-linux.zip" target="_blank" rel="noopener">https://dl.google.com/android/repository/platform-tools-latest-linux.zip</a></li>
+<li>sudo unzip platform-tools-latest-linux.zip</li>
+<li>sudo rm -f platform-tools-latest-linux.zip</li>
+<li>sudo ln -s /usr/local/android-sdk/platform-tools/adb /usr/bin/adb</li>
+<li>export PATH=/usr/local/android-sdk/platform-tools:${PATH}</li>
+<li>sudo echo “export PATH=/usr/local/android-sdk/platform-tools:${PATH}” &gt;&gt; /etc/profile</li>
+<li>檢查 ADB 是否安裝成功<ul>
+<li>adb version</li>
+</ul>
+</li>
+</ul>
+<h2 id="安裝-rethinkDB"><a href="#安裝-rethinkDB" class="headerlink" title="安裝 rethinkDB"></a>安裝 rethinkDB</h2><ul>
+<li>sudo echo “deb <a href="http://download.rethinkdb.com/repository/debian-$" target="_blank" rel="noopener">http://download.rethinkdb.com/repository/debian-$</a>(lsb_release -cs) $(lsb_release -sc) main” | sudo tee /etc/apt/sources.list.d/rethinkdb.list</li>
+<li>sudo wget -qO- <a href="https://download.rethinkdb.com/repository/raw/pubkey.gpg" target="_blank" rel="noopener">https://download.rethinkdb.com/repository/raw/pubkey.gpg</a> | sudo apt-key add -</li>
+<li>sudo apt-get update</li>
+<li>sudo apt-get install -y rethinkdb</li>
+<li>sudo cp /etc/rethinkdb/default.conf.sample /etc/rethinkdb/instances.d/instance1.conf</li>
+<li>重啟 rethinDB<ul>
+<li>sudo /etc/init.d/rethinkdb restart</li>
+</ul>
+</li>
+</ul>
+<h2 id="安裝-Protocol-Buffers-libaries"><a href="#安裝-Protocol-Buffers-libaries" class="headerlink" title="安裝 Protocol Buffers libaries"></a>安裝 Protocol Buffers libaries</h2><ul>
+<li>sudo apt-get install -y graphicsmagick libzmq3-dev</li>
+<li>裝 3.0.0 版，3.0.0 以下的不支援了</li>
+<li>wget <a href="https://github.com/google/protobuf/releases/download/v3.0.0/protobuf-js-3.0.0.tar.gz" target="_blank" rel="noopener">https://github.com/google/protobuf/releases/download/v3.0.0/protobuf-js-3.0.0.tar.gz</a></li>
+<li>tar -zxvf protobuf-js-3.0.0.tar.gz</li>
+<li>rm protobuf-js-3.0.0.tar.gz</li>
+<li>cd protobuf-3.0.0</li>
+<li>./configure<ul>
+<li>如果出現 configure: error: no acceptable C compiler found in $PATH</li>
+<li>安裝 gcc<ul>
+<li>sudo apt-get install -y build-essential manpages-dev</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>make;make check;make install<ul>
+<li>這會跑 10 分鐘以上，可以放著先去做別的事</li>
+</ul>
+</li>
+<li>sudo /usr/sbin/ldconfig</li>
+<li>確認是否安裝成功<ul>
+<li>protoc –version</li>
+</ul>
+</li>
+</ul>
+<h2 id="安裝-STF"><a href="#安裝-STF" class="headerlink" title="安裝 STF"></a>安裝 STF</h2><ul>
+<li>npm install -g stf –unsafe-perm</li>
+<li>下載 OpenSTF 專案<ul>
+<li>git clone <a href="https://github.com/openstf/stf.git" target="_blank" rel="noopener">https://github.com/openstf/stf.git</a></li>
+</ul>
+</li>
+<li>cd stf</li>
+<li>nvm use 8.8.1</li>
+<li>npm install</li>
+<li>bower install</li>
+<li>gulp build<ul>
+<li>如果出現錯誤刪掉 node_modules 資料夾再重新 npm install</li>
+</ul>
+</li>
+<li>npm link<ul>
+<li>與 stf 連結，確保 stf 是執行當前專案</li>
+</ul>
+</li>
+<li>確認 stf 相關套件都安裝完成<ul>
+<li>stf doctor<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">2020-08-30T17:14:48.535Z INF&#x2F;cli:doctor 29931 [*] OS Arch: x64</span><br><span class="line">2020-08-30T17:14:48.537Z INF&#x2F;cli:doctor 29931 [*] OS Platform: linux</span><br><span class="line">2020-08-30T17:14:48.537Z INF&#x2F;cli:doctor 29931 [*] OS Platform: 4.19.0-10-amd64</span><br><span class="line">2020-08-30T17:14:48.537Z INF&#x2F;cli:doctor 29931 [*] Using Node 8.8.1</span><br><span class="line">2020-08-30T17:14:48.554Z INF&#x2F;cli:doctor 29931 [*] Using ZeroMQ 4.3.1</span><br><span class="line">2020-08-30T17:14:48.579Z INF&#x2F;cli:doctor 29931 [*] Using ADB 1.0.41</span><br><span class="line">2020-08-30T17:14:48.588Z INF&#x2F;cli:doctor 29931 [*] Using ProtoBuf 3.0.0</span><br><span class="line">2020-08-30T17:14:48.608Z INF&#x2F;cli:doctor 29931 [*] Using GraphicsMagick 1.3.35</span><br><span class="line">2020-08-30T17:14:48.618Z INF&#x2F;cli:doctor 29931 [*] Using RethinkDB 2.4.1~0buster</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>執行 stf<ul>
+<li>stf local </li>
+<li>如果是要開放遠端連線<ul>
+<li><code>stf local --cleanup --public-ip 192.168.137.129 --group-timeout 900 --allow-remote</code></li>
+<li>把 192.168.137.129 改成你的 IP</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>打開瀏覽器輸入 localhost:7100<ul>
+<li>成功的話可以看這個畫面，任意輸入名稱跟信箱即可登入<br><img src="https://i.imgur.com/IkW72K0.png" alt=""></li>
+</ul>
+</li>
+</ul>
+<h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><ul>
+<li><a href="https://github.com/openstf/stf" target="_blank" rel="noopener">OpenSTF</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://youmu257.github.io/2020/08/31/20200831_stf/" data-id="ckehda2b40000iwu6dq1n7g2d" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/08/26/20200826_nginx/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Nginx 相關筆記</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E6%95%99%E5%AD%B8/">工具教學</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/08/31/20200831_stf/">openSTF 安裝筆記</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/26/20200826_nginx/">Nginx 相關筆記</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/07/20200728_Xshell_VM/">用 Xshell 連線進 VituralBox</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/07/20200807_laravel/">Laravel 安裝筆記</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Leo Li<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
