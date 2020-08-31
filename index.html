@@ -71,6 +71,99 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-20200831_rethinkdb" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/31/20200831_rethinkdb/" class="article-date">
+  <time datetime="2020-08-31T14:57:35.374Z" itemprop="datePublished">2020-08-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%B3%87%E6%96%99%E5%BA%AB/">資料庫</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/31/20200831_rethinkdb/">rethinkDB 筆記</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>上一篇記錄 <a href="https://youmu257.github.io/2020/08/31/20200831_stf/">stf 的安裝流程</a>，其中有使用到 rethinkdb<br>當時再用時看了老半天才發現他那看起來像 ORM 的寫法就是他的語法<br>害我看教學看好久，想說怎麼都沒有寫 raw sql 的語法</p>
+<h1 id="介紹"><a href="#介紹" class="headerlink" title="介紹"></a>介紹</h1><p>主要講 rethinkDB 的特色，他與傳統資料庫的差異在於適合用於實時的系統上<br>傳統資料在如果要確保資料是最新的必須一直下 SELECT 指令去檢查資料是否有變動<br>但 ReQL (rethinkDB 的查詢語法) 可以用 <a href="https://rethinkdb.com/docs/changefeeds/ruby/" target="_blank" rel="noopener">Changefeeds</a> 去監聽資料是否變動，大幅降低不必要的 request</p>
+<h2 id="後台"><a href="#後台" class="headerlink" title="後台"></a>後台</h2><ul>
+<li><p>確定 rethinkDB 正常運作</p>
+<ul>
+<li>sudo /etc/init.d/rethinkdb start</li>
+</ul>
+</li>
+<li><p>打開瀏覽器輸入 <a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a><br>  <img src="https://i.imgur.com/NryMN3s.png" alt=""></p>
+</li>
+<li><p>切到 Data Explorer</p>
+</li>
+<li><p>輸入指令即可操作 DB</p>
+</li>
+</ul>
+<h2 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h2><ul>
+<li>新建資料庫<ul>
+<li><code>r.dbCreate(&quot;test&quot;)</code></li>
+<li>按下 run，成功會回傳資訊<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;config_changes&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;new_val&quot;: &#123;</span><br><span class="line">                &quot;id&quot;: &quot;e55b79bb-32e8-44d6-9911-d3d44c5cfc5a&quot; ,</span><br><span class="line">                &quot;name&quot;: &quot;test&quot;</span><br><span class="line">            &#125; ,</span><br><span class="line">            &quot;old_val&quot;: null</span><br><span class="line">        &#125;</span><br><span class="line">    ] ,</span><br><span class="line">    &quot;dbs_created&quot;: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>新建 table<ul>
+<li><code>r.db(&quot;test&quot;).tableCreate(&quot;test1&quot;)</code></li>
+<li>按下 run，成功會回傳資訊<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;config_changes&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;new_val&quot;: &#123;</span><br><span class="line">                &quot;db&quot;: &quot;test&quot; ,</span><br><span class="line">                &quot;durability&quot;: &quot;hard&quot; ,</span><br><span class="line">                &quot;id&quot;: &quot;48be759d-7179-498d-be98-6bc45ab9ae46&quot; ,</span><br><span class="line">                &quot;indexes&quot;: [ ],</span><br><span class="line">                &quot;name&quot;: &quot;table1&quot; ,</span><br><span class="line">                &quot;primary_key&quot;: &quot;id&quot; ,</span><br><span class="line">                &quot;shards&quot;: [</span><br><span class="line">                    &#123;</span><br><span class="line">                        &quot;nonvoting_replicas&quot;: [ ],</span><br><span class="line">                        &quot;primary_replica&quot;: &quot;debian_aav&quot; ,</span><br><span class="line">                        &quot;replicas&quot;: [</span><br><span class="line">                            &quot;debian_aav&quot;</span><br><span class="line">                        ]</span><br><span class="line">                    &#125;</span><br><span class="line">                ] ,</span><br><span class="line">                &quot;write_acks&quot;: &quot;majority&quot; ,</span><br><span class="line">                &quot;write_hook&quot;: null</span><br><span class="line">            &#125; ,</span><br><span class="line">            &quot;old_val&quot;: null</span><br><span class="line">        &#125;</span><br><span class="line">    ] ,</span><br><span class="line">    &quot;tables_created&quot;: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>insert 資料<ul>
+<li>寫入資料以 json 格式<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">r.db(&quot;test&quot;).table(&quot;table1&quot;).insert(&#123;</span><br><span class="line">    id: 1,</span><br><span class="line">    title: &quot;test title&quot;,</span><br><span class="line">    content: &quot;test content&quot;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>按下 run，成功會回傳資訊<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;deleted&quot;: 0 ,</span><br><span class="line">    &quot;errors&quot;: 0 ,</span><br><span class="line">    &quot;inserted&quot;: 1 ,</span><br><span class="line">    &quot;replaced&quot;: 0 ,</span><br><span class="line">    &quot;skipped&quot;: 0 ,</span><br><span class="line">    &quot;unchanged&quot;: 0</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>取得資料<ul>
+<li>get 只能用於主鍵<ul>
+<li><code>r.db(&quot;test&quot;).table(&quot;table1&quot;).get(1)</code></li>
+<li>按下 run，成功會回傳資訊<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;id&quot;: 1,</span><br><span class="line">    &quot;title&quot;: &quot;test title&quot;,</span><br><span class="line">    &quot;content&quot;: &quot;test content&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>filter 可以當成 where 條件<ul>
+<li><code>r.db(&quot;test&quot;).table(&quot;table1&quot;).filter({title: &quot;test title&quot;})</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>更新資料<ul>
+<li>先取得得資料才能更新，跟下 where 條件的概念一樣</li>
+<li><code>r.db(&quot;test&quot;).table(&quot;table1&quot;).get(1).update({title: &quot;new title&quot;})</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><ul>
+<li><a href="https://rethinkdb.com/docs/changefeeds/ruby/" target="_blank" rel="noopener">Changefeeds in RethinkDB</a></li>
+<li><a href="https://medium.com/bryanyang0528/rethink-db-%E5%88%9D%E6%8E%A2-42d4d477a72b" target="_blank" rel="noopener">Rethink DB 初探</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://youmu257.github.io/2020/08/31/20200831_rethinkdb/" data-id="ckeinefot00020ku606dva42y" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-20200831_stf" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/08/31/20200831_stf/" class="article-date">
@@ -237,7 +330,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2020/08/31/20200831_stf/" data-id="ckehda2b40000iwu6dq1n7g2d" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2020/08/31/20200831_stf/" data-id="ckeinefon00000ku63ozc7wql" class="article-share-link">Share</a>
       
       
     </footer>
@@ -344,7 +437,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2020/08/26/20200826_nginx/" data-id="ckehda2bl0003iwu696nkc1d4" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2020/08/26/20200826_nginx/" data-id="ckeinefpz000c0ku6a6x4dsun" class="article-share-link">Share</a>
       
       
     </footer>
@@ -453,7 +546,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2020/08/07/20200728_Xshell_VM/" data-id="ckehda2c20007iwu65226asrn" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2020/08/07/20200728_Xshell_VM/" data-id="ckeinefpn00090ku6cyed358g" class="article-share-link">Share</a>
       
       
     </footer>
@@ -529,7 +622,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2020/08/07/20200807_laravel/" data-id="ckehda2c70009iwu65n260fi7" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2020/08/07/20200807_laravel/" data-id="ckeinefpx000b0ku6dsmg33v8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -549,7 +642,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E6%95%99%E5%AD%B8/">工具教學</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E6%95%99%E5%AD%B8/">工具教學</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B3%87%E6%96%99%E5%BA%AB/">資料庫</a></li></ul>
     </div>
   </div>
 
@@ -575,6 +668,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/08/31/20200831_rethinkdb/">rethinkDB 筆記</a>
+          </li>
         
           <li>
             <a href="/2020/08/31/20200831_stf/">openSTF 安裝筆記</a>

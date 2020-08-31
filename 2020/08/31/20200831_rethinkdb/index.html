@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>rethinkDB 筆記 | Leo&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言上一篇記錄 stf 的安裝流程，其中有使用到 rethinkdb當時再用時看了老半天才發現他那看起來像 ORM 的寫法就是他的語法害我看教學看好久，想說怎麼都沒有寫 raw sql 的語法 介紹主要講 rethinkDB 的特色，他與傳統資料庫的差異在於適合用於實時的系統上傳統資料在如果要確保資料是最新的必須一直下 SELECT 指令去檢查資料是否有變動但 ReQL (rethinkDB 的查">
+<meta property="og:type" content="article">
+<meta property="og:title" content="rethinkDB 筆記">
+<meta property="og:url" content="https://youmu257.github.io/2020/08/31/20200831_rethinkdb/index.html">
+<meta property="og:site_name" content="Leo&#39;s Blog">
+<meta property="og:description" content="前言上一篇記錄 stf 的安裝流程，其中有使用到 rethinkdb當時再用時看了老半天才發現他那看起來像 ORM 的寫法就是他的語法害我看教學看好久，想說怎麼都沒有寫 raw sql 的語法 介紹主要講 rethinkDB 的特色，他與傳統資料庫的差異在於適合用於實時的系統上傳統資料在如果要確保資料是最新的必須一直下 SELECT 指令去檢查資料是否有變動但 ReQL (rethinkDB 的查">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/NryMN3s.png">
+<meta property="article:published_time" content="2020-08-31T14:57:35.374Z">
+<meta property="article:modified_time" content="2020-08-31T14:57:35.374Z">
+<meta property="article:author" content="Leo Li">
+<meta property="article:tag" content="技術筆記">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/NryMN3s.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Leo&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Leo&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">替健忘的自己做的筆記</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://youmu257.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-20200831_rethinkdb" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/31/20200831_rethinkdb/" class="article-date">
+  <time datetime="2020-08-31T14:57:35.374Z" itemprop="datePublished">2020-08-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%B3%87%E6%96%99%E5%BA%AB/">資料庫</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      rethinkDB 筆記
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>上一篇記錄 <a href="https://youmu257.github.io/2020/08/31/20200831_stf/">stf 的安裝流程</a>，其中有使用到 rethinkdb<br>當時再用時看了老半天才發現他那看起來像 ORM 的寫法就是他的語法<br>害我看教學看好久，想說怎麼都沒有寫 raw sql 的語法</p>
+<h1 id="介紹"><a href="#介紹" class="headerlink" title="介紹"></a>介紹</h1><p>主要講 rethinkDB 的特色，他與傳統資料庫的差異在於適合用於實時的系統上<br>傳統資料在如果要確保資料是最新的必須一直下 SELECT 指令去檢查資料是否有變動<br>但 ReQL (rethinkDB 的查詢語法) 可以用 <a href="https://rethinkdb.com/docs/changefeeds/ruby/" target="_blank" rel="noopener">Changefeeds</a> 去監聽資料是否變動，大幅降低不必要的 request</p>
+<h2 id="後台"><a href="#後台" class="headerlink" title="後台"></a>後台</h2><ul>
+<li><p>確定 rethinkDB 正常運作</p>
+<ul>
+<li>sudo /etc/init.d/rethinkdb start</li>
+</ul>
+</li>
+<li><p>打開瀏覽器輸入 <a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a><br>  <img src="https://i.imgur.com/NryMN3s.png" alt=""></p>
+</li>
+<li><p>切到 Data Explorer</p>
+</li>
+<li><p>輸入指令即可操作 DB</p>
+</li>
+</ul>
+<h2 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h2><ul>
+<li>新建資料庫<ul>
+<li><code>r.dbCreate(&quot;test&quot;)</code></li>
+<li>按下 run，成功會回傳資訊<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;config_changes&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;new_val&quot;: &#123;</span><br><span class="line">                &quot;id&quot;: &quot;e55b79bb-32e8-44d6-9911-d3d44c5cfc5a&quot; ,</span><br><span class="line">                &quot;name&quot;: &quot;test&quot;</span><br><span class="line">            &#125; ,</span><br><span class="line">            &quot;old_val&quot;: null</span><br><span class="line">        &#125;</span><br><span class="line">    ] ,</span><br><span class="line">    &quot;dbs_created&quot;: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>新建 table<ul>
+<li><code>r.db(&quot;test&quot;).tableCreate(&quot;test1&quot;)</code></li>
+<li>按下 run，成功會回傳資訊<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;config_changes&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;new_val&quot;: &#123;</span><br><span class="line">                &quot;db&quot;: &quot;test&quot; ,</span><br><span class="line">                &quot;durability&quot;: &quot;hard&quot; ,</span><br><span class="line">                &quot;id&quot;: &quot;48be759d-7179-498d-be98-6bc45ab9ae46&quot; ,</span><br><span class="line">                &quot;indexes&quot;: [ ],</span><br><span class="line">                &quot;name&quot;: &quot;table1&quot; ,</span><br><span class="line">                &quot;primary_key&quot;: &quot;id&quot; ,</span><br><span class="line">                &quot;shards&quot;: [</span><br><span class="line">                    &#123;</span><br><span class="line">                        &quot;nonvoting_replicas&quot;: [ ],</span><br><span class="line">                        &quot;primary_replica&quot;: &quot;debian_aav&quot; ,</span><br><span class="line">                        &quot;replicas&quot;: [</span><br><span class="line">                            &quot;debian_aav&quot;</span><br><span class="line">                        ]</span><br><span class="line">                    &#125;</span><br><span class="line">                ] ,</span><br><span class="line">                &quot;write_acks&quot;: &quot;majority&quot; ,</span><br><span class="line">                &quot;write_hook&quot;: null</span><br><span class="line">            &#125; ,</span><br><span class="line">            &quot;old_val&quot;: null</span><br><span class="line">        &#125;</span><br><span class="line">    ] ,</span><br><span class="line">    &quot;tables_created&quot;: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>insert 資料<ul>
+<li>寫入資料以 json 格式<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">r.db(&quot;test&quot;).table(&quot;table1&quot;).insert(&#123;</span><br><span class="line">    id: 1,</span><br><span class="line">    title: &quot;test title&quot;,</span><br><span class="line">    content: &quot;test content&quot;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>按下 run，成功會回傳資訊<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;deleted&quot;: 0 ,</span><br><span class="line">    &quot;errors&quot;: 0 ,</span><br><span class="line">    &quot;inserted&quot;: 1 ,</span><br><span class="line">    &quot;replaced&quot;: 0 ,</span><br><span class="line">    &quot;skipped&quot;: 0 ,</span><br><span class="line">    &quot;unchanged&quot;: 0</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>取得資料<ul>
+<li>get 只能用於主鍵<ul>
+<li><code>r.db(&quot;test&quot;).table(&quot;table1&quot;).get(1)</code></li>
+<li>按下 run，成功會回傳資訊<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;id&quot;: 1,</span><br><span class="line">    &quot;title&quot;: &quot;test title&quot;,</span><br><span class="line">    &quot;content&quot;: &quot;test content&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>filter 可以當成 where 條件<ul>
+<li><code>r.db(&quot;test&quot;).table(&quot;table1&quot;).filter({title: &quot;test title&quot;})</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>更新資料<ul>
+<li>先取得得資料才能更新，跟下 where 條件的概念一樣</li>
+<li><code>r.db(&quot;test&quot;).table(&quot;table1&quot;).get(1).update({title: &quot;new title&quot;})</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><ul>
+<li><a href="https://rethinkdb.com/docs/changefeeds/ruby/" target="_blank" rel="noopener">Changefeeds in RethinkDB</a></li>
+<li><a href="https://medium.com/bryanyang0528/rethink-db-%E5%88%9D%E6%8E%A2-42d4d477a72b" target="_blank" rel="noopener">Rethink DB 初探</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://youmu257.github.io/2020/08/31/20200831_rethinkdb/" data-id="ckeinefot00020ku606dva42y" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/08/31/20200831_stf/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">openSTF 安裝筆記</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E6%95%99%E5%AD%B8/">工具教學</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B3%87%E6%96%99%E5%BA%AB/">資料庫</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/08/31/20200831_rethinkdb/">rethinkDB 筆記</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/31/20200831_stf/">openSTF 安裝筆記</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/26/20200826_nginx/">Nginx 相關筆記</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/07/20200728_Xshell_VM/">用 Xshell 連線進 VituralBox</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/07/20200807_laravel/">Laravel 安裝筆記</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Leo Li<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
