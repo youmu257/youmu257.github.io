@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://youmu257.github.io/2020/09/25/20200904_laravel_migration/</loc>
+    
+    <lastmod>2020-09-24T16:56:27.719Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://youmu257.github.io/2020/08/31/20200831_rethinkdb/</loc>
     
     <lastmod>2020-08-31T14:57:35.374Z</lastmod>

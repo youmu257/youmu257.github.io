@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Laravel migration 和 seed 筆記 | Leo&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言在接觸到 laravel 前我完全不知道有 migration 這樣的東西可以用，只會下 raw sql 去新增表格和調整欄位有了 migration 可以快速 DB 環境，也算是可以對 DB table 做一個版控再搭配 seed 可以把基礎資料也寫入 DB，對於搬移程式碼十分方便簡直看見新大陸   環境 OS : Windows 10  安裝流程 下載我的筆記用專案 git clone h">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Laravel migration 和 seed 筆記">
+<meta property="og:url" content="https://youmu257.github.io/2020/09/25/20200904_laravel_migration/index.html">
+<meta property="og:site_name" content="Leo&#39;s Blog">
+<meta property="og:description" content="前言在接觸到 laravel 前我完全不知道有 migration 這樣的東西可以用，只會下 raw sql 去新增表格和調整欄位有了 migration 可以快速 DB 環境，也算是可以對 DB table 做一個版控再搭配 seed 可以把基礎資料也寫入 DB，對於搬移程式碼十分方便簡直看見新大陸   環境 OS : Windows 10  安裝流程 下載我的筆記用專案 git clone h">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/qKlTMip.png">
+<meta property="article:published_time" content="2020-09-24T16:56:27.719Z">
+<meta property="article:modified_time" content="2020-09-24T16:56:27.719Z">
+<meta property="article:author" content="Leo Li">
+<meta property="article:tag" content="技術筆記">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/qKlTMip.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Leo&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Leo&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">替健忘的自己做的筆記</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://youmu257.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-20200904_laravel_migration" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/25/20200904_laravel_migration/" class="article-date">
+  <time datetime="2020-09-24T16:56:27.719Z" itemprop="datePublished">2020-09-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PHP/">PHP</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Laravel migration 和 seed 筆記
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在接觸到 laravel 前我完全不知道有 migration 這樣的東西可以用，只會下 raw sql 去新增表格和調整欄位<br>有了 migration 可以快速 DB 環境，也算是可以對 DB table 做一個版控<br>再搭配 seed 可以把基礎資料也寫入 DB，對於搬移程式碼十分方便<br>簡直看見新大陸  <img src="https://i.imgur.com/qKlTMip.png" width=126 height=116 /></p>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><ul>
+<li>OS : Windows 10</li>
+</ul>
+<h1 id="安裝流程"><a href="#安裝流程" class="headerlink" title="安裝流程"></a>安裝流程</h1><ul>
+<li>下載我的筆記用專案<ul>
+<li><code>git clone https://github.com/youmu257/laravel-note.git</code></li>
+</ul>
+</li>
+<li><code>composer install</code></li>
+<li><code>php artisan key:generate</code></li>
+<li><code>cp .env.example .env</code></li>
+<li>調整 .env<ul>
+<li>寫入你的 DB 設定<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DB_CONNECTION&#x3D;mysql</span><br><span class="line">DB_HOST&#x3D;127.0.0.1</span><br><span class="line">DB_PORT&#x3D;3306</span><br><span class="line">DB_DATABASE&#x3D;laravel</span><br><span class="line">DB_USERNAME&#x3D;user</span><br><span class="line">DB_PASSWORD&#x3D;password</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="建立-migration-檔案"><a href="#建立-migration-檔案" class="headerlink" title="建立 migration 檔案"></a>建立 migration 檔案</h1><ul>
+<li><code>php artisan make:migration create_migration_example_table</code><ul>
+<li>create_order_table 表示建立一個產生 migration_example table 的 migration</li>
+<li>會依照當前時間生成這樣的檔案 2020_09_03_162217_create_migration_example_table.php</li>
+</ul>
+</li>
+</ul>
+<h1 id="migration-寫法"><a href="#migration-寫法" class="headerlink" title="migration 寫法"></a>migration 寫法</h1><ul>
+<li>用法參考<a href="https://laravel.tw/docs/5.2/migrations" target="_blank" rel="noopener">官方文件</a>或我的 <a href="https://github.com/youmu257/laravel-note" target="_blank" rel="noopener">laravel筆記</a></li>
+</ul>
+<h1 id="執行-migration"><a href="#執行-migration" class="headerlink" title="執行 migration"></a>執行 migration</h1><ul>
+<li><code>php artisan migration</code><ul>
+<li>會執行 databases/migrations 中的有 extends Illuminate\Database\Migrations\Migration 的 class </li>
+<li>會執行所有 class 中的 up function<ul>
+<li>如建立 table 或更改欄位</li>
+<li>同時把每個更改紀錄寫入 migrations table (此為<code>php artisan migration</code>自動建立)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>migrations table 中有一個欄位是 batch<ul>
+<li>如果要做 rollback 可以用 batch 為單位做回朔</li>
+</ul>
+</li>
+<li><code>php artisan migration:rollback</code><ul>
+<li>會執行所有 class 中的 down function<ul>
+<li>所以如果 up 是新建 table，down 就是刪除這張 table</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="Seeder"><a href="#Seeder" class="headerlink" title="Seeder"></a>Seeder</h1><ul>
+<li>都提到 migration 就一起講 seeder<ul>
+<li>基本上就是寫基本資料進資料庫</li>
+</ul>
+</li>
+<li>建立 seeder 指令是 <code>php artisan make:seeder UsersTableSeeder</code><ul>
+<li>UsersTableSeeder 是要建立的 seeder 檔名</li>
+</ul>
+</li>
+<li>會發現預設就有一個 DatabaseSeeder，用途是控制要執行哪些 seeder<ul>
+<li>在 migration 時帶 –seed 參數會執行 DatabaseSeeder<ul>
+<li><code>php artisan migration --seed</code></li>
+</ul>
+</li>
+<li>單純執行 DatabaseSeeder 用 <code>php artisan db:seed</code></li>
+</ul>
+</li>
+<li>如果要執行特定的 seeder 帶 –class 參數<ul>
+<li><code>php artisan db:seed --class=UserTableSeeder</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h1><ul>
+<li>DB schema 的版控機制<ul>
+<li>migration 除了在新環境可以快速建立起基本的 DB 外，同時也能做快速的 rollback</li>
+</ul>
+</li>
+<li>寫得好還可以當一種文件看，寫不好一個 rollback 毀天滅地</li>
+</ul>
+<h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><ul>
+<li><a href="https://laravel.tw/docs/5.2/migrations" target="_blank" rel="noopener">Laravel migration</a></li>
+<li><a href="https://laravel.tw/docs/5.2/seeding" target="_blank" rel="noopener">Laravel Seeder</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://youmu257.github.io/2020/09/25/20200904_laravel_migration/" data-id="ckfh26zsk0005w4u6dak56mj9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/08/31/20200831_rethinkdb/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">rethinkDB 筆記</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E6%95%99%E5%AD%B8/">工具教學</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B3%87%E6%96%99%E5%BA%AB/">資料庫</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/09/25/20200904_laravel_migration/">Laravel migration 和 seed 筆記</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/31/20200831_rethinkdb/">rethinkDB 筆記</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/31/20200831_stf/">openSTF 安裝筆記</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/26/20200826_nginx/">Nginx 相關筆記</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/07/20200728_Xshell_VM/">用 Xshell 連線進 VituralBox</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Leo Li<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
