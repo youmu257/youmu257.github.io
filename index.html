@@ -71,6 +71,88 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-20201107_laravel_send_mail" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/07/20201107_laravel_send_mail/" class="article-date">
+  <time datetime="2020-11-07T15:51:58.148Z" itemprop="datePublished">2020-11-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PHP/">PHP</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/07/20201107_laravel_send_mail/">Laravel 寄信範例</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>近期工作替商品做了下訂的功能，寫了一堆寄信功能，像是下訂成功、下訂失敗、請求報價、信箱驗證信和優惠碼通知信等…<br>那就來記錄一下寄信的寫法吧</p>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><ul>
+<li>OS : Windows 10</li>
+</ul>
+<h1 id="筆記說明"><a href="#筆記說明" class="headerlink" title="筆記說明"></a>筆記說明</h1><ul>
+<li>程式可以參考我的 <a href="https://github.com/youmu257/laravel-note" target="_blank" rel="noopener">laravel筆記</a></li>
+<li>建立 Controller<ul>
+<li><code>php artisan make:controller MailController</code></li>
+</ul>
+</li>
+<li>新增 app\Mail 來放建立信件的物件</li>
+<li>新增 resources\views\email 來放信件的 html template<ul>
+<li>用 Blade Templates 去建立信件樣板</li>
+<li>可以用 <code>@include</code> 去匯入部分樣板</li>
+<li>我的筆記程式參考這個<a href="https://github.com/ColorlibHQ/email-templates/tree/master/10" target="_blank" rel="noopener">樣板</a></li>
+</ul>
+</li>
+<li>在 MailService 用 Mail 去寄信  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$sampleMail &#x3D; new SampleMail($smapleData);</span><br><span class="line">Mail::to($receiverMail)</span><br><span class="line">    -&gt;send($sampleMail);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>可以傳入 <code>$smapleData</code> 信件需要的資料<ul>
+<li>可以用雙層大括號顯示傳入變數</li>
+</ul>
+</li>
+<li>Mail::to 設定收件者信箱</li>
+</ul>
+</li>
+<li>寄件者和寄件者名稱會吃 env  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MAIL_FROM_ADDRESS&#x3D;&quot;sender@gmail.com&quot;</span><br><span class="line">MAIL_FROM_NAME&#x3D;&quot;寄件者&quot;</span><br></pre></td></tr></table></figure></li>
+<li>在 env 設定 smtp<ul>
+<li>測試寄信結果我會用 <a href="https://mailtrap.io/" target="_blank" rel="noopener">Mailtrap</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">MAIL_MAILER&#x3D;smtp</span><br><span class="line">MAIL_HOST&#x3D;smtp.mailtrap.io</span><br><span class="line">MAIL_PORT&#x3D;2525</span><br><span class="line">MAIL_USERNAME&#x3D;test_username</span><br><span class="line">MAIL_PASSWORD&#x3D;test_password</span><br><span class="line">MAIL_ENCRYPTION&#x3D;tls</span><br></pre></td></tr></table></figure></li>
+<li><img src="https://i.imgur.com/SOijQdm.png" alt=""></li>
+</ul>
+</li>
+</ul>
+<h1 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h1><ul>
+<li>寄信不難，只是麻煩</li>
+</ul>
+<h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><ul>
+<li><a href="https://laravel.com/docs/8.x/controllers" target="_blank" rel="noopener">Laravel Controller</a></li>
+<li><a href="https://laravel.com/docs/8.x/blade" target="_blank" rel="noopener">Blade Templates</a></li>
+<li><a href="https://colorlib.com/wp/responsive-html-email-templates/" target="_blank" rel="noopener">Email template</a></li>
+<li><a href="https://www.itread01.com/content/1549881756.html" target="_blank" rel="noopener">laravel傳送郵件</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://youmu257.github.io/2020/11/07/20201107_laravel_send_mail/" data-id="ckhgmmqdr00099wu602g1ha3f" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-20200904_laravel_migration" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/09/25/20200904_laravel_migration/" class="article-date">
@@ -185,7 +267,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2020/09/25/20200904_laravel_migration/" data-id="ckfh26zsk0005w4u6dak56mj9" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2020/09/25/20200904_laravel_migration/" data-id="ckhgmmqdb00019wu6hakh54aw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -278,7 +360,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2020/08/31/20200831_rethinkdb/" data-id="ckfh26zsh0002w4u68lycaz75" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2020/08/31/20200831_rethinkdb/" data-id="ckhgmmqeg000f9wu67nym2kn8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -454,7 +536,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2020/08/31/20200831_stf/" data-id="ckfh26ztg000cw4u6bnmzcz86" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2020/08/31/20200831_stf/" data-id="ckhgmmqel000k9wu69xyc5huw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -561,7 +643,83 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2020/08/26/20200826_nginx/" data-id="ckfh26ztl000ew4u6d02abx85" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2020/08/26/20200826_nginx/" data-id="ckhgmmqd600009wu65tq99vrm" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-20200807_laravel" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/07/20200807_laravel/" class="article-date">
+  <time datetime="2020-08-06T17:17:11.529Z" itemprop="datePublished">2020-08-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PHP/">PHP</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/07/20200807_laravel/">Laravel 安裝筆記</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h1><ul>
+<li>OS : Debian 10</li>
+</ul>
+<h1 id="安裝前置環境"><a href="#安裝前置環境" class="headerlink" title="安裝前置環境"></a>安裝前置環境</h1><ul>
+<li>安裝 php  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install -y php php-mbstring php-cli php-xml</span><br></pre></td></tr></table></figure>
+<ul>
+<li>確認 php 版本<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">php -v</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 本次紀錄安裝版本為 7.3</span><br><span class="line">PHP 7.3.19-1~deb10u1 (cli) (built: Jul  5 2020 06:46:45) ( NTS )</span><br><span class="line">Copyright (c) 1997-2018 The PHP Group</span><br><span class="line">Zend Engine v3.3.19, Copyright (c) 1998-2018 Zend Technologies</span><br><span class="line">with Zend OPcache v7.3.19-1~deb10u1, Copyright (c) 1999-2018, by Zend Technologies</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>安裝 Composer  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -s https:&#x2F;&#x2F;getcomposer.org&#x2F;installer | php</span><br><span class="line">mv composer.phar &#x2F;usr&#x2F;local&#x2F;bin&#x2F;composer</span><br></pre></td></tr></table></figure></li>
+<li>下載 <a href="https://github.com/laravel/laravel" target="_blank" rel="noopener">laravel 專案</a>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;laravel&#x2F;laravel.git</span><br></pre></td></tr></table></figure></li>
+<li>建置 laravel 專案<ul>
+<li>會依照 <code>composer.json</code> 內的套件去做建置</li>
+<li>建置完成後會產生 <code>composer.lock</code> 紀錄當前所有套件的版本</li>
+<li>安裝的套件都會存放在 <code>vender</code> 的資料夾中<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd laravel</span><br><span class="line">composer install</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="簡單測試"><a href="#簡單測試" class="headerlink" title="簡單測試"></a>簡單測試</h1><ul>
+<li><p>在 route 新增一個 api，讓他回傳我們輸入的字串</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim routes&#x2F;api.php</span><br><span class="line">&#x2F;&#x2F; 新增一個 api</span><br><span class="line">Route::get(&#39;echo&#x2F;&#123;name&#125;&#39;, function ($name) &#123;</span><br><span class="line">  return $name;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+<li><p>啟動內建伺服器</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">php artisan serve</span><br><span class="line">&#x2F;&#x2F; 顯示以下訊息表示成功啟動</span><br><span class="line">Laravel development server started: http:&#x2F;&#x2F;127.0.0.1:8000</span><br></pre></td></tr></table></figure></li>
+<li><p>打開瀏覽器前往 <code>http://127.0.0.1:8000/api/echo/leo</code></p>
+<ul>
+<li><p>畫面顯示 leo 表示成功</p>
+<p><img src="https://i.imgur.com/XTWckoL.png" alt=""></p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><ul>
+<li><a href="https://peterli.website/%e5%ae%89%e8%a3%9d-laravel-%e5%88%9d%e5%a7%8b%e5%8c%96%e7%9a%84%e6%a1%86%e6%9e%b6/" target="_blank" rel="noopener">安裝 Laravel 初始化的框架</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://youmu257.github.io/2020/08/07/20200807_laravel/" data-id="ckhgmmqdd00039wu6fmbu8fg3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -670,83 +828,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2020/08/07/20200728_Xshell_VM/" data-id="ckfh26zsc0000w4u644951ebm" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-20200807_laravel" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/07/20200807_laravel/" class="article-date">
-  <time datetime="2020-08-06T17:17:11.529Z" itemprop="datePublished">2020-08-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PHP/">PHP</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/07/20200807_laravel/">Laravel 安裝筆記</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h1><ul>
-<li>OS : Debian 10</li>
-</ul>
-<h1 id="安裝前置環境"><a href="#安裝前置環境" class="headerlink" title="安裝前置環境"></a>安裝前置環境</h1><ul>
-<li>安裝 php  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install -y php php-mbstring php-cli php-xml</span><br></pre></td></tr></table></figure>
-<ul>
-<li>確認 php 版本<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">php -v</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 本次紀錄安裝版本為 7.3</span><br><span class="line">PHP 7.3.19-1~deb10u1 (cli) (built: Jul  5 2020 06:46:45) ( NTS )</span><br><span class="line">Copyright (c) 1997-2018 The PHP Group</span><br><span class="line">Zend Engine v3.3.19, Copyright (c) 1998-2018 Zend Technologies</span><br><span class="line">with Zend OPcache v7.3.19-1~deb10u1, Copyright (c) 1999-2018, by Zend Technologies</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>安裝 Composer  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -s https:&#x2F;&#x2F;getcomposer.org&#x2F;installer | php</span><br><span class="line">mv composer.phar &#x2F;usr&#x2F;local&#x2F;bin&#x2F;composer</span><br></pre></td></tr></table></figure></li>
-<li>下載 <a href="https://github.com/laravel/laravel" target="_blank" rel="noopener">laravel 專案</a>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;laravel&#x2F;laravel.git</span><br></pre></td></tr></table></figure></li>
-<li>建置 laravel 專案<ul>
-<li>會依照 <code>composer.json</code> 內的套件去做建置</li>
-<li>建置完成後會產生 <code>composer.lock</code> 紀錄當前所有套件的版本</li>
-<li>安裝的套件都會存放在 <code>vender</code> 的資料夾中<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd laravel</span><br><span class="line">composer install</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="簡單測試"><a href="#簡單測試" class="headerlink" title="簡單測試"></a>簡單測試</h1><ul>
-<li><p>在 route 新增一個 api，讓他回傳我們輸入的字串</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim routes&#x2F;api.php</span><br><span class="line">&#x2F;&#x2F; 新增一個 api</span><br><span class="line">Route::get(&#39;echo&#x2F;&#123;name&#125;&#39;, function ($name) &#123;</span><br><span class="line">  return $name;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
-<li><p>啟動內建伺服器</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">php artisan serve</span><br><span class="line">&#x2F;&#x2F; 顯示以下訊息表示成功啟動</span><br><span class="line">Laravel development server started: http:&#x2F;&#x2F;127.0.0.1:8000</span><br></pre></td></tr></table></figure></li>
-<li><p>打開瀏覽器前往 <code>http://127.0.0.1:8000/api/echo/leo</code></p>
-<ul>
-<li><p>畫面顯示 leo 表示成功</p>
-<p><img src="https://i.imgur.com/XTWckoL.png" alt=""></p>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><ul>
-<li><a href="https://peterli.website/%e5%ae%89%e8%a3%9d-laravel-%e5%88%9d%e5%a7%8b%e5%8c%96%e7%9a%84%e6%a1%86%e6%9e%b6/" target="_blank" rel="noopener">安裝 Laravel 初始化的框架</a></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2020/08/07/20200807_laravel/" data-id="ckfh26ztl000fw4u65i401pt6" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2020/08/07/20200728_Xshell_VM/" data-id="ckhgmmqeh000g9wu63cleaey8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -781,7 +863,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li></ul>
     </div>
   </div>
 
@@ -792,6 +874,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/11/07/20201107_laravel_send_mail/">Laravel 寄信範例</a>
+          </li>
         
           <li>
             <a href="/2020/09/25/20200904_laravel_migration/">Laravel migration 和 seed 筆記</a>
@@ -807,10 +893,6 @@
         
           <li>
             <a href="/2020/08/26/20200826_nginx/">Nginx 相關筆記</a>
-          </li>
-        
-          <li>
-            <a href="/2020/08/07/20200728_Xshell_VM/">用 Xshell 連線進 VituralBox</a>
           </li>
         
       </ul>

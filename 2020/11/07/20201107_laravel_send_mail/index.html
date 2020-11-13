@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Laravel 寄信範例 | Leo&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言近期工作替商品做了下訂的功能，寫了一堆寄信功能，像是下訂成功、下訂失敗、請求報價、信箱驗證信和優惠碼通知信等…那就來記錄一下寄信的寫法吧 環境 OS : Windows 10  筆記說明 程式可以參考我的 laravel筆記 建立 Controller php artisan make:controller MailController   新增 app\Mail 來放建立信件的物件 新增 r">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Laravel 寄信範例">
+<meta property="og:url" content="https://youmu257.github.io/2020/11/07/20201107_laravel_send_mail/index.html">
+<meta property="og:site_name" content="Leo&#39;s Blog">
+<meta property="og:description" content="前言近期工作替商品做了下訂的功能，寫了一堆寄信功能，像是下訂成功、下訂失敗、請求報價、信箱驗證信和優惠碼通知信等…那就來記錄一下寄信的寫法吧 環境 OS : Windows 10  筆記說明 程式可以參考我的 laravel筆記 建立 Controller php artisan make:controller MailController   新增 app\Mail 來放建立信件的物件 新增 r">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/SOijQdm.png">
+<meta property="article:published_time" content="2020-11-07T15:51:58.148Z">
+<meta property="article:modified_time" content="2020-11-13T18:59:31.651Z">
+<meta property="article:author" content="Leo Li">
+<meta property="article:tag" content="技術筆記">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/SOijQdm.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Leo&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Leo&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">替健忘的自己做的筆記</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://youmu257.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-20201107_laravel_send_mail" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/07/20201107_laravel_send_mail/" class="article-date">
+  <time datetime="2020-11-07T15:51:58.148Z" itemprop="datePublished">2020-11-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PHP/">PHP</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Laravel 寄信範例
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>近期工作替商品做了下訂的功能，寫了一堆寄信功能，像是下訂成功、下訂失敗、請求報價、信箱驗證信和優惠碼通知信等…<br>那就來記錄一下寄信的寫法吧</p>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><ul>
+<li>OS : Windows 10</li>
+</ul>
+<h1 id="筆記說明"><a href="#筆記說明" class="headerlink" title="筆記說明"></a>筆記說明</h1><ul>
+<li>程式可以參考我的 <a href="https://github.com/youmu257/laravel-note" target="_blank" rel="noopener">laravel筆記</a></li>
+<li>建立 Controller<ul>
+<li><code>php artisan make:controller MailController</code></li>
+</ul>
+</li>
+<li>新增 app\Mail 來放建立信件的物件</li>
+<li>新增 resources\views\email 來放信件的 html template<ul>
+<li>用 Blade Templates 去建立信件樣板</li>
+<li>可以用 <code>@include</code> 去匯入部分樣板</li>
+<li>我的筆記程式參考這個<a href="https://github.com/ColorlibHQ/email-templates/tree/master/10" target="_blank" rel="noopener">樣板</a></li>
+</ul>
+</li>
+<li>在 MailService 用 Mail 去寄信  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$sampleMail &#x3D; new SampleMail($smapleData);</span><br><span class="line">Mail::to($receiverMail)</span><br><span class="line">    -&gt;send($sampleMail);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>可以傳入 <code>$smapleData</code> 信件需要的資料<ul>
+<li>可以用雙層大括號顯示傳入變數</li>
+</ul>
+</li>
+<li>Mail::to 設定收件者信箱</li>
+</ul>
+</li>
+<li>寄件者和寄件者名稱會吃 env  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MAIL_FROM_ADDRESS&#x3D;&quot;sender@gmail.com&quot;</span><br><span class="line">MAIL_FROM_NAME&#x3D;&quot;寄件者&quot;</span><br></pre></td></tr></table></figure></li>
+<li>在 env 設定 smtp<ul>
+<li>測試寄信結果我會用 <a href="https://mailtrap.io/" target="_blank" rel="noopener">Mailtrap</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">MAIL_MAILER&#x3D;smtp</span><br><span class="line">MAIL_HOST&#x3D;smtp.mailtrap.io</span><br><span class="line">MAIL_PORT&#x3D;2525</span><br><span class="line">MAIL_USERNAME&#x3D;test_username</span><br><span class="line">MAIL_PASSWORD&#x3D;test_password</span><br><span class="line">MAIL_ENCRYPTION&#x3D;tls</span><br></pre></td></tr></table></figure></li>
+<li><img src="https://i.imgur.com/SOijQdm.png" alt=""></li>
+</ul>
+</li>
+</ul>
+<h1 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h1><ul>
+<li>寄信不難，只是麻煩</li>
+</ul>
+<h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><ul>
+<li><a href="https://laravel.com/docs/8.x/controllers" target="_blank" rel="noopener">Laravel Controller</a></li>
+<li><a href="https://laravel.com/docs/8.x/blade" target="_blank" rel="noopener">Blade Templates</a></li>
+<li><a href="https://colorlib.com/wp/responsive-html-email-templates/" target="_blank" rel="noopener">Email template</a></li>
+<li><a href="https://www.itread01.com/content/1549881756.html" target="_blank" rel="noopener">laravel傳送郵件</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://youmu257.github.io/2020/11/07/20201107_laravel_send_mail/" data-id="ckhgmmqdr00099wu602g1ha3f" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/09/25/20200904_laravel_migration/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Laravel migration 和 seed 筆記</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E6%95%99%E5%AD%B8/">工具教學</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B3%87%E6%96%99%E5%BA%AB/">資料庫</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/11/07/20201107_laravel_send_mail/">Laravel 寄信範例</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/25/20200904_laravel_migration/">Laravel migration 和 seed 筆記</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/31/20200831_rethinkdb/">rethinkDB 筆記</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/31/20200831_stf/">openSTF 安裝筆記</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/26/20200826_nginx/">Nginx 相關筆記</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Leo Li<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

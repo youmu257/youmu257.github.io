@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://youmu257.github.io/2020/11/07/20201107_laravel_send_mail/</loc>
+    
+    <lastmod>2020-11-13T18:59:31.651Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://youmu257.github.io/git/index.html</loc>
+    
+    <lastmod>2020-10-16T17:13:40.142Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://youmu257.github.io/2020/09/25/20200904_laravel_migration/</loc>
     
     <lastmod>2020-09-24T16:56:27.719Z</lastmod>
@@ -37,14 +51,14 @@
   </url>
   
   <url>
-    <loc>https://youmu257.github.io/2020/08/07/20200728_Xshell_VM/</loc>
+    <loc>https://youmu257.github.io/2020/08/07/20200807_laravel/</loc>
     
     <lastmod>2020-08-06T17:17:11.529Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://youmu257.github.io/2020/08/07/20200807_laravel/</loc>
+    <loc>https://youmu257.github.io/2020/08/07/20200728_Xshell_VM/</loc>
     
     <lastmod>2020-08-06T17:17:11.529Z</lastmod>
     
