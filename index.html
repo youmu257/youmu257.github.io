@@ -71,6 +71,89 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-20201114_laravel_send_pdf_mail" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/14/20201114_laravel_send_pdf_mail/" class="article-date">
+  <time datetime="2020-11-14T13:47:31.794Z" itemprop="datePublished">2020-11-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PHP/">PHP</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/14/20201114_laravel_send_pdf_mail/">Laravel 寄信夾帶 PDF 範例</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>由於遇到需要夾帶訂單資訊的PDF的需求，順便紀錄一下產生PDF夾進信件的筆記<br>其實還有其他的套件可以產生PDF，但多數人都推薦 Snappy，尤其是包含中文的情境<br>不過 Snappy 不支援 windows ，所以接下來的筆記僅適用 linux</p>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><ul>
+<li>OS : unubtu</li>
+</ul>
+<h1 id="前置安裝"><a href="#前置安裝" class="headerlink" title="前置安裝"></a>前置安裝</h1><ul>
+<li>使用 Snappy PDF 套件<ul>
+<li><code>composer require barryvdh/laravel-snappy</code></li>
+</ul>
+</li>
+<li>安裝必要相關檔案<ul>
+<li>64 位元用 composer 下載 wkhtmltopdf 和 wkhtmltoimage<ul>
+<li><code>composer require h4cc/wkhtmltopdf-amd64 0.12.x</code></li>
+<li><code>composer require h4cc/wkhtmltoimage-amd64 0.12.x</code></li>
+</ul>
+</li>
+<li>複製檔案到指定位置<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo cp vendor&#x2F;h4cc&#x2F;wkhtmltoimage-amd64&#x2F;bin&#x2F;wkhtmltoimage-amd64 &#x2F;usr&#x2F;local&#x2F;bin&#x2F;</span><br><span class="line">sudo cp vendor&#x2F;h4cc&#x2F;wkhtmltopdf-amd64&#x2F;bin&#x2F;wkhtmltopdf-amd64 &#x2F;usr&#x2F;local&#x2F;bin&#x2F;</span><br></pre></td></tr></table></figure></li>
+<li>修改檔案權限<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod +x &#x2F;usr&#x2F;local&#x2F;bin&#x2F;wkhtmltoimage-amd64 </span><br><span class="line">sudo chmod +x &#x2F;usr&#x2F;local&#x2F;bin&#x2F;wkhtmltopdf-amd64</span><br></pre></td></tr></table></figure></li>
+<li>sudo apt-get install -y openssl build-essential xorg libssl-dev</li>
+<li>sudo apt install libssl1.0-dev<ul>
+<li><a href="https://github.com/wkhtmltopdf/wkhtmltopdf/issues/3923" target="_blank" rel="noopener">出現Exit with code 1 due to network error: UnknownNetworkError</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="程式部分"><a href="#程式部分" class="headerlink" title="程式部分"></a>程式部分</h1><ul>
+<li>程式可以參考我的 <a href="https://github.com/youmu257/laravel-note" target="_blank" rel="noopener">laravel筆記</a></li>
+<li>.env 中加入  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">WKHTML_PDF_BINARY&#x3D;&#x2F;usr&#x2F;local&#x2F;bin&#x2F;wkhtmltopdf-amd64</span><br><span class="line">WKHTML_IMG_BINARY&#x3D;&#x2F;usr&#x2F;local&#x2F;bin&#x2F;wkhtmltoimage-amd64</span><br></pre></td></tr></table></figure></li>
+<li>在 config/app.php 中加入 <code>&#39;PDF&#39; =&gt; Barryvdh\Snappy\Facades\SnappyPdf::class,</code></li>
+<li>產生 PDF 可以參考 app/Mail/SamplePdfMail.php 中的寫法</li>
+<li>宣告 PDF 檔 <code>PDF::loadView(&#39;email.sample_pdf&#39;, $this-&gt;requestData)</code></li>
+<li>產生 PDF 檔並夾帶進信件中 <code>-&gt;attachData($pdf-&gt;output(), &#39;pdf-sample.pdf&#39;)</code></li>
+<li><a href="https://stripo.email/en/demo/?template=6677&project=6782&guid=49908f77-6dd4-4a65-9d2f-032ad469e6da" target="_blank" rel="noopener">參考樣板</a></li>
+</ul>
+<h1 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h1><ul>
+<li>產生 PDF 就是這麼簡單</li>
+</ul>
+<h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><ul>
+<li><a href="https://github.com/barryvdh/laravel-snappy" target="_blank" rel="noopener">Snappy PDF/Image Wrapper for Laravel 5 and Lumen 5.1
+</a></li>
+<li><a href="https://github.com/KnpLabs/snappy#wkhtmltopdf-binary-as-composer-dependencies" target="_blank" rel="noopener">Snappy</a></li>
+<li><a href="https://stripo.email/templates/type/order/" target="_blank" rel="noopener">樣板來源</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://youmu257.github.io/2020/11/14/20201114_laravel_send_pdf_mail/" data-id="ckhup99n00005n8u6ciecaq0e" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-20201107_laravel_send_mail" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/11/07/20201107_laravel_send_mail/" class="article-date">
@@ -143,7 +226,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2020/11/07/20201107_laravel_send_mail/" data-id="ckhgmmqdr00099wu602g1ha3f" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2020/11/07/20201107_laravel_send_mail/" data-id="ckhup99mz0004n8u63ryoasi2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -267,7 +350,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2020/09/25/20200904_laravel_migration/" data-id="ckhgmmqdb00019wu6hakh54aw" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2020/09/25/20200904_laravel_migration/" data-id="ckhup99o2000ln8u69jb33v06" class="article-share-link">Share</a>
       
       
     </footer>
@@ -360,7 +443,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2020/08/31/20200831_rethinkdb/" data-id="ckhgmmqeg000f9wu67nym2kn8" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2020/08/31/20200831_rethinkdb/" data-id="ckhup99mw0001n8u6a35h1tjr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -536,7 +619,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2020/08/31/20200831_stf/" data-id="ckhgmmqel000k9wu69xyc5huw" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2020/08/31/20200831_stf/" data-id="ckhup99oa000nn8u6d035bgwn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -643,7 +726,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2020/08/26/20200826_nginx/" data-id="ckhgmmqd600009wu65tq99vrm" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2020/08/26/20200826_nginx/" data-id="ckhup99mr0000n8u6bpxm4k6z" class="article-share-link">Share</a>
       
       
     </footer>
@@ -719,7 +802,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2020/08/07/20200807_laravel/" data-id="ckhgmmqdd00039wu6fmbu8fg3" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2020/08/07/20200807_laravel/" data-id="ckhup99my0003n8u68tfmg1rv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -828,7 +911,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2020/08/07/20200728_Xshell_VM/" data-id="ckhgmmqeh000g9wu63cleaey8" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2020/08/07/20200728_Xshell_VM/" data-id="ckhup99ng000fn8u60l1m5jj9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -876,6 +959,10 @@
       <ul>
         
           <li>
+            <a href="/2020/11/14/20201114_laravel_send_pdf_mail/">Laravel 寄信夾帶 PDF 範例</a>
+          </li>
+        
+          <li>
             <a href="/2020/11/07/20201107_laravel_send_mail/">Laravel 寄信範例</a>
           </li>
         
@@ -889,10 +976,6 @@
         
           <li>
             <a href="/2020/08/31/20200831_stf/">openSTF 安裝筆記</a>
-          </li>
-        
-          <li>
-            <a href="/2020/08/26/20200826_nginx/">Nginx 相關筆記</a>
           </li>
         
       </ul>

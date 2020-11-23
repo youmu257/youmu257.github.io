@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Laravel 寄信夾帶 PDF 範例 | Leo&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言由於遇到需要夾帶訂單資訊的PDF的需求，順便紀錄一下產生PDF夾進信件的筆記其實還有其他的套件可以產生PDF，但多數人都推薦 Snappy，尤其是包含中文的情境不過 Snappy 不支援 windows ，所以接下來的筆記僅適用 linux 環境 OS : unubtu  前置安裝 使用 Snappy PDF 套件 composer require barryvdh&#x2F;laravel-snapp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Laravel 寄信夾帶 PDF 範例">
+<meta property="og:url" content="https://youmu257.github.io/2020/11/14/20201114_laravel_send_pdf_mail/index.html">
+<meta property="og:site_name" content="Leo&#39;s Blog">
+<meta property="og:description" content="前言由於遇到需要夾帶訂單資訊的PDF的需求，順便紀錄一下產生PDF夾進信件的筆記其實還有其他的套件可以產生PDF，但多數人都推薦 Snappy，尤其是包含中文的情境不過 Snappy 不支援 windows ，所以接下來的筆記僅適用 linux 環境 OS : unubtu  前置安裝 使用 Snappy PDF 套件 composer require barryvdh&#x2F;laravel-snapp">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2020-11-14T13:47:31.794Z">
+<meta property="article:modified_time" content="2020-11-23T15:22:24.341Z">
+<meta property="article:author" content="Leo Li">
+<meta property="article:tag" content="技術筆記">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Leo&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Leo&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">替健忘的自己做的筆記</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://youmu257.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-20201114_laravel_send_pdf_mail" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/14/20201114_laravel_send_pdf_mail/" class="article-date">
+  <time datetime="2020-11-14T13:47:31.794Z" itemprop="datePublished">2020-11-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PHP/">PHP</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Laravel 寄信夾帶 PDF 範例
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>由於遇到需要夾帶訂單資訊的PDF的需求，順便紀錄一下產生PDF夾進信件的筆記<br>其實還有其他的套件可以產生PDF，但多數人都推薦 Snappy，尤其是包含中文的情境<br>不過 Snappy 不支援 windows ，所以接下來的筆記僅適用 linux</p>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><ul>
+<li>OS : unubtu</li>
+</ul>
+<h1 id="前置安裝"><a href="#前置安裝" class="headerlink" title="前置安裝"></a>前置安裝</h1><ul>
+<li>使用 Snappy PDF 套件<ul>
+<li><code>composer require barryvdh/laravel-snappy</code></li>
+</ul>
+</li>
+<li>安裝必要相關檔案<ul>
+<li>64 位元用 composer 下載 wkhtmltopdf 和 wkhtmltoimage<ul>
+<li><code>composer require h4cc/wkhtmltopdf-amd64 0.12.x</code></li>
+<li><code>composer require h4cc/wkhtmltoimage-amd64 0.12.x</code></li>
+</ul>
+</li>
+<li>複製檔案到指定位置<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo cp vendor&#x2F;h4cc&#x2F;wkhtmltoimage-amd64&#x2F;bin&#x2F;wkhtmltoimage-amd64 &#x2F;usr&#x2F;local&#x2F;bin&#x2F;</span><br><span class="line">sudo cp vendor&#x2F;h4cc&#x2F;wkhtmltopdf-amd64&#x2F;bin&#x2F;wkhtmltopdf-amd64 &#x2F;usr&#x2F;local&#x2F;bin&#x2F;</span><br></pre></td></tr></table></figure></li>
+<li>修改檔案權限<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod +x &#x2F;usr&#x2F;local&#x2F;bin&#x2F;wkhtmltoimage-amd64 </span><br><span class="line">sudo chmod +x &#x2F;usr&#x2F;local&#x2F;bin&#x2F;wkhtmltopdf-amd64</span><br></pre></td></tr></table></figure></li>
+<li>sudo apt-get install -y openssl build-essential xorg libssl-dev</li>
+<li>sudo apt install libssl1.0-dev<ul>
+<li><a href="https://github.com/wkhtmltopdf/wkhtmltopdf/issues/3923" target="_blank" rel="noopener">出現Exit with code 1 due to network error: UnknownNetworkError</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="程式部分"><a href="#程式部分" class="headerlink" title="程式部分"></a>程式部分</h1><ul>
+<li>程式可以參考我的 <a href="https://github.com/youmu257/laravel-note" target="_blank" rel="noopener">laravel筆記</a></li>
+<li>.env 中加入  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">WKHTML_PDF_BINARY&#x3D;&#x2F;usr&#x2F;local&#x2F;bin&#x2F;wkhtmltopdf-amd64</span><br><span class="line">WKHTML_IMG_BINARY&#x3D;&#x2F;usr&#x2F;local&#x2F;bin&#x2F;wkhtmltoimage-amd64</span><br></pre></td></tr></table></figure></li>
+<li>在 config/app.php 中加入 <code>&#39;PDF&#39; =&gt; Barryvdh\Snappy\Facades\SnappyPdf::class,</code></li>
+<li>產生 PDF 可以參考 app/Mail/SamplePdfMail.php 中的寫法</li>
+<li>宣告 PDF 檔 <code>PDF::loadView(&#39;email.sample_pdf&#39;, $this-&gt;requestData)</code></li>
+<li>產生 PDF 檔並夾帶進信件中 <code>-&gt;attachData($pdf-&gt;output(), &#39;pdf-sample.pdf&#39;)</code></li>
+<li><a href="https://stripo.email/en/demo/?template=6677&project=6782&guid=49908f77-6dd4-4a65-9d2f-032ad469e6da" target="_blank" rel="noopener">參考樣板</a></li>
+</ul>
+<h1 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h1><ul>
+<li>產生 PDF 就是這麼簡單</li>
+</ul>
+<h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><ul>
+<li><a href="https://github.com/barryvdh/laravel-snappy" target="_blank" rel="noopener">Snappy PDF/Image Wrapper for Laravel 5 and Lumen 5.1
+</a></li>
+<li><a href="https://github.com/KnpLabs/snappy#wkhtmltopdf-binary-as-composer-dependencies" target="_blank" rel="noopener">Snappy</a></li>
+<li><a href="https://stripo.email/templates/type/order/" target="_blank" rel="noopener">樣板來源</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://youmu257.github.io/2020/11/14/20201114_laravel_send_pdf_mail/" data-id="ckhup99n00005n8u6ciecaq0e" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/11/07/20201107_laravel_send_mail/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Laravel 寄信範例</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E6%95%99%E5%AD%B8/">工具教學</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B3%87%E6%96%99%E5%BA%AB/">資料庫</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/11/14/20201114_laravel_send_pdf_mail/">Laravel 寄信夾帶 PDF 範例</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/07/20201107_laravel_send_mail/">Laravel 寄信範例</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/25/20200904_laravel_migration/">Laravel migration 和 seed 筆記</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/31/20200831_rethinkdb/">rethinkDB 筆記</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/31/20200831_stf/">openSTF 安裝筆記</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Leo Li<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
