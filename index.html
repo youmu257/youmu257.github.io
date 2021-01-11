@@ -71,6 +71,84 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-20210111_git_file_name_note" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/11/20210111_git_file_name_note/" class="article-date">
+  <time datetime="2021-01-11T15:44:27.060Z" itemprop="datePublished">2021-01-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/git/">git</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/11/20210111_git_file_name_note/">Sourcetree 檔名大小寫偵測不到問題</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>因為遇到第二次還需要估狗去找解法，還是紀錄一下這麼狀況和解法<br><del>而且最近太少更新筆記了</del></p>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><ul>
+<li>OS : Windows 10</li>
+<li>Sourcetree</li>
+</ul>
+<h1 id="情境"><a href="#情境" class="headerlink" title="情境"></a>情境</h1><ol>
+<li>檔案已經 commit 過了<ul>
+<li>先 commit 一個 test.txt 的檔案<br><img src="https://i.imgur.com/ddDIeo5.png" alt=""></li>
+</ul>
+</li>
+<li>更改檔名時，且只更改大小寫部分<ul>
+<li>改為 Test.txt<br><img src="https://i.imgur.com/QcpkKin.png" alt=""></li>
+</ul>
+</li>
+<li>Sourcetree 切到 File status<ul>
+<li>什麼改變都沒有<br><img src="https://memeprod.sgp1.digitaloceanspaces.com/user-wtf/1587384378140.jpg" alt=""></li>
+</ul>
+</li>
+<li>用指令檢查<ul>
+<li>cmd 輸入 git status<br><img src="https://i.imgur.com/K9TyHwH.png" alt=""></li>
+<li>發現偵測不到改動</li>
+</ul>
+</li>
+</ol>
+<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><ul>
+<li>先把檔名改回去 test.txt</li>
+<li>打開 cmd 輸入指令，用指令更改檔名<ul>
+<li><code>git mv test.txt Test.txt</code></li>
+</ul>
+</li>
+<li>回到 Sourcetree 發現可以正常偵測到改動了</li>
+</ul>
+<h1 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h1><ul>
+<li>事不過三，這次一定記住</li>
+</ul>
+<h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><ul>
+<li><a href="https://gitbook.tw/posts/2018-06-05-case-sensitive" target="_blank" rel="noopener">關於檔名的大小寫</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://youmu257.github.io/2021/01/11/20210111_git_file_name_note/" data-id="ckjsrehot000bxgu60mkrg3ra" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-20201114_laravel_send_pdf_mail" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/11/14/20201114_laravel_send_pdf_mail/" class="article-date">
@@ -144,7 +222,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2020/11/14/20201114_laravel_send_pdf_mail/" data-id="ckhup99n00005n8u6ciecaq0e" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2020/11/14/20201114_laravel_send_pdf_mail/" data-id="ckjsrehos0009xgu67gpfd70f" class="article-share-link">Share</a>
       
       
     </footer>
@@ -226,7 +304,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2020/11/07/20201107_laravel_send_mail/" data-id="ckhup99mz0004n8u63ryoasi2" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2020/11/07/20201107_laravel_send_mail/" data-id="ckjsrehpo000pxgu61naxhttg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -350,7 +428,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2020/09/25/20200904_laravel_migration/" data-id="ckhup99o2000ln8u69jb33v06" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2020/09/25/20200904_laravel_migration/" data-id="ckjsrehpg000lxgu6drgo7nlo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -443,7 +521,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2020/08/31/20200831_rethinkdb/" data-id="ckhup99mw0001n8u6a35h1tjr" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2020/08/31/20200831_rethinkdb/" data-id="ckjsrehol0002xgu6exsccaee" class="article-share-link">Share</a>
       
       
     </footer>
@@ -619,7 +697,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2020/08/31/20200831_stf/" data-id="ckhup99oa000nn8u6d035bgwn" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2020/08/31/20200831_stf/" data-id="ckjsrehpm000nxgu69c2q1fvf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -726,7 +804,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2020/08/26/20200826_nginx/" data-id="ckhup99mr0000n8u6bpxm4k6z" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2020/08/26/20200826_nginx/" data-id="ckjsrehop0005xgu6djlsc3mx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -802,7 +880,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2020/08/07/20200807_laravel/" data-id="ckhup99my0003n8u68tfmg1rv" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2020/08/07/20200807_laravel/" data-id="ckjsrehod0000xgu6gaqe9m0j" class="article-share-link">Share</a>
       
       
     </footer>
@@ -911,7 +989,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2020/08/07/20200728_Xshell_VM/" data-id="ckhup99ng000fn8u60l1m5jj9" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2020/08/07/20200728_Xshell_VM/" data-id="ckjsrehoq0007xgu6doe0f7qd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -931,7 +1009,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E6%95%99%E5%AD%B8/">工具教學</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B3%87%E6%96%99%E5%BA%AB/">資料庫</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E6%95%99%E5%AD%B8/">工具教學</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B3%87%E6%96%99%E5%BA%AB/">資料庫</a></li></ul>
     </div>
   </div>
 
@@ -946,7 +1024,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li></ul>
     </div>
   </div>
 
@@ -957,6 +1035,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2021/01/11/20210111_git_file_name_note/">Sourcetree 檔名大小寫偵測不到問題</a>
+          </li>
         
           <li>
             <a href="/2020/11/14/20201114_laravel_send_pdf_mail/">Laravel 寄信夾帶 PDF 範例</a>
@@ -974,10 +1056,6 @@
             <a href="/2020/08/31/20200831_rethinkdb/">rethinkDB 筆記</a>
           </li>
         
-          <li>
-            <a href="/2020/08/31/20200831_stf/">openSTF 安裝筆記</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -990,7 +1068,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2020 Leo Li<br>
+      &copy; 2021 Leo Li<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

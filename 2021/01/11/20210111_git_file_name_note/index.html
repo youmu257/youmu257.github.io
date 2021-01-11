@@ -5,20 +5,25 @@
   
 
   
-  <title>資料庫 | Leo&#39;s Blog</title>
+  <title>Sourcetree 檔名大小寫偵測不到問題 | Leo&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="替健忘的自己做的筆記">
-<meta property="og:type" content="website">
-<meta property="og:title" content="資料庫">
-<meta property="og:url" content="https://youmu257.github.io/%E8%B3%87%E6%96%99%E5%BA%AB/index.html">
+  <meta name="description" content="前言因為遇到第二次還需要估狗去找解法，還是紀錄一下這麼狀況和解法而且最近太少更新筆記了 環境 OS : Windows 10 Sourcetree  情境 檔案已經 commit 過了 先 commit 一個 test.txt 的檔案   更改檔名時，且只更改大小寫部分 改為 Test.txt   Sourcetree 切到 File status 什麼改變都沒有   用指令檢查 cmd 輸入 g">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sourcetree 檔名大小寫偵測不到問題">
+<meta property="og:url" content="https://youmu257.github.io/2021/01/11/20210111_git_file_name_note/index.html">
 <meta property="og:site_name" content="Leo&#39;s Blog">
-<meta property="og:description" content="替健忘的自己做的筆記">
+<meta property="og:description" content="前言因為遇到第二次還需要估狗去找解法，還是紀錄一下這麼狀況和解法而且最近太少更新筆記了 環境 OS : Windows 10 Sourcetree  情境 檔案已經 commit 過了 先 commit 一個 test.txt 的檔案   更改檔名時，且只更改大小寫部分 改為 Test.txt   Sourcetree 切到 File status 什麼改變都沒有   用指令檢查 cmd 輸入 g">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2020-08-31T13:16:11.000Z">
-<meta property="article:modified_time" content="2020-08-31T14:57:35.374Z">
+<meta property="og:image" content="https://i.imgur.com/ddDIeo5.png">
+<meta property="og:image" content="https://i.imgur.com/QcpkKin.png">
+<meta property="og:image" content="https://memeprod.sgp1.digitaloceanspaces.com/user-wtf/1587384378140.jpg">
+<meta property="og:image" content="https://i.imgur.com/K9TyHwH.png">
+<meta property="article:published_time" content="2021-01-11T15:44:27.060Z">
+<meta property="article:modified_time" content="2021-01-11T16:02:29.749Z">
 <meta property="article:author" content="Leo Li">
 <meta property="article:tag" content="技術筆記">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/ddDIeo5.png">
   
     <link rel="alternate" href="/atom.xml" title="Leo&#39;s Blog" type="application/atom+xml">
   
@@ -71,12 +76,16 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-20210111_git_file_name_note" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/%E8%B3%87%E6%96%99%E5%BA%AB/index.html" class="article-date">
-  <time datetime="2020-08-31T13:16:11.000Z" itemprop="datePublished">2020-08-31</time>
+    <a href="/2021/01/11/20210111_git_file_name_note/" class="article-date">
+  <time datetime="2021-01-11T15:44:27.060Z" itemprop="datePublished">2021-01-11</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/git/">git</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -85,7 +94,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      資料庫
+      Sourcetree 檔名大小寫偵測不到問題
     </h1>
   
 
@@ -93,17 +102,65 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>因為遇到第二次還需要估狗去找解法，還是紀錄一下這麼狀況和解法<br><del>而且最近太少更新筆記了</del></p>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><ul>
+<li>OS : Windows 10</li>
+<li>Sourcetree</li>
+</ul>
+<h1 id="情境"><a href="#情境" class="headerlink" title="情境"></a>情境</h1><ol>
+<li>檔案已經 commit 過了<ul>
+<li>先 commit 一個 test.txt 的檔案<br><img src="https://i.imgur.com/ddDIeo5.png" alt=""></li>
+</ul>
+</li>
+<li>更改檔名時，且只更改大小寫部分<ul>
+<li>改為 Test.txt<br><img src="https://i.imgur.com/QcpkKin.png" alt=""></li>
+</ul>
+</li>
+<li>Sourcetree 切到 File status<ul>
+<li>什麼改變都沒有<br><img src="https://memeprod.sgp1.digitaloceanspaces.com/user-wtf/1587384378140.jpg" alt=""></li>
+</ul>
+</li>
+<li>用指令檢查<ul>
+<li>cmd 輸入 git status<br><img src="https://i.imgur.com/K9TyHwH.png" alt=""></li>
+<li>發現偵測不到改動</li>
+</ul>
+</li>
+</ol>
+<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><ul>
+<li>先把檔名改回去 test.txt</li>
+<li>打開 cmd 輸入指令，用指令更改檔名<ul>
+<li><code>git mv test.txt Test.txt</code></li>
+</ul>
+</li>
+<li>回到 Sourcetree 發現可以正常偵測到改動了</li>
+</ul>
+<h1 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h1><ul>
+<li>事不過三，這次一定記住</li>
+</ul>
+<h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><ul>
+<li><a href="https://gitbook.tw/posts/2018-06-05-case-sensitive" target="_blank" rel="noopener">關於檔名的大小寫</a></li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/%E8%B3%87%E6%96%99%E5%BA%AB/index.html" data-id="ckjsrehor0008xgu63w87c7hq" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2021/01/11/20210111_git_file_name_note/" data-id="ckjsrehot000bxgu60mkrg3ra" class="article-share-link">Share</a>
       
       
     </footer>
   </div>
   
     
+<nav id="article-nav">
+  
+  
+    <a href="/2020/11/14/20201114_laravel_send_pdf_mail/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Laravel 寄信夾帶 PDF 範例</div>
+    </a>
+  
+</nav>
+
   
 </article>
 
