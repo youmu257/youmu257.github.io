@@ -5,20 +5,30 @@
   
 
   
-  <title>工具教學 | Leo&#39;s Blog</title>
+  <title>取得 Youtube API 金鑰 | Leo&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="替健忘的自己做的筆記">
-<meta property="og:type" content="website">
-<meta property="og:title" content="工具教學">
-<meta property="og:url" content="https://youmu257.github.io/%E5%B7%A5%E5%85%B7%E6%95%99%E5%AD%B8/index.html">
+  <meta name="description" content="前言為了抓 Youtube 影片資訊來做 side project手動整理影片資訊太累了決定用 Youtube 來抓資料所以首先要先有 API key 建立 Google Cloud 專案 打開 Google Console 建立第一個專案 輸入專案名稱並建立專案  啟用 Youtube API 啟用 API 和服務 搜尋 youtube data api v3 啟用 Youtube data a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="取得 Youtube API 金鑰">
+<meta property="og:url" content="https://youmu257.github.io/2024/08/15/20240815_get_youtube_api_key/index.html">
 <meta property="og:site_name" content="Leo&#39;s Blog">
-<meta property="og:description" content="替健忘的自己做的筆記">
+<meta property="og:description" content="前言為了抓 Youtube 影片資訊來做 side project手動整理影片資訊太累了決定用 Youtube 來抓資料所以首先要先有 API key 建立 Google Cloud 專案 打開 Google Console 建立第一個專案 輸入專案名稱並建立專案  啟用 Youtube API 啟用 API 和服務 搜尋 youtube data api v3 啟用 Youtube data a">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2020-07-28T15:24:11.000Z">
-<meta property="article:modified_time" content="2020-07-28T15:35:36.429Z">
+<meta property="og:image" content="https://youmu257.github.io/images/get_youtube_api_key_1.PNG">
+<meta property="og:image" content="https://youmu257.github.io/images/get_youtube_api_key_2.PNG">
+<meta property="og:image" content="https://youmu257.github.io/images/get_youtube_api_key_3.PNG">
+<meta property="og:image" content="https://youmu257.github.io/images/get_youtube_api_key_4.PNG">
+<meta property="og:image" content="https://youmu257.github.io/images/get_youtube_api_key_5.PNG">
+<meta property="og:image" content="https://youmu257.github.io/images/get_youtube_api_key_6.PNG">
+<meta property="og:image" content="https://youmu257.github.io/images/get_youtube_api_key_7.PNG">
+<meta property="og:image" content="https://youmu257.github.io/images/get_youtube_api_key_8.PNG">
+<meta property="og:image" content="https://youmu257.github.io/images/get_youtube_api_key_9.PNG">
+<meta property="article:published_time" content="2024-08-15T15:57:13.000Z">
+<meta property="article:modified_time" content="2024-08-16T12:23:18.396Z">
 <meta property="article:author" content="Leo Li">
 <meta property="article:tag" content="技術筆記">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://youmu257.github.io/images/get_youtube_api_key_1.PNG">
   
     <link rel="alternate" href="/atom.xml" title="Leo&#39;s Blog" type="application/atom+xml">
   
@@ -71,12 +81,16 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-20240815_get_youtube_api_key" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/%E5%B7%A5%E5%85%B7%E6%95%99%E5%AD%B8/index.html" class="article-date">
-  <time datetime="2020-07-28T15:24:11.000Z" itemprop="datePublished">2020-07-28</time>
+    <a href="/2024/08/15/20240815_get_youtube_api_key/" class="article-date">
+  <time datetime="2024-08-15T15:57:13.000Z" itemprop="datePublished">2024-08-15</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7%E6%95%99%E5%AD%B8/">工具教學</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -85,7 +99,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      工具教學
+      取得 Youtube API 金鑰
     </h1>
   
 
@@ -93,17 +107,45 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>為了抓 Youtube 影片資訊來做 side project<br>手動整理影片資訊太累了<br>決定用 Youtube 來抓資料<br>所以首先要先有 API key</p>
+<h2 id="建立-Google-Cloud-專案"><a href="#建立-Google-Cloud-專案" class="headerlink" title="建立 Google Cloud 專案"></a>建立 Google Cloud 專案</h2><ul>
+<li>打開 <a href="https://console.cloud.google.com/apis/dashboard" target="_blank" rel="noopener">Google Console</a></li>
+<li>建立第一個專案<br><img src="/images/get_youtube_api_key_1.PNG" alt=""></li>
+<li>輸入專案名稱並建立專案<br><img src="/images/get_youtube_api_key_2.PNG" alt=""></li>
+</ul>
+<h2 id="啟用-Youtube-API"><a href="#啟用-Youtube-API" class="headerlink" title="啟用 Youtube API"></a>啟用 Youtube API</h2><ul>
+<li>啟用 API 和服務<br><img src="/images/get_youtube_api_key_3.PNG" alt=""></li>
+<li>搜尋 <code>youtube data api v3</code><br><img src="/images/get_youtube_api_key_4.PNG" alt=""><br><img src="/images/get_youtube_api_key_5.PNG" alt=""></li>
+<li>啟用 Youtube data api v3<br><img src="/images/get_youtube_api_key_6.PNG" alt=""></li>
+</ul>
+<h2 id="建立金鑰"><a href="#建立金鑰" class="headerlink" title="建立金鑰"></a>建立金鑰</h2><ul>
+<li>到<a href="https://console.cloud.google.com/apis/credentials" target="_blank" rel="noopener">憑證頁面</a></li>
+<li>建立憑證<br><img src="/images/get_youtube_api_key_7.PNG" alt=""></li>
+<li>選擇 API 金鑰<br><img src="/images/get_youtube_api_key_8.PNG" alt=""></li>
+<li>這樣就會產生好金鑰了<br><img src="/images/get_youtube_api_key_9.PNG" alt=""></li>
+</ul>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><p><a href="https://gg90052.github.io/blog/yt_api_key/" target="_blank" rel="noopener">如何取得 Youtube API 金鑰</a></p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/%E5%B7%A5%E5%85%B7%E6%95%99%E5%AD%B8/index.html" data-id="clzwqp4yb0009z8u6d2zab7ou" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2024/08/15/20240815_get_youtube_api_key/" data-id="clzwqp4yf000fz8u646ev0h9o" class="article-share-link">Share</a>
       
       
     </footer>
   </div>
   
     
+<nav id="article-nav">
+  
+  
+    <a href="/2021/01/12/20201107_laravel_send_mail/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Laravel 寄信範例</div>
+    </a>
+  
+</nav>
+
   
 </article>
 
