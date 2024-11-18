@@ -71,6 +71,80 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-20241119_jieba_sample" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2024/11/19/20241119_jieba_sample/" class="article-date">
+  <time datetime="2024-11-19T04:48:13.000Z" itemprop="datePublished">2024-11-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7%E6%95%99%E5%AD%B8/">工具教學</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/11/19/20241119_jieba_sample/">在 asp.net 用 Jieba 做中文斷詞</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在 asp.net 上跑 jieba 做中文斷詞</p>
+<h2 id="先安裝套件"><a href="#先安裝套件" class="headerlink" title="先安裝套件"></a>先安裝套件</h2><ul>
+<li>查詢 jieba.NET<br><img src="/images/jieba_sample_1.png" alt=""></li>
+</ul>
+<h2 id="簡易-sample-code"><a href="#簡易-sample-code" class="headerlink" title="簡易 sample code"></a>簡易 sample code</h2><ul>
+<li>呼叫 chatgpt 生成簡易程式碼<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">using JiebaNet.Segmenter;</span><br><span class="line">&#x2F;&#x2F; 初始化 Jieba</span><br><span class="line">var segmenter &#x3D; new JiebaSegmenter();</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 分詞範例</span><br><span class="line">string sentence &#x3D; &quot;我愛自然語言處理&quot;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 默認為精確模式</span><br><span class="line">var segments &#x3D; segmenter.Cut(sentence);</span><br><span class="line">Console.WriteLine(&quot;【精確模式】：&#123;0&#125;&quot;, string.Join(&quot;&#x2F; &quot;, segments));</span><br><span class="line">&#x2F;&#x2F; 全模式</span><br><span class="line">segments &#x3D; segmenter.Cut(sentence, cutAll: true);</span><br><span class="line">Console.WriteLine(&quot;【全模式】：&#123;0&#125;&quot;, string.Join(&quot;&#x2F; &quot;, segments));</span><br><span class="line">&#x2F;&#x2F; 搜尋引擎模式</span><br><span class="line">segments &#x3D; segmenter.CutForSearch(sentence); </span><br><span class="line">Console.WriteLine(&quot;【搜尋引擎模式】：&#123;0&#125;&quot;, string.Join(&quot;&#x2F; &quot;, segments));</span><br></pre></td></tr></table></figure></li>
+<li>快樂得執行看看<br><img src="/images/jieba_sample_2.png" alt=""><br>出現錯誤<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DirectoryNotFoundException: Could not find a part of the path &#39;D:\workspace\jieba-sample\jieba-sample\bin\Debug\net8.0\Resources\prob_trans.json&#39;.</span><br></pre></td></tr></table></figure>
+<img src="/images/jieba_sample_3.jpg" alt=""></li>
+<li>看來C#的套件沒有包含必要檔案</li>
+<li>只好去 <a href="https://github.com/anderscui/jieba.NET/tree/master/src/Segmenter/Resources" target="_blank" rel="noopener">jieba.NET github</a> 去下載，把 Resources 資料夾丟進去專案裡，預設路徑是 Resources</li>
+</ul>
+<h2 id="執行成功"><a href="#執行成功" class="headerlink" title="執行成功"></a>執行成功</h2><ul>
+<li>可以看到結果長這樣<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">【精確模式】：我&#x2F; 愛自然&#x2F; 語言&#x2F; 處理</span><br><span class="line">【全模式】：我&#x2F; 愛&#x2F; 自&#x2F; 然&#x2F; 語&#x2F; 言&#x2F; 處&#x2F; 理</span><br><span class="line">【搜尋引擎模式】：我&#x2F; 愛自然&#x2F; 語言&#x2F; 處理</span><br></pre></td></tr></table></figure></li>
+<li>但總覺得斷字的效果很差啊</li>
+<li>李組長眉頭一皺發現事情並不單純</li>
+<li>原來字典檔根本沒有用到<br><img src="/images/jieba_sample_4.png" alt=""></li>
+<li>點一下 dict.txt 在屬性中把「複製到輸出目錄」改成「有更新時才複製」</li>
+<li>重跑一次<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">【精確模式】：我&#x2F; 愛&#x2F; 自然&#x2F; 語言&#x2F; 處理</span><br><span class="line">【全模式】：我&#x2F; 愛&#x2F; 自然&#x2F; 語&#x2F; 言&#x2F; 處&#x2F; 理</span><br><span class="line">【搜尋引擎模式】：我&#x2F; 愛&#x2F; 自然&#x2F; 語言&#x2F; 處理</span><br></pre></td></tr></table></figure></li>
+<li>結果看起來正常多了</li>
+</ul>
+<h1 id="繁中字典"><a href="#繁中字典" class="headerlink" title="繁中字典"></a>繁中字典</h1><ul>
+<li>官方有提供支援繁中的字典 <a href="https://raw.githubusercontent.com/anderscui/jieba.NET/master/ExtraDicts/dict.txt.big" target="_blank" rel="noopener">dict.txt.big</a></li>
+<li>加上指定字典<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var segmenter &#x3D; new JiebaSegmenter();</span><br><span class="line">segmenter.LoadUserDict(&quot;D:\\workspace\\jieba-sample\\jieba-sample\\Resources\\dict.txt.big&quot;);</span><br></pre></td></tr></table></figure></li>
+<li>結果有把「自然語言」切出來了，更加準確<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">【精確模式】：我&#x2F; 愛&#x2F; 自然語言&#x2F; 處理</span><br><span class="line">【全模式】：我&#x2F; 愛&#x2F; 自然&#x2F; 自然語言&#x2F; 語言&#x2F; 處理</span><br><span class="line">【搜尋引擎模式】：我&#x2F; 愛&#x2F; 自然&#x2F; 語言&#x2F; 自然語言&#x2F; 處理</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h1 id="自訂字典"><a href="#自訂字典" class="headerlink" title="自訂字典"></a>自訂字典</h1><ul>
+<li>把文字改成「我愛祈菈貝希毛絲」這樣有專有名詞的情況</li>
+<li>會發現全模式會把貝希毛絲都切開來<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">【精確模式】：我&#x2F; 愛&#x2F; 祈菈&#x2F; 貝希毛絲</span><br><span class="line">【全模式】：我&#x2F; 愛&#x2F; 祈菈&#x2F; 貝&#x2F; 希&#x2F; 毛&#x2F; 絲</span><br><span class="line">【搜尋引擎模式】：我&#x2F; 愛&#x2F; 祈菈&#x2F; 貝希毛絲</span><br></pre></td></tr></table></figure></li>
+<li>在字典中加上 「貝希毛絲 76 n」，再執行一次<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">【精確模式】：我&#x2F; 愛&#x2F; 祈菈&#x2F; 貝希毛絲</span><br><span class="line">【全模式】：我&#x2F; 愛&#x2F; 祈菈&#x2F; 貝希毛絲</span><br><span class="line">【搜尋引擎模式】：我&#x2F; 愛&#x2F; 祈菈&#x2F; 貝希毛絲</span><br></pre></td></tr></table></figure></li>
+<li>這樣專有名詞也會正常被當作一個單詞處理</li>
+</ul>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><p><a href="https://github.com/anderscui/jieba.NET/tree/master" target="_blank" rel="noopener">jieba.NET</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://youmu257.github.io/2024/11/19/20241119_jieba_sample/" data-id="cm3n9pvjg000fuku6684d6ey7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-20240815_get_youtube_api_key" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2024/08/15/20240815_get_youtube_api_key/" class="article-date">
@@ -119,7 +193,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2024/08/15/20240815_get_youtube_api_key/" data-id="clzwqp4yf000fz8u646ev0h9o" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2024/08/15/20240815_get_youtube_api_key/" data-id="cm3n9pvjd000cuku68eapbazk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -201,7 +275,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2021/01/12/20201107_laravel_send_mail/" data-id="clzwqp4yp000lz8u6eixh8tmq" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2021/01/12/20201107_laravel_send_mail/" data-id="cm3n9pvjv000ouku69n9r0blm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -284,7 +358,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2021/01/12/20201114_laravel_send_pdf_mail/" data-id="clzwqp4yq000mz8u6c5hp3tfw" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2021/01/12/20201114_laravel_send_pdf_mail/" data-id="cm3n9pvjv000puku6b2z6349a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -362,7 +436,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2021/01/12/20210111_git_file_name_note/" data-id="clzwqp4yw000pz8u6fbhh06zl" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2021/01/12/20210111_git_file_name_note/" data-id="cm3n9pvk0000quku67aemh3pe" class="article-share-link">Share</a>
       
       
     </footer>
@@ -486,7 +560,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2021/01/12/20200904_laravel_migration/" data-id="clzwqp4ye000cz8u61pex2fr8" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2021/01/12/20200904_laravel_migration/" data-id="cm3n9pvjc000buku67hn09vlr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -579,7 +653,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2020/08/31/20200831_rethinkdb/" data-id="clzwqp4yc000az8u60smt41sv" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2020/08/31/20200831_rethinkdb/" data-id="cm3n9pvjb0009uku66ozkccfe" class="article-share-link">Share</a>
       
       
     </footer>
@@ -755,7 +829,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2020/08/31/20200831_stf/" data-id="clzwqp4y60005z8u66aqy09ov" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2020/08/31/20200831_stf/" data-id="cm3n9pvj90007uku6a660fk7m" class="article-share-link">Share</a>
       
       
     </footer>
@@ -862,7 +936,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2020/08/26/20200826_nginx/" data-id="clzwqp4y90008z8u6fgtw8gi3" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2020/08/26/20200826_nginx/" data-id="cm3n9pvj80005uku65rtrd9pn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -971,83 +1045,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2020/08/07/20200728_Xshell_VM/" data-id="clzwqp4xm0000z8u68lmc2bv3" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-20200807_laravel" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/07/20200807_laravel/" class="article-date">
-  <time datetime="2020-08-06T17:17:11.529Z" itemprop="datePublished">2020-08-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PHP/">PHP</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/07/20200807_laravel/">Laravel 安裝筆記</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h1><ul>
-<li>OS : Debian 10</li>
-</ul>
-<h1 id="安裝前置環境"><a href="#安裝前置環境" class="headerlink" title="安裝前置環境"></a>安裝前置環境</h1><ul>
-<li>安裝 php  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install -y php php-mbstring php-cli php-xml</span><br></pre></td></tr></table></figure>
-<ul>
-<li>確認 php 版本<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">php -v</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 本次紀錄安裝版本為 7.3</span><br><span class="line">PHP 7.3.19-1~deb10u1 (cli) (built: Jul  5 2020 06:46:45) ( NTS )</span><br><span class="line">Copyright (c) 1997-2018 The PHP Group</span><br><span class="line">Zend Engine v3.3.19, Copyright (c) 1998-2018 Zend Technologies</span><br><span class="line">with Zend OPcache v7.3.19-1~deb10u1, Copyright (c) 1999-2018, by Zend Technologies</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>安裝 Composer  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -s https:&#x2F;&#x2F;getcomposer.org&#x2F;installer | php</span><br><span class="line">mv composer.phar &#x2F;usr&#x2F;local&#x2F;bin&#x2F;composer</span><br></pre></td></tr></table></figure></li>
-<li>下載 <a href="https://github.com/laravel/laravel" target="_blank" rel="noopener">laravel 專案</a>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;laravel&#x2F;laravel.git</span><br></pre></td></tr></table></figure></li>
-<li>建置 laravel 專案<ul>
-<li>會依照 <code>composer.json</code> 內的套件去做建置</li>
-<li>建置完成後會產生 <code>composer.lock</code> 紀錄當前所有套件的版本</li>
-<li>安裝的套件都會存放在 <code>vender</code> 的資料夾中<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd laravel</span><br><span class="line">composer install</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="簡單測試"><a href="#簡單測試" class="headerlink" title="簡單測試"></a>簡單測試</h1><ul>
-<li><p>在 route 新增一個 api，讓他回傳我們輸入的字串</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim routes&#x2F;api.php</span><br><span class="line">&#x2F;&#x2F; 新增一個 api</span><br><span class="line">Route::get(&#39;echo&#x2F;&#123;name&#125;&#39;, function ($name) &#123;</span><br><span class="line">  return $name;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
-<li><p>啟動內建伺服器</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">php artisan serve</span><br><span class="line">&#x2F;&#x2F; 顯示以下訊息表示成功啟動</span><br><span class="line">Laravel development server started: http:&#x2F;&#x2F;127.0.0.1:8000</span><br></pre></td></tr></table></figure></li>
-<li><p>打開瀏覽器前往 <code>http://127.0.0.1:8000/api/echo/leo</code></p>
-<ul>
-<li><p>畫面顯示 leo 表示成功</p>
-<p><img src="https://i.imgur.com/XTWckoL.png" alt=""></p>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><ul>
-<li><a href="https://peterli.website/%e5%ae%89%e8%a3%9d-laravel-%e5%88%9d%e5%a7%8b%e5%8c%96%e7%9a%84%e6%a1%86%e6%9e%b6/" target="_blank" rel="noopener">安裝 Laravel 初始化的框架</a></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2020/08/07/20200807_laravel/" data-id="clzwqp4y40003z8u6dtw0a3s0" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2020/08/07/20200728_Xshell_VM/" data-id="cm3n9pviy0000uku69xd75qr9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1058,6 +1056,11 @@
 
   
 
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+  </nav>
 
 </section>
         
@@ -1082,7 +1085,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">十一月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li></ul>
     </div>
   </div>
 
@@ -1093,6 +1096,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2024/11/19/20241119_jieba_sample/">在 asp.net 用 Jieba 做中文斷詞</a>
+          </li>
         
           <li>
             <a href="/2024/08/15/20240815_get_youtube_api_key/">取得 Youtube API 金鑰</a>
@@ -1108,10 +1115,6 @@
         
           <li>
             <a href="/2021/01/12/20210111_git_file_name_note/">Sourcetree 檔名大小寫偵測不到問題</a>
-          </li>
-        
-          <li>
-            <a href="/2021/01/12/20200904_laravel_migration/">Laravel migration 和 seed 筆記</a>
           </li>
         
       </ul>
