@@ -33,7 +33,7 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 4.2.1"></head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 <body>
   <div id="container">
@@ -45,10 +45,6 @@
       <h1 id="logo-wrap">
         <a href="/" id="logo">Leo&#39;s Blog</a>
       </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">替健忘的自己做的筆記</a>
-        </h2>
       
     </div>
     <div id="header-inner" class="inner">
@@ -100,14 +96,14 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>上一篇記錄 <a href="https://youmu257.github.io/2020/08/31/20200831_stf/">stf 的安裝流程</a>，其中有使用到 rethinkdb<br>當時再用時看了老半天才發現他那看起來像 ORM 的寫法就是他的語法<br>害我看教學看好久，想說怎麼都沒有寫 raw sql 的語法</p>
-<h1 id="介紹"><a href="#介紹" class="headerlink" title="介紹"></a>介紹</h1><p>主要講 rethinkDB 的特色，他與傳統資料庫的差異在於適合用於實時的系統上<br>傳統資料在如果要確保資料是最新的必須一直下 SELECT 指令去檢查資料是否有變動<br>但 ReQL (rethinkDB 的查詢語法) 可以用 <a href="https://rethinkdb.com/docs/changefeeds/ruby/" target="_blank" rel="noopener">Changefeeds</a> 去監聽資料是否變動，大幅降低不必要的 request</p>
+<h1 id="介紹"><a href="#介紹" class="headerlink" title="介紹"></a>介紹</h1><p>主要講 rethinkDB 的特色，他與傳統資料庫的差異在於適合用於實時的系統上<br>傳統資料在如果要確保資料是最新的必須一直下 SELECT 指令去檢查資料是否有變動<br>但 ReQL (rethinkDB 的查詢語法) 可以用 <a target="_blank" rel="noopener" href="https://rethinkdb.com/docs/changefeeds/ruby/">Changefeeds</a> 去監聽資料是否變動，大幅降低不必要的 request</p>
 <h2 id="後台"><a href="#後台" class="headerlink" title="後台"></a>後台</h2><ul>
 <li><p>確定 rethinkDB 正常運作</p>
 <ul>
-<li>sudo /etc/init.d/rethinkdb start</li>
+<li>sudo &#x2F;etc&#x2F;init.d&#x2F;rethinkdb start</li>
 </ul>
 </li>
-<li><p>打開瀏覽器輸入 <a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a><br>  <img src="https://i.imgur.com/NryMN3s.png" alt=""></p>
+<li><p>打開瀏覽器輸入 <a target="_blank" rel="noopener" href="http://localhost:8080/">http://localhost:8080</a><br>  <img src="https://i.imgur.com/NryMN3s.png"></p>
 </li>
 <li><p>切到 Data Explorer</p>
 </li>
@@ -117,46 +113,46 @@
 <h2 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h2><ul>
 <li>新建資料庫<ul>
 <li><code>r.dbCreate(&quot;test&quot;)</code></li>
-<li>按下 run，成功會回傳資訊<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;config_changes&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;new_val&quot;: &#123;</span><br><span class="line">                &quot;id&quot;: &quot;e55b79bb-32e8-44d6-9911-d3d44c5cfc5a&quot; ,</span><br><span class="line">                &quot;name&quot;: &quot;test&quot;</span><br><span class="line">            &#125; ,</span><br><span class="line">            &quot;old_val&quot;: null</span><br><span class="line">        &#125;</span><br><span class="line">    ] ,</span><br><span class="line">    &quot;dbs_created&quot;: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>按下 run，成功會回傳資訊  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;config_changes&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;new_val&quot;: &#123;</span><br><span class="line">                &quot;id&quot;: &quot;e55b79bb-32e8-44d6-9911-d3d44c5cfc5a&quot; ,</span><br><span class="line">                &quot;name&quot;: &quot;test&quot;</span><br><span class="line">            &#125; ,</span><br><span class="line">            &quot;old_val&quot;: null</span><br><span class="line">        &#125;</span><br><span class="line">    ] ,</span><br><span class="line">    &quot;dbs_created&quot;: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li>新建 table<ul>
 <li><code>r.db(&quot;test&quot;).tableCreate(&quot;test1&quot;)</code></li>
-<li>按下 run，成功會回傳資訊<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;config_changes&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;new_val&quot;: &#123;</span><br><span class="line">                &quot;db&quot;: &quot;test&quot; ,</span><br><span class="line">                &quot;durability&quot;: &quot;hard&quot; ,</span><br><span class="line">                &quot;id&quot;: &quot;48be759d-7179-498d-be98-6bc45ab9ae46&quot; ,</span><br><span class="line">                &quot;indexes&quot;: [ ],</span><br><span class="line">                &quot;name&quot;: &quot;table1&quot; ,</span><br><span class="line">                &quot;primary_key&quot;: &quot;id&quot; ,</span><br><span class="line">                &quot;shards&quot;: [</span><br><span class="line">                    &#123;</span><br><span class="line">                        &quot;nonvoting_replicas&quot;: [ ],</span><br><span class="line">                        &quot;primary_replica&quot;: &quot;debian_aav&quot; ,</span><br><span class="line">                        &quot;replicas&quot;: [</span><br><span class="line">                            &quot;debian_aav&quot;</span><br><span class="line">                        ]</span><br><span class="line">                    &#125;</span><br><span class="line">                ] ,</span><br><span class="line">                &quot;write_acks&quot;: &quot;majority&quot; ,</span><br><span class="line">                &quot;write_hook&quot;: null</span><br><span class="line">            &#125; ,</span><br><span class="line">            &quot;old_val&quot;: null</span><br><span class="line">        &#125;</span><br><span class="line">    ] ,</span><br><span class="line">    &quot;tables_created&quot;: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>按下 run，成功會回傳資訊  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;config_changes&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;new_val&quot;: &#123;</span><br><span class="line">                &quot;db&quot;: &quot;test&quot; ,</span><br><span class="line">                &quot;durability&quot;: &quot;hard&quot; ,</span><br><span class="line">                &quot;id&quot;: &quot;48be759d-7179-498d-be98-6bc45ab9ae46&quot; ,</span><br><span class="line">                &quot;indexes&quot;: [ ],</span><br><span class="line">                &quot;name&quot;: &quot;table1&quot; ,</span><br><span class="line">                &quot;primary_key&quot;: &quot;id&quot; ,</span><br><span class="line">                &quot;shards&quot;: [</span><br><span class="line">                    &#123;</span><br><span class="line">                        &quot;nonvoting_replicas&quot;: [ ],</span><br><span class="line">                        &quot;primary_replica&quot;: &quot;debian_aav&quot; ,</span><br><span class="line">                        &quot;replicas&quot;: [</span><br><span class="line">                            &quot;debian_aav&quot;</span><br><span class="line">                        ]</span><br><span class="line">                    &#125;</span><br><span class="line">                ] ,</span><br><span class="line">                &quot;write_acks&quot;: &quot;majority&quot; ,</span><br><span class="line">                &quot;write_hook&quot;: null</span><br><span class="line">            &#125; ,</span><br><span class="line">            &quot;old_val&quot;: null</span><br><span class="line">        &#125;</span><br><span class="line">    ] ,</span><br><span class="line">    &quot;tables_created&quot;: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li>insert 資料<ul>
-<li>寫入資料以 json 格式<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">r.db(&quot;test&quot;).table(&quot;table1&quot;).insert(&#123;</span><br><span class="line">    id: 1,</span><br><span class="line">    title: &quot;test title&quot;,</span><br><span class="line">    content: &quot;test content&quot;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
-<li>按下 run，成功會回傳資訊<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;deleted&quot;: 0 ,</span><br><span class="line">    &quot;errors&quot;: 0 ,</span><br><span class="line">    &quot;inserted&quot;: 1 ,</span><br><span class="line">    &quot;replaced&quot;: 0 ,</span><br><span class="line">    &quot;skipped&quot;: 0 ,</span><br><span class="line">    &quot;unchanged&quot;: 0</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>寫入資料以 json 格式  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">r.db(&quot;test&quot;).table(&quot;table1&quot;).insert(&#123;</span><br><span class="line">    id: 1,</span><br><span class="line">    title: &quot;test title&quot;,</span><br><span class="line">    content: &quot;test content&quot;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>按下 run，成功會回傳資訊  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;deleted&quot;: 0 ,</span><br><span class="line">    &quot;errors&quot;: 0 ,</span><br><span class="line">    &quot;inserted&quot;: 1 ,</span><br><span class="line">    &quot;replaced&quot;: 0 ,</span><br><span class="line">    &quot;skipped&quot;: 0 ,</span><br><span class="line">    &quot;unchanged&quot;: 0</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li>取得資料<ul>
 <li>get 只能用於主鍵<ul>
 <li><code>r.db(&quot;test&quot;).table(&quot;table1&quot;).get(1)</code></li>
-<li>按下 run，成功會回傳資訊<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;id&quot;: 1,</span><br><span class="line">    &quot;title&quot;: &quot;test title&quot;,</span><br><span class="line">    &quot;content&quot;: &quot;test content&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>按下 run，成功會回傳資訊  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;id&quot;: 1,</span><br><span class="line">    &quot;title&quot;: &quot;test title&quot;,</span><br><span class="line">    &quot;content&quot;: &quot;test content&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li>filter 可以當成 where 條件<ul>
-<li><code>r.db(&quot;test&quot;).table(&quot;table1&quot;).filter({title: &quot;test title&quot;})</code></li>
+<li><code>r.db(&quot;test&quot;).table(&quot;table1&quot;).filter(&#123;title: &quot;test title&quot;&#125;)</code></li>
 </ul>
 </li>
 </ul>
 </li>
 <li>更新資料<ul>
 <li>先取得得資料才能更新，跟下 where 條件的概念一樣</li>
-<li><code>r.db(&quot;test&quot;).table(&quot;table1&quot;).get(1).update({title: &quot;new title&quot;})</code></li>
+<li><code>r.db(&quot;test&quot;).table(&quot;table1&quot;).get(1).update(&#123;title: &quot;new title&quot;&#125;)</code></li>
 </ul>
 </li>
 </ul>
 <h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><ul>
-<li><a href="https://rethinkdb.com/docs/changefeeds/ruby/" target="_blank" rel="noopener">Changefeeds in RethinkDB</a></li>
-<li><a href="https://medium.com/bryanyang0528/rethink-db-%E5%88%9D%E6%8E%A2-42d4d477a72b" target="_blank" rel="noopener">Rethink DB 初探</a></li>
+<li><a target="_blank" rel="noopener" href="https://rethinkdb.com/docs/changefeeds/ruby/">Changefeeds in RethinkDB</a></li>
+<li><a target="_blank" rel="noopener" href="https://medium.com/bryanyang0528/rethink-db-%E5%88%9D%E6%8E%A2-42d4d477a72b">Rethink DB 初探</a></li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2020/08/31/20200831_rethinkdb/" data-id="cm3n9pvjb0009uku66ozkccfe" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2020/08/31/20200831_rethinkdb/" data-id="cml3olsst0009io9zfoob2oyv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -208,7 +204,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">十一月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/02/">二月 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/01/">一月 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">五月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">十一月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li></ul>
     </div>
   </div>
 
@@ -221,23 +217,23 @@
       <ul>
         
           <li>
-            <a href="/2024/11/19/20241119_jieba_sample/">在 asp.net 用 Jieba 做中文斷詞</a>
+            <a href="/2026/02/01/20260201_mee6_discord_leveling/">MEE6 等級系統教學 - 發言經驗值與排行榜</a>
           </li>
         
           <li>
-            <a href="/2024/08/15/20240815_get_youtube_api_key/">取得 Youtube API 金鑰</a>
+            <a href="/2026/02/01/20260201_mee6_discord_twitter/">MEE6 連結 X(Twitter) 通知教學</a>
           </li>
         
           <li>
-            <a href="/2021/01/12/20201107_laravel_send_mail/">Laravel 寄信範例</a>
+            <a href="/2026/02/01/20260201_mee6_discord_youtube/">MEE6 連結 YouTube 通知教學</a>
           </li>
         
           <li>
-            <a href="/2021/01/12/20201114_laravel_send_pdf_mail/">Laravel 寄信夾帶 PDF 範例</a>
+            <a href="/2026/01/29/20260129_mee6_discord_reaction_roles/">MEE6 建立 Discord 反應身分組設定 - 規範同意後才能進入討論區</a>
           </li>
         
           <li>
-            <a href="/2021/01/12/20210111_git_file_name_note/">Sourcetree 檔名大小寫偵測不到問題</a>
+            <a href="/2026/01/29/20260129_mee6_discord_welcome/">MEE6 建立 Discord 歡迎新用戶加入的設定</a>
           </li>
         
       </ul>
@@ -252,7 +248,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2024 Leo Li<br>
+      &copy; 2026 Leo Li<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

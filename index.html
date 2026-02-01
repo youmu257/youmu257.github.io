@@ -29,7 +29,7 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 4.2.1"></head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 <body>
   <div id="container">
@@ -41,10 +41,6 @@
       <h1 id="logo-wrap">
         <a href="/" id="logo">Leo&#39;s Blog</a>
       </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">替健忘的自己做的筆記</a>
-        </h2>
       
     </div>
     <div id="header-inner" class="inner">
@@ -70,6 +66,780 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-20260201_mee6_discord_leveling" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2026/02/01/20260201_mee6_discord_leveling/" class="article-date">
+  <time datetime="2026-02-01T11:09:17.259Z" itemprop="datePublished">2026-02-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7%E6%95%99%E5%AD%B8/">工具教學</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2026/02/01/20260201_mee6_discord_leveling/">MEE6 等級系統教學 - 發言經驗值與排行榜</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>MEE6 最受歡迎的功能之一就是等級系統（Leveling System）。透過計算用戶的發言頻率來累積經驗值（XP），當經驗值達到門檻時就會升級。這個功能可以有效提升社群互動率，搭配排行榜功能更能激發成員的參與動力。本篇將完整說明如何設定 MEE6 等級系統。</p>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><ul>
+<li>MEE6 Bot（需要加入你的 Discord 伺服器）</li>
+<li>伺服器管理員權限</li>
+</ul>
+<h2 id="等級系統運作原理"><a href="#等級系統運作原理" class="headerlink" title="等級系統運作原理"></a>等級系統運作原理</h2><h3 id="經驗值計算方式"><a href="#經驗值計算方式" class="headerlink" title="經驗值計算方式"></a>經驗值計算方式</h3><ul>
+<li>用戶每次發言可獲得 <strong>15-25 XP</strong>（隨機）</li>
+<li>每則訊息之間有 <strong>60 秒冷卻時間</strong>，避免刷訊息洗經驗</li>
+<li>經驗值累積到一定門檻即可升級</li>
+</ul>
+<h3 id="升級所需經驗值"><a href="#升級所需經驗值" class="headerlink" title="升級所需經驗值"></a>升級所需經驗值</h3><p>MEE6 的升級公式大約為：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">所需 XP = 5 × (等級²) + 50 × 等級 + 100</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>等級</th>
+<th>累計所需 XP</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>100</td>
+</tr>
+<tr>
+<td>5</td>
+<td>625</td>
+</tr>
+<tr>
+<td>10</td>
+<td>2,550</td>
+</tr>
+<tr>
+<td>20</td>
+<td>10,200</td>
+</tr>
+<tr>
+<td>50</td>
+<td>63,750</td>
+</tr>
+</tbody></table>
+<h2 id="設定步驟"><a href="#設定步驟" class="headerlink" title="設定步驟"></a>設定步驟</h2><h3 id="步驟一：進入-MEE6-Dashboard"><a href="#步驟一：進入-MEE6-Dashboard" class="headerlink" title="步驟一：進入 MEE6 Dashboard"></a>步驟一：進入 MEE6 Dashboard</h3><ol>
+<li>前往 <a target="_blank" rel="noopener" href="https://mee6.xyz/dashboard">MEE6 Dashboard</a></li>
+<li>使用 Discord 帳號登入</li>
+<li>選擇你要設定的 Discord 伺服器</li>
+</ol>
+<h3 id="步驟二：啟用”等級”功能"><a href="#步驟二：啟用”等級”功能" class="headerlink" title="步驟二：啟用”等級”功能"></a>步驟二：啟用”等級”功能</h3><ol>
+<li>在左側選單中找到 <strong>等級</strong></li>
+<li>點擊啟用等級系統</li>
+</ol>
+<h3 id="步驟三：設定升級通知"><a href="#步驟三：設定升級通知" class="headerlink" title="步驟三：設定升級通知"></a>步驟三：設定升級通知</h3><h4 id="通知頻道設定"><a href="#通知頻道設定" class="headerlink" title="通知頻道設定"></a>通知頻道設定</h4><ol>
+<li>在 <strong>升級</strong> 區塊</li>
+<li>選擇 <strong>當前的頻道</strong>（在用戶發言的頻道通知）或指定特定頻道</li>
+<li>選擇 <strong>升級時的公告訊息</strong> 可指定固定頻道發送所有升級通知<br><img src="/images/mee6_discord_leveling3-1.png"></li>
+</ol>
+<h4 id="自訂升級訊息"><a href="#自訂升級訊息" class="headerlink" title="自訂升級訊息"></a>自訂升級訊息</h4><p>在訊息欄位中可使用以下變數：</p>
+<table>
+<thead>
+<tr>
+<th>變數</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&#123;user&#125;</code></td>
+<td>提及升級的用戶</td>
+</tr>
+<tr>
+<td><code>&#123;level&#125;</code></td>
+<td>新的等級數字</td>
+</tr>
+<tr>
+<td><code>&#123;server&#125;</code></td>
+<td>伺服器名稱</td>
+</tr>
+</tbody></table>
+<p>範例訊息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">🎉 恭喜 &#123;user&#125; 升級到 **等級 &#123;level&#125;**！繼續保持活躍吧！</span><br></pre></td></tr></table></figure>
+
+<h3 id="步驟四：設定排行榜"><a href="#步驟四：設定排行榜" class="headerlink" title="步驟四：設定排行榜"></a>步驟四：設定排行榜</h3><h4 id="啟用排行榜"><a href="#啟用排行榜" class="headerlink" title="啟用排行榜"></a>啟用排行榜</h4><ol>
+<li>在 “等級” 頁面找到 <strong>指令</strong> 區塊</li>
+<li>確認 <code>levels</code> 指令已啟用<br><img src="/images/mee6_discord_leveling4-1.png"></li>
+</ol>
+<h4 id="排行榜指令"><a href="#排行榜指令" class="headerlink" title="排行榜指令"></a>排行榜指令</h4><p>用戶可在 Discord 中使用以下指令查看排行榜：</p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/levels</code></td>
+<td>顯示伺服器等級排行榜連結</td>
+</tr>
+<tr>
+<td><code>/rank</code></td>
+<td>查看自己的等級與排名</td>
+</tr>
+<tr>
+<td><code>/rank @用戶</code></td>
+<td>查看指定用戶的等級與排名</td>
+</tr>
+</tbody></table>
+<h4 id="網頁版排行榜"><a href="#網頁版排行榜" class="headerlink" title="網頁版排行榜"></a>網頁版排行榜</h4><p>MEE6 提供網頁版排行榜，網址格式為：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://mee6.xyz/leaderboard/你的伺服器ID</span><br></pre></td></tr></table></figure>
+
+<p>你可以在 Dashboard 中找到這個連結，並分享給伺服器成員。</p>
+<h2 id="進階設定"><a href="#進階設定" class="headerlink" title="進階設定"></a>進階設定</h2><h3 id="設定不計算經驗的頻道"><a href="#設定不計算經驗的頻道" class="headerlink" title="設定不計算經驗的頻道"></a>設定不計算經驗的頻道</h3><p>某些頻道（如公告、機器人指令頻道）可能不適合累積經驗值：</p>
+<ol>
+<li>在 “等級” 設定頁面找到 <strong>無經驗值的頻道</strong></li>
+<li>新增要排除的頻道</li>
+<li>在這些頻道發言將不會獲得經驗值</li>
+</ol>
+<h3 id="設定不計算經驗的身分組"><a href="#設定不計算經驗的身分組" class="headerlink" title="設定不計算經驗的身分組"></a>設定不計算經驗的身分組</h3><ol>
+<li>找到 <strong>無經驗值的身分組</strong> 設定</li>
+<li>新增要排除的身分組</li>
+<li>擁有這些身分組的用戶發言不會獲得經驗值</li>
+</ol>
+<h3 id="設定等級獎勵身分組"><a href="#設定等級獎勵身分組" class="headerlink" title="設定等級獎勵身分組"></a>設定等級獎勵身分組</h3><p>當用戶達到特定等級時，自動給予身分組：</p>
+<ol>
+<li>在 <strong>身分組獎勵設定</strong> 區塊</li>
+<li>點擊 <strong>選擇身分組</strong></li>
+<li>設定等級與對應的身分組</li>
+<li>可選擇是否移除前一個等級的身分組</li>
+</ol>
+<p>範例設定：</p>
+<table>
+<thead>
+<tr>
+<th>等級</th>
+<th>獲得身分組</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>5</td>
+<td>🌱 新手成員</td>
+</tr>
+<tr>
+<td>10</td>
+<td>⭐ 活躍成員</td>
+</tr>
+<tr>
+<td>20</td>
+<td>💎 資深成員</td>
+</tr>
+<tr>
+<td>50</td>
+<td>👑 傳奇成員</td>
+</tr>
+</tbody></table>
+<h3 id="經驗值倍率設定"><a href="#經驗值倍率設定" class="headerlink" title="經驗值倍率設定"></a>經驗值倍率設定</h3><p>可針對特定身分組或頻道設定經驗加成：</p>
+<ol>
+<li>找到 <strong>經驗植倍率</strong> 設定</li>
+<li>可設定 0.5x（減半）到 2.5x（2.5倍）的經驗倍率</li>
+<li>常用於 VIP 身分組或活動頻道</li>
+</ol>
+<h2 id="管理指令"><a href="#管理指令" class="headerlink" title="管理指令"></a>管理指令</h2><p>管理員可使用以下指令管理用戶等級：</p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/give-xp @用戶 數量</code></td>
+<td>給予用戶經驗值</td>
+</tr>
+<tr>
+<td><code>/remove-xp @用戶 數量</code></td>
+<td>移除用戶經驗值</td>
+</tr>
+</tbody></table>
+<p>⚠️ 部分指令可能需要 MEE6 Premium</p>
+<h2 id="常見問題"><a href="#常見問題" class="headerlink" title="常見問題"></a>常見問題</h2><h3 id="Q：為什麼我發言沒有獲得經驗值？"><a href="#Q：為什麼我發言沒有獲得經驗值？" class="headerlink" title="Q：為什麼我發言沒有獲得經驗值？"></a>Q：為什麼我發言沒有獲得經驗值？</h3><p>A：請檢查以下項目：</p>
+<ol>
+<li>是否在 60 秒冷卻時間內</li>
+<li>是否在被排除的頻道發言</li>
+<li>是否擁有被排除的身分組</li>
+<li>MEE6 是否有讀取該頻道訊息的權限</li>
+</ol>
+<h3 id="Q：排行榜多久更新一次？"><a href="#Q：排行榜多久更新一次？" class="headerlink" title="Q：排行榜多久更新一次？"></a>Q：排行榜多久更新一次？</h3><p>A：排行榜通常會即時更新，但網頁版可能有幾分鐘的延遲。</p>
+<h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>MEE6 的等級系統是活絡 Discord 社群的好工具，透過經驗值與排行榜機制可以鼓勵成員積極參與討論。記得開啟每日通知限制功能，避免升級訊息洗版影響聊天體驗。搭配身分組獎勵功能，更能讓成員有持續參與的動力！</p>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://mee6.xyz/">MEE6 官方網站</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://youmu257.github.io/2026/02/01/20260201_mee6_discord_leveling/" data-id="cml3olssx0012io9zh4wp7bo2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-20260201_mee6_discord_twitter" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2026/02/01/20260201_mee6_discord_twitter/" class="article-date">
+  <time datetime="2026-02-01T09:29:41.776Z" itemprop="datePublished">2026-02-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7%E6%95%99%E5%AD%B8/">工具教學</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2026/02/01/20260201_mee6_discord_twitter/">MEE6 連結 X(Twitter) 通知教學</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>想讓 Discord 伺服器成員即時收到 X(Twitter) 帳號的最新推文通知嗎？MEE6 提供了簡單的 X(Twitter) 連結功能，只要幾個步驟就能完成設定。本篇將詳細說明如何設定 MEE6 的 Twitter 通知功能。</p>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><ul>
+<li>MEE6 Bot（需要加入你的 Discord 伺服器）</li>
+<li>要追蹤的 X(Twitter) 帳號</li>
+</ul>
+<h2 id="設定步驟"><a href="#設定步驟" class="headerlink" title="設定步驟"></a>設定步驟</h2><h3 id="步驟一：進入-MEE6-Dashboard"><a href="#步驟一：進入-MEE6-Dashboard" class="headerlink" title="步驟一：進入 MEE6 Dashboard"></a>步驟一：進入 MEE6 Dashboard</h3><ol>
+<li>前往 <a target="_blank" rel="noopener" href="https://mee6.xyz/dashboard">MEE6 Dashboard</a></li>
+<li>使用 Discord 帳號登入</li>
+<li>選擇你要設定的 Discord 伺服器</li>
+</ol>
+<h3 id="步驟二：設定-X-Twitter-連結"><a href="#步驟二：設定-X-Twitter-連結" class="headerlink" title="步驟二：設定 X(Twitter) 連結"></a>步驟二：設定 X(Twitter) 連結</h3><ol>
+<li>找到 <strong>Twitter 通知</strong> 選項並點擊啟用</li>
+<li>點擊「增加新的 Twitter 帳號」<br><img src="/images/mee6_discord_twitter2-1.png"></li>
+<li>在輸入欄位中填入要追蹤的 X(Twitter) 帳號名稱（不需要加 @）<ul>
+<li>例如要追蹤 <code>@elonmusk</code>，只需輸入 <code>elonmusk</code></li>
+</ul>
+</li>
+<li>選擇要發送通知的 Discord 頻道</li>
+<li>自訂通知訊息格式（可選）<br><img src="/images/mee6_discord_twitter2-2.png"></li>
+</ol>
+<h3 id="步驟三：自訂通知訊息"><a href="#步驟三：自訂通知訊息" class="headerlink" title="步驟三：自訂通知訊息"></a>步驟三：自訂通知訊息</h3><p>MEE6 提供變數讓你客製化通知訊息，常用變數如下：</p>
+<table>
+<thead>
+<tr>
+<th>變數</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&#123;tweet&#125;</code></td>
+<td>推文內容</td>
+</tr>
+<tr>
+<td><code>&#123;link&#125;</code></td>
+<td>推文連結</td>
+</tr>
+<tr>
+<td><code>&#123;author&#125;</code></td>
+<td>發文者名稱</td>
+</tr>
+<tr>
+<td><code>&#123;author_url&#125;</code></td>
+<td>發文者個人頁面連結</td>
+</tr>
+</tbody></table>
+<p>範例訊息格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">🐦 **&#123;author&#125;** 發布了新推文！</span><br><span class="line"></span><br><span class="line">&#123;tweet&#125;</span><br><span class="line"></span><br><span class="line">🔗 &#123;link&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="步驟四：儲存設定"><a href="#步驟四：儲存設定" class="headerlink" title="步驟四：儲存設定"></a>步驟四：儲存設定</h3><ol>
+<li>確認所有設定無誤</li>
+<li>點擊 <strong>儲存並關閉</strong> 儲存設定</li>
+<li>MEE6 將開始監控該 X(Twitter) 帳號的新推文</li>
+</ol>
+<h3 id="追蹤多個-X-Twitter-帳號"><a href="#追蹤多個-X-Twitter-帳號" class="headerlink" title="追蹤多個 X(Twitter) 帳號"></a>追蹤多個 X(Twitter) 帳號</h3><p>MEE6 允許追蹤多個 X(Twitter) 帳號，只需重複上述步驟新增即可。你可以：</p>
+<ul>
+<li>將不同帳號的通知發送到同一個頻道</li>
+<li>將不同帳號的通知發送到不同頻道（例如依主題分類）</li>
+</ul>
+<h2 id="注意事項"><a href="#注意事項" class="headerlink" title="注意事項"></a>注意事項</h2><h3 id="X-Twitter-API-限制"><a href="#X-Twitter-API-限制" class="headerlink" title="X(Twitter) API 限制"></a>X(Twitter) API 限制</h3><p>由於 X(Twitter）API 政策調整，MEE6 的 Twitter 功能可能會有以下限制：</p>
+<ul>
+<li><strong>通知可能有數分鐘倒數十分鐘的延遲</strong></li>
+<li>需要 MEE6 Premium 訂閱</li>
+<li>若 Twitter API 變更，功能可能暫時不可用</li>
+</ul>
+<h2 id="常見問題"><a href="#常見問題" class="headerlink" title="常見問題"></a>常見問題</h2><h3 id="Q：為什麼沒有收到通知？"><a href="#Q：為什麼沒有收到通知？" class="headerlink" title="Q：為什麼沒有收到通知？"></a>Q：為什麼沒有收到通知？</h3><p>A：請檢查以下項目：</p>
+<ol>
+<li>確認 MEE6 有該頻道的發送訊息權限</li>
+<li>確認 X(Twitter) 帳號名稱輸入正確</li>
+<li>等待幾分鐘，通知可能有延遲</li>
+<li>確認該帳號最近有發布新推文</li>
+</ol>
+<h3 id="Q：可以追蹤私人帳號嗎？"><a href="#Q：可以追蹤私人帳號嗎？" class="headerlink" title="Q：可以追蹤私人帳號嗎？"></a>Q：可以追蹤私人帳號嗎？</h3><p>A：不行，MEE6 只能追蹤公開的 X(Twitter) 帳號。</p>
+<h3 id="Q：通知會包含圖片嗎？"><a href="#Q：通知會包含圖片嗎？" class="headerlink" title="Q：通知會包含圖片嗎？"></a>Q：通知會包含圖片嗎？</h3><p>A：是的，如果推文包含圖片或影片，Discord 通知會自動顯示預覽。</p>
+<h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>透過 MEE6 連結 X(Twitter) 帳號，可以讓 Discord 伺服器成員不用離開 Discord 就能即時掌握最新推文動態。設定過程簡單快速，趕快試試看吧！</p>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://mee6.xyz/">MEE6 官方網站</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://youmu257.github.io/2026/02/01/20260201_mee6_discord_twitter/" data-id="cml3olssy0013io9zfuiec4sf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-20260201_mee6_discord_youtube" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2026/02/01/20260201_mee6_discord_youtube/" class="article-date">
+  <time datetime="2026-02-01T09:07:34.204Z" itemprop="datePublished">2026-02-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7%E6%95%99%E5%AD%B8/">工具教學</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2026/02/01/20260201_mee6_discord_youtube/">MEE6 連結 YouTube 通知教學</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>MEE6 是 Discord 上非常熱門的機器人，其中一個實用功能就是可以連結 YouTube 頻道，當有新影片上傳時自動發送通知到指定頻道。本篇將介紹兩種設定方式，並說明各自的優缺點。</p>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><ul>
+<li>MEE6 Bot（需要加入你的 Discord 伺服器）</li>
+<li>YouTube 頻道</li>
+</ul>
+<h2 id="方法一：直接連結-YouTube-頻道-比較不推薦"><a href="#方法一：直接連結-YouTube-頻道-比較不推薦" class="headerlink" title="方法一：直接連結 YouTube 頻道(比較不推薦)"></a>方法一：直接連結 YouTube 頻道(比較不推薦)</h2><h3 id="設定步驟"><a href="#設定步驟" class="headerlink" title="設定步驟"></a>設定步驟</h3><ol>
+<li>進入 <a target="_blank" rel="noopener" href="https://mee6.xyz/dashboard">MEE6 Dashboard</a></li>
+<li>選擇你的 Discord 伺服器</li>
+<li>點擊左側選單的 <strong>社群通知</strong></li>
+<li>找到 <strong>YouTube 通知</strong> 並點擊啟用</li>
+<li>輸入要追蹤的 YouTube 頻道網址或名稱</li>
+<li>選擇要發送通知的 Discord 頻道</li>
+<li>自訂通知訊息（可選）</li>
+<li>儲存設定</li>
+</ol>
+<h3 id="限制說明"><a href="#限制說明" class="headerlink" title="限制說明"></a>限制說明</h3><p>⚠️ <strong>重要提醒：此方法對直播待機室（Premiere&#x2F;預告）無效！</strong></p>
+<p>MEE6 的 YouTube 直接連結功能是透過偵測「新上傳的影片」來觸發通知。這代表：</p>
+<ul>
+<li>✅ 一般上傳影片：正常通知</li>
+<li>❌ 直播待機室：<strong>不會通知</strong></li>
+<li>❌ 預定首播（Premiere）：<strong>不會通知</strong></li>
+<li>✅ 直播結束後：當直播結束並轉為影片存檔時，才會發送通知</li>
+</ul>
+<p>如果你需要在直播開始前（待機室階段）就收到通知，請使用下方的 RSS 訂閱方法。</p>
+<h2 id="方法二：使用-RSS-訂閱（推薦）"><a href="#方法二：使用-RSS-訂閱（推薦）" class="headerlink" title="方法二：使用 RSS 訂閱（推薦）"></a>方法二：使用 RSS 訂閱（推薦）</h2><p>RSS 訂閱可以更即時地偵測到頻道的新內容，包含直播待機室。</p>
+<h3 id="步驟一：取得-YouTube-Channel-ID"><a href="#步驟一：取得-YouTube-Channel-ID" class="headerlink" title="步驟一：取得 YouTube Channel ID"></a>步驟一：取得 YouTube Channel ID</h3><p>YouTube Channel ID 是一串以 <code>UC</code> 開頭的識別碼，取得方式如下：</p>
+<h4 id="方法-A：從頻道頁面網址取得"><a href="#方法-A：從頻道頁面網址取得" class="headerlink" title="方法 A：從頻道頁面網址取得"></a>方法 A：從頻道頁面網址取得</h4><ol>
+<li>前往該 YouTube 頻道頁面</li>
+<li>查看網址列，格式可能是：<ul>
+<li><code>https://www.youtube.com/channel/UC123456789abcdefg</code> → <code>UC123456789abcdefg</code> 就是 Channel ID</li>
+<li>如果網址是 <code>https://www.youtube.com/@頻道名稱</code>，請用下面的方法</li>
+</ul>
+</li>
+</ol>
+<h4 id="方法-B：從頻道頁面原始碼取得"><a href="#方法-B：從頻道頁面原始碼取得" class="headerlink" title="方法 B：從頻道頁面原始碼取得"></a>方法 B：從頻道頁面原始碼取得</h4><ol>
+<li>前往該 YouTube 頻道頁面</li>
+<li>按下 <code>Ctrl + U</code> 開啟原始碼</li>
+<li>按下 <code>Ctrl + F</code> 搜尋 <code>channel_id</code></li>
+<li>找到類似 <code>channel_id=UC123456789abcdefg</code> 的內容</li>
+<li><code>UC</code> 開頭的那串就是 Channel ID</li>
+</ol>
+<h4 id="方法-C：使用線上工具"><a href="#方法-C：使用線上工具" class="headerlink" title="方法 C：使用線上工具"></a>方法 C：使用線上工具</h4><ol>
+<li>前往 <a target="_blank" rel="noopener" href="https://commentpicker.com/youtube-channel-id.php">Comment Picker - YouTube Channel ID</a></li>
+<li>貼上頻道網址</li>
+<li>點擊查詢即可取得 Channel ID</li>
+</ol>
+<h3 id="步驟二：生成-RSS-連結"><a href="#步驟二：生成-RSS-連結" class="headerlink" title="步驟二：生成 RSS 連結"></a>步驟二：生成 RSS 連結</h3><p>取得 Channel ID 後，將其代入以下 RSS 格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.youtube.com/feeds/videos.xml?channel_id=你的CHANNEL_ID</span><br></pre></td></tr></table></figure>
+
+<p>以祈菈‧貝希毛絲的頻道為例 Channel ID 是 <code>UCcOWs8dB_1w9GGYUU6TGATg</code>，則 RSS 連結為：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.youtube.com/feeds/videos.xml?channel_id=UCcOWs8dB_1w9GGYUU6TGATg</span><br></pre></td></tr></table></figure>
+
+<h3 id="步驟三：在-MEE6-設定-RSS-訂閱"><a href="#步驟三：在-MEE6-設定-RSS-訂閱" class="headerlink" title="步驟三：在 MEE6 設定 RSS 訂閱"></a>步驟三：在 MEE6 設定 RSS 訂閱</h3><ol>
+<li>進入 <a target="_blank" rel="noopener" href="https://mee6.xyz/dashboard">MEE6 Dashboard</a></li>
+<li>選擇你的 Discord 伺服器</li>
+<li>點擊左側選單的 <strong>設尋通知</strong></li>
+<li>找到 <strong>RSS 訂閱</strong> 並點擊啟用，建立我的 RSS 來源<br><img src="/images/mee6_discord_youtube3-1.png"></li>
+<li>在 RSS URL 欄位貼上剛才生成的 RSS 連結</li>
+<li>選擇要發送通知的 Discord 頻道<br><img src="/images/mee6_discord_youtube3-2.png"></li>
+<li>儲存設定</li>
+<li>完成會出現一筆啟用的 RSS 訂閱<br><img src="/images/mee6_discord_youtube3-3.png"></li>
+<li>Discord 會馬上收到一筆最新的 youtube 影片&#x2F;直播通知</li>
+</ol>
+<h2 id="兩種方法比較"><a href="#兩種方法比較" class="headerlink" title="兩種方法比較"></a>兩種方法比較</h2><table>
+<thead>
+<tr>
+<th>項目</th>
+<th>直接連結 YouTube</th>
+<th>RSS 訂閱</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>設定難度</td>
+<td>⭐ 簡單</td>
+<td>⭐⭐ 中等</td>
+</tr>
+<tr>
+<td>一般影片通知</td>
+<td>✅ 支援</td>
+<td>✅ 支援</td>
+</tr>
+<tr>
+<td>直播待機室通知</td>
+<td>❌ 不支援</td>
+<td>✅ 支援</td>
+</tr>
+<tr>
+<td>通知速度</td>
+<td>較慢</td>
+<td>較快</td>
+</tr>
+<tr>
+<td>穩定性</td>
+<td>穩定</td>
+<td>穩定</td>
+</tr>
+</tbody></table>
+<h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>如果你只需要追蹤一般上傳影片，直接連結 YouTube 是最簡單的選擇。但如果你需要追蹤直播待機室或想要更即時的通知，建議使用 RSS 訂閱方式。兩種方法可以同時使用，但要注意可能會收到重複通知。</p>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://mee6.xyz/">MEE6 官方網站</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://youmu257.github.io/2026/02/01/20260201_mee6_discord_youtube/" data-id="cml3olssy0014io9zg4s38ym0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-20260129_mee6_discord_reaction_roles" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2026/01/29/20260129_mee6_discord_reaction_roles/" class="article-date">
+  <time datetime="2026-01-29T14:24:34.678Z" itemprop="datePublished">2026-01-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7%E6%95%99%E5%AD%B8/">工具教學</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2026/01/29/20260129_mee6_discord_reaction_roles/">MEE6 建立 Discord 反應身分組設定 - 規範同意後才能進入討論區</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在經營 Discord 伺服器時，我們常常希望新加入的成員能先閱讀伺服器規範，確認同意後才能進入討論區。<br>這樣的機制可以確保成員了解社群規則，也能過濾掉一些機器人帳號。<br>透過 MEE6 的 Reaction Roles（反應身分組）功能，搭配 Discord 的頻道權限設定，可以輕鬆實現這個需求。</p>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><ul>
+<li>Discord 伺服器（需有管理員權限）</li>
+<li>MEE6 機器人</li>
+</ul>
+<h2 id="步驟"><a href="#步驟" class="headerlink" title="步驟"></a>步驟</h2><h3 id="第一部分：建立身分組"><a href="#第一部分：建立身分組" class="headerlink" title="第一部分：建立身分組"></a>第一部分：建立身分組</h3><h4 id="建立「會員」身分組"><a href="#建立「會員」身分組" class="headerlink" title="建立「會員」身分組"></a>建立「會員」身分組</h4><ol>
+<li>進入 Discord 「伺服器設定」 → 「身分組」<br><img src="/images/mee6_discord_reaction_roles1-1.png"></li>
+<li>點擊「建立身分組」<br><img src="/images/mee6_discord_reaction_roles1-2.png"></li>
+<li>命名為「會員」</li>
+<li>可自訂顏色以區分</li>
+<li>權限部分基本可以先開啟以下權限，可以<strong>再視需求調整</strong></li>
+</ol>
+<ul>
+<li>一般伺服器權限<ul>
+<li>檢視頻道</li>
+</ul>
+</li>
+<li>會員權限<ul>
+<li>建立邀請</li>
+</ul>
+</li>
+<li>文字頻道權限<ul>
+<li>傳送訊息和建立貼文</li>
+<li>在討論串和貼文中傳送訊息</li>
+<li>建立公開討論串</li>
+<li>新增反應</li>
+<li>使用外部表情符號</li>
+<li>使用外部貼圖</li>
+<li>讀取訊息歷史</li>
+</ul>
+</li>
+<li>語音頻道權限<ul>
+<li>連接</li>
+<li>說話</li>
+<li>視訊通話</li>
+<li>使用音效板</li>
+<li>使用語音活動</li>
+</ul>
+</li>
+</ul>
+<ol start="6">
+<li>儲存設定</li>
+</ol>
+<h3 id="第二部分：設定頻道權限"><a href="#第二部分：設定頻道權限" class="headerlink" title="第二部分：設定頻道權限"></a>第二部分：設定頻道權限</h3><h4 id="建立頻道分類"><a href="#建立頻道分類" class="headerlink" title="建立頻道分類"></a>建立頻道分類</h4><p>建議建立以下頻道結構：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">📋 歡迎區（公開）</span><br><span class="line">  └── #規範</span><br><span class="line">  └── #公告</span><br><span class="line">💬 會員專區（僅「會員」身分組可見）</span><br><span class="line">  └── #會員討論區</span><br></pre></td></tr></table></figure>
+<ol>
+<li>建立類別<br><img src="/images/mee6_discord_reaction_roles2-1.png"></li>
+<li>類別名稱輸入「歡迎區」<br><img src="/images/mee6_discord_reaction_roles2-2.png"></li>
+<li>在”歡迎區”中建立”規範”頻道，點擊「+」<br><img src="/images/mee6_discord_reaction_roles2-3.png"></li>
+<li>頻道名稱輸入「規範」<br><img src="/images/mee6_discord_reaction_roles2-4.png"></li>
+<li>“公告”頻道與”會員專區”類別同上步驟</li>
+</ol>
+<h4 id="設定「歡迎區」頻道權限"><a href="#設定「歡迎區」頻道權限" class="headerlink" title="設定「歡迎區」頻道權限"></a>設定「歡迎區」頻道權限</h4><ol>
+<li>右鍵點擊「歡迎區」分類 → 編輯分類<br><img src="/images/mee6_discord_reaction_roles3-1.png"></li>
+<li>進入「權限」頁籤</li>
+<li>確保 <code>@everyone</code> 可以查看此分類，「檢視頻道」設為 ✅（開啟）</li>
+<li>這裡的頻道所有人都能看到<br><img src="/images/mee6_discord_reaction_roles3-2.png"></li>
+</ol>
+<h4 id="設定「會員專區」為私人頻道"><a href="#設定「會員專區」為私人頻道" class="headerlink" title="設定「會員專區」為私人頻道"></a>設定「會員專區」為私人頻道</h4><ol>
+<li>右鍵點擊「會員專區」分類 → 編輯分類</li>
+<li>進入「權限」頁籤</li>
+<li>點擊 <code>@everyone</code> 身分組</li>
+<li>將「檢視頻道」設為 ❌（關閉）<br><img src="/images/mee6_discord_reaction_roles4-1.png"></li>
+<li>點擊「+」新增身分組 → 選擇「會員」</li>
+<li>將「會員」的「檢視頻道」設為 ✅（開啟）<br><img src="/images/mee6_discord_reaction_roles4-2.png"></li>
+<li>儲存設定</li>
+</ol>
+<h4 id="檢視權限是否正確"><a href="#檢視權限是否正確" class="headerlink" title="檢視權限是否正確"></a>檢視權限是否正確</h4><ol>
+<li>進入 Discord 右鍵 「伺服器設定」 → 「身分組」<br><img src="/images/mee6_discord_reaction_roles5-1.png"></li>
+<li>點擊「會員」→「…」→ 「以身分檢視伺服器」</li>
+<li>確認可以看到「會員專區」<ul>
+<li>只有擁有「會員」身分組的成員才能看到會員專區。<br><img src="/images/mee6_discord_reaction_roles5-2.png"></li>
+</ul>
+</li>
+</ol>
+<h3 id="第三部分：設定-MEE6-反應身分組"><a href="#第三部分：設定-MEE6-反應身分組" class="headerlink" title="第三部分：設定 MEE6 反應身分組"></a>第三部分：設定 MEE6 反應身分組</h3><h4 id="進入-MEE6-Dashboard"><a href="#進入-MEE6-Dashboard" class="headerlink" title="進入 MEE6 Dashboard"></a>進入 MEE6 Dashboard</h4><ol>
+<li>前往 <a target="_blank" rel="noopener" href="https://mee6.xyz/">MEE6 官網</a> 並登入</li>
+<li>點擊「Dashboard」</li>
+<li>選擇你的伺服器</li>
+</ol>
+<h4 id="啟用-反應身分組"><a href="#啟用-反應身分組" class="headerlink" title="啟用 反應身分組"></a>啟用 反應身分組</h4><ol>
+<li>在左側選單找到「反應身分組」</li>
+<li>開啟功能開關</li>
+<li>點擊「驗證」<br><img src="/images/mee6_discord_reaction_roles6-1.png"></li>
+</ol>
+<h4 id="設定規範訊息"><a href="#設定規範訊息" class="headerlink" title="設定規範訊息"></a>設定規範訊息</h4><ol>
+<li><strong>頻道</strong>：選擇 #規範 頻道</li>
+<li><strong>訊息</strong>：輸入規範內容，例如：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 📜 伺服器規範</span><br><span class="line"></span><br><span class="line">歡迎加入我們的伺服器！在開始之前，請先閱讀以下規範：</span><br><span class="line"></span><br><span class="line">1️⃣ 請尊重所有成員，禁止人身攻擊或歧視言論</span><br><span class="line">2️⃣ 禁止發送垃圾訊息或廣告</span><br><span class="line">3️⃣ 禁止發送色情、暴力或違法內容</span><br><span class="line">4️⃣ 請在適當的頻道發送訊息</span><br><span class="line">5️⃣ 遵守 Discord 社群守則</span><br><span class="line"></span><br><span class="line">✅ 閱讀完畢並同意以上規範，請點擊下方的 ✅ 按鈕獲得「已驗證」身分組，即可進入討論區！</span><br></pre></td></tr></table></figure>
+<img src="/images/mee6_discord_reaction_roles7-1.png"></li>
+</ol>
+<h4 id="設定反應按鈕"><a href="#設定反應按鈕" class="headerlink" title="設定反應按鈕"></a>設定反應按鈕</h4><ol>
+<li>在”反應和身分組”區塊點擊「表情符號」</li>
+<li><strong>反應和身分組</strong>：選擇 ✅ 表情符號</li>
+<li><strong>新增反應</strong>：選擇「會員」身分組</li>
+<li><strong>反應模式</strong>： 選擇「預設」（給予身分組）<ul>
+<li><strong>反轉</strong>：開啟此選項，當用戶移除反應時會同時移除身分組</li>
+<li>可以設定多個反應對應不同身分組（如不同會員等級）<br><img src="/images/mee6_discord_reaction_roles8-1.png"></li>
+</ul>
+</li>
+</ol>
+<h4 id="儲存並測試"><a href="#儲存並測試" class="headerlink" title="儲存並測試"></a>儲存並測試</h4><ol>
+<li>點擊「儲存」儲存設定</li>
+<li>MEE6 會在 #規範 頻道發送訊息並加上反應</li>
+<li>使用小帳號測試流程是否正常</li>
+</ol>
+<h1 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h1><p>透過 MEE6 的 反應身分組 搭配 Discord 的頻道權限設定，可以建立一個完整的新成員驗證流程。<br>這個機制不僅能確保成員了解社群規則，也能有效過濾機器人帳號，維護伺服器的品質。<br>建議定期檢視規範內容，並根據社群需求調整權限設定。</p>
+<h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://mee6.xyz/">MEE6 官網</a></li>
+<li><a target="_blank" rel="noopener" href="https://mee6.xyz/reaction-roles">MEE6 Reaction Roles 教學</a></li>
+<li><a target="_blank" rel="noopener" href="https://support.discord.com/hc/zh-tw/articles/206029707">Discord 權限設定說明</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://youmu257.github.io/2026/01/29/20260129_mee6_discord_reaction_roles/" data-id="cml3olssv000lio9z6z1mgbr6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-20260129_mee6_discord_welcome" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2026/01/29/20260129_mee6_discord_welcome/" class="article-date">
+  <time datetime="2026-01-29T11:36:27.474Z" itemprop="datePublished">2026-01-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7%E6%95%99%E5%AD%B8/">工具教學</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2026/01/29/20260129_mee6_discord_welcome/">MEE6 建立 Discord 歡迎新用戶加入的設定</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Discord 是目前非常流行的社群通訊平台，許多遊戲社群、工作團隊都會使用 Discord 來進行交流。<br>當有新成員加入伺服器時，如果能自動發送歡迎訊息，可以讓新成員感受到社群的溫暖，也能讓他們快速了解伺服器的規則與資訊。<br>MEE6 是一款功能強大的 Discord 機器人，其中的 Welcome 功能可以輕鬆實現自動歡迎訊息的設定。</p>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><ul>
+<li>Discord 伺服器（需有管理員權限）</li>
+<li>MEE6 機器人</li>
+</ul>
+<h2 id="步驟"><a href="#步驟" class="headerlink" title="步驟"></a>步驟</h2><h3 id="1-邀請-MEE6-機器人到伺服器"><a href="#1-邀請-MEE6-機器人到伺服器" class="headerlink" title="1. 邀請 MEE6 機器人到伺服器"></a>1. 邀請 MEE6 機器人到伺服器</h3><ol>
+<li>前往 <a target="_blank" rel="noopener" href="https://mee6.xyz/">MEE6 官網</a></li>
+<li>點擊「Add to Discord」</li>
+<li>選擇要加入的伺服器</li>
+<li>授權 MEE6 所需的權限</li>
+</ol>
+<h3 id="2-進入-MEE6-Dashboard"><a href="#2-進入-MEE6-Dashboard" class="headerlink" title="2. 進入 MEE6 Dashboard"></a>2. 進入 MEE6 Dashboard</h3><ol>
+<li>登入 MEE6 官網</li>
+<li>點擊右上角的「Dashboard」</li>
+<li>選擇你要設定的伺服器</li>
+</ol>
+<h3 id="3-設定歡迎功能"><a href="#3-設定歡迎功能" class="headerlink" title="3. 設定歡迎功能"></a>3. 設定歡迎功能</h3><ol>
+<li>在左側選單找到「歡迎&amp;再見」並點擊</li>
+<li>開啟「當使用者加入伺服器時傳送一則訊息」功能的開關<br><img src="/images/mee6_discord_welcome1.png"></li>
+</ol>
+<h3 id="4-設定歡迎訊息"><a href="#4-設定歡迎訊息" class="headerlink" title="4. 設定歡迎訊息"></a>4. 設定歡迎訊息</h3><ol>
+<li><strong>Send a message when a user joins the server</strong>：開啟此選項</li>
+<li><strong>Channel</strong>：選擇要發送歡迎訊息的頻道</li>
+<li><strong>Message</strong>：自訂歡迎訊息內容，可使用以下變數：<ul>
+<li><code>&#123;user&#125;</code> - 標記新加入的用戶</li>
+<li><code>&#123;server&#125;</code> - 伺服器名稱</li>
+<li><code>&#123;memberCount&#125;</code> - 目前成員數量</li>
+<li><code>&#123;user.name&#125;</code> - 用戶名稱</li>
+</ul>
+</li>
+<li>範例訊息：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">歡迎 &#123;user&#125; 加入 &#123;server&#125;！🎉</span><br><span class="line">你是我們的第 &#123;memberCount&#125; 位成員！</span><br><span class="line">請先閱讀 #規則 頻道，有任何問題歡迎發問！</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="5-設定歡迎圖片（選用）"><a href="#5-設定歡迎圖片（選用）" class="headerlink" title="5. 設定歡迎圖片（選用）"></a>5. 設定歡迎圖片（選用）</h3><ol>
+<li>開啟「當使用者加入時傳送一則歡迎卡片」選項</li>
+<li>可自訂歡迎卡片的背景圖片</li>
+<li>調整文字顏色與樣式</li>
+</ol>
+<h3 id="6-設定私訊歡迎（選用）"><a href="#6-設定私訊歡迎（選用）" class="headerlink" title="6. 設定私訊歡迎（選用）"></a>6. 設定私訊歡迎（選用）</h3><ol>
+<li>開啟「當使用者加入時傳送一個私人訊息」</li>
+<li>設定私訊內容，可包含伺服器介紹或重要連結</li>
+</ol>
+<h3 id="7-儲存設定"><a href="#7-儲存設定" class="headerlink" title="7. 儲存設定"></a>7. 儲存設定</h3><ol>
+<li>完成所有設定後，點擊右下方「儲存」儲存</li>
+<li>可請朋友加入測試歡迎訊息是否正常運作</li>
+</ol>
+<h1 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h1><p>透過 MEE6 的 Welcome 功能，可以輕鬆設定自動歡迎訊息，讓新成員感受到社群的熱情。<br>除了基本的文字訊息外，還可以搭配歡迎卡片讓訊息更加吸睛。<br>MEE6 還有許多其他實用功能，如等級系統、自動審核等，有興趣可以進一步探索。</p>
+<h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://mee6.xyz/">MEE6 官網</a></li>
+<li><a target="_blank" rel="noopener" href="https://mee6.xyz/welcome">MEE6 Welcome 文件</a></li>
+<li><a target="_blank" rel="noopener" href="https://discord.com/">Discord 官方網站</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://youmu257.github.io/2026/01/29/20260129_mee6_discord_welcome/" data-id="cml3olssw000qio9zh2uv1cfm" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-20250514_ubuntu_docker_install" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2025/05/14/20250514_ubuntu_docker_install/" class="article-date">
+  <time datetime="2025-05-14T14:53:13.000Z" itemprop="datePublished">2025-05-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7%E6%95%99%E5%AD%B8/">工具教學</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2025/05/14/20250514_ubuntu_docker_install/">在 Ubuntu 22.04 上安裝 docker</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在 Ubuntu 22.04 上安裝 docker</p>
+<h2 id="安裝指令"><a href="#安裝指令" class="headerlink" title="安裝指令"></a>安裝指令</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update -y</span><br><span class="line">sudo apt install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common net-tools</span><br><span class="line"></span><br><span class="line">curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg</span><br><span class="line">sudo chmod a+r /etc/apt/keyrings/docker.gpg</span><br><span class="line">echo   &quot;deb [arch=&quot;$(dpkg --print-architecture)&quot; signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \</span><br><span class="line">  &quot;$(. /etc/os-release &amp;&amp; echo &quot;$VERSION_CODENAME&quot;)&quot; stable&quot; | \</span><br><span class="line">  sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null</span><br><span class="line"></span><br><span class="line">sudo apt update -y</span><br><span class="line">sudo apt install -y docker-ce </span><br><span class="line">sudo systemctl status docker</span><br><span class="line">sudo systemctl enable docker</span><br></pre></td></tr></table></figure>
+
+<h2 id="檢查"><a href="#檢查" class="headerlink" title="檢查"></a>檢查</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
+<ul>
+<li>有顯示以下資訊表示安裝成功<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://youmu257.github.io/2025/05/14/20250514_ubuntu_docker_install/" data-id="cml3olssx000tio9z2xffaie7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-20241119_jieba_sample" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -99,43 +869,41 @@
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在 asp.net 上跑 jieba 做中文斷詞</p>
 <h2 id="先安裝套件"><a href="#先安裝套件" class="headerlink" title="先安裝套件"></a>先安裝套件</h2><ul>
-<li>查詢 jieba.NET<br><img src="/images/jieba_sample_1.png" alt=""></li>
+<li>查詢 jieba.NET<br><img src="/images/jieba_sample_1.png"></li>
 </ul>
 <h2 id="簡易-sample-code"><a href="#簡易-sample-code" class="headerlink" title="簡易 sample code"></a>簡易 sample code</h2><ul>
-<li>呼叫 chatgpt 生成簡易程式碼<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">using JiebaNet.Segmenter;</span><br><span class="line">&#x2F;&#x2F; 初始化 Jieba</span><br><span class="line">var segmenter &#x3D; new JiebaSegmenter();</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 分詞範例</span><br><span class="line">string sentence &#x3D; &quot;我愛自然語言處理&quot;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 默認為精確模式</span><br><span class="line">var segments &#x3D; segmenter.Cut(sentence);</span><br><span class="line">Console.WriteLine(&quot;【精確模式】：&#123;0&#125;&quot;, string.Join(&quot;&#x2F; &quot;, segments));</span><br><span class="line">&#x2F;&#x2F; 全模式</span><br><span class="line">segments &#x3D; segmenter.Cut(sentence, cutAll: true);</span><br><span class="line">Console.WriteLine(&quot;【全模式】：&#123;0&#125;&quot;, string.Join(&quot;&#x2F; &quot;, segments));</span><br><span class="line">&#x2F;&#x2F; 搜尋引擎模式</span><br><span class="line">segments &#x3D; segmenter.CutForSearch(sentence); </span><br><span class="line">Console.WriteLine(&quot;【搜尋引擎模式】：&#123;0&#125;&quot;, string.Join(&quot;&#x2F; &quot;, segments));</span><br></pre></td></tr></table></figure></li>
-<li>快樂得執行看看<br><img src="/images/jieba_sample_2.png" alt=""><br>出現錯誤<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DirectoryNotFoundException: Could not find a part of the path &#39;D:\workspace\jieba-sample\jieba-sample\bin\Debug\net8.0\Resources\prob_trans.json&#39;.</span><br></pre></td></tr></table></figure>
-<img src="/images/jieba_sample_3.jpg" alt=""></li>
+<li>呼叫 chatgpt 生成簡易程式碼<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">using JiebaNet.Segmenter;</span><br><span class="line">// 初始化 Jieba</span><br><span class="line">var segmenter = new JiebaSegmenter();</span><br><span class="line"></span><br><span class="line">// 分詞範例</span><br><span class="line">string sentence = &quot;我愛自然語言處理&quot;;</span><br><span class="line"></span><br><span class="line">// 默認為精確模式</span><br><span class="line">var segments = segmenter.Cut(sentence);</span><br><span class="line">Console.WriteLine(&quot;【精確模式】：&#123;0&#125;&quot;, string.Join(&quot;/ &quot;, segments));</span><br><span class="line">// 全模式</span><br><span class="line">segments = segmenter.Cut(sentence, cutAll: true);</span><br><span class="line">Console.WriteLine(&quot;【全模式】：&#123;0&#125;&quot;, string.Join(&quot;/ &quot;, segments));</span><br><span class="line">// 搜尋引擎模式</span><br><span class="line">segments = segmenter.CutForSearch(sentence); </span><br><span class="line">Console.WriteLine(&quot;【搜尋引擎模式】：&#123;0&#125;&quot;, string.Join(&quot;/ &quot;, segments));</span><br></pre></td></tr></table></figure></li>
+<li>快樂得執行看看<br><img src="/images/jieba_sample_2.png"><br>出現錯誤<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DirectoryNotFoundException: Could not find a part of the path &#x27;D:\workspace\jieba-sample\jieba-sample\bin\Debug\net8.0\Resources\prob_trans.json&#x27;.</span><br></pre></td></tr></table></figure>
+<img src="/images/jieba_sample_3.jpg"></li>
 <li>看來C#的套件沒有包含必要檔案</li>
-<li>只好去 <a href="https://github.com/anderscui/jieba.NET/tree/master/src/Segmenter/Resources" target="_blank" rel="noopener">jieba.NET github</a> 去下載，把 Resources 資料夾丟進去專案裡，預設路徑是 Resources</li>
+<li>只好去 <a target="_blank" rel="noopener" href="https://github.com/anderscui/jieba.NET/tree/master/src/Segmenter/Resources">jieba.NET github</a> 去下載，把 Resources 資料夾丟進去專案裡，預設路徑是 Resources</li>
 </ul>
 <h2 id="執行成功"><a href="#執行成功" class="headerlink" title="執行成功"></a>執行成功</h2><ul>
-<li>可以看到結果長這樣<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">【精確模式】：我&#x2F; 愛自然&#x2F; 語言&#x2F; 處理</span><br><span class="line">【全模式】：我&#x2F; 愛&#x2F; 自&#x2F; 然&#x2F; 語&#x2F; 言&#x2F; 處&#x2F; 理</span><br><span class="line">【搜尋引擎模式】：我&#x2F; 愛自然&#x2F; 語言&#x2F; 處理</span><br></pre></td></tr></table></figure></li>
+<li>可以看到結果長這樣<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">【精確模式】：我/ 愛自然/ 語言/ 處理</span><br><span class="line">【全模式】：我/ 愛/ 自/ 然/ 語/ 言/ 處/ 理</span><br><span class="line">【搜尋引擎模式】：我/ 愛自然/ 語言/ 處理</span><br></pre></td></tr></table></figure></li>
 <li>但總覺得斷字的效果很差啊</li>
 <li>李組長眉頭一皺發現事情並不單純</li>
-<li>原來字典檔根本沒有用到<br><img src="/images/jieba_sample_4.png" alt=""></li>
+<li>原來字典檔根本沒有用到<br><img src="/images/jieba_sample_4.png"></li>
 <li>點一下 dict.txt 在屬性中把「複製到輸出目錄」改成「有更新時才複製」</li>
-<li>重跑一次<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">【精確模式】：我&#x2F; 愛&#x2F; 自然&#x2F; 語言&#x2F; 處理</span><br><span class="line">【全模式】：我&#x2F; 愛&#x2F; 自然&#x2F; 語&#x2F; 言&#x2F; 處&#x2F; 理</span><br><span class="line">【搜尋引擎模式】：我&#x2F; 愛&#x2F; 自然&#x2F; 語言&#x2F; 處理</span><br></pre></td></tr></table></figure></li>
+<li>重跑一次<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">【精確模式】：我/ 愛/ 自然/ 語言/ 處理</span><br><span class="line">【全模式】：我/ 愛/ 自然/ 語/ 言/ 處/ 理</span><br><span class="line">【搜尋引擎模式】：我/ 愛/ 自然/ 語言/ 處理</span><br></pre></td></tr></table></figure></li>
 <li>結果看起來正常多了</li>
 </ul>
 <h1 id="繁中字典"><a href="#繁中字典" class="headerlink" title="繁中字典"></a>繁中字典</h1><ul>
-<li>官方有提供支援繁中的字典 <a href="https://raw.githubusercontent.com/anderscui/jieba.NET/master/ExtraDicts/dict.txt.big" target="_blank" rel="noopener">dict.txt.big</a></li>
-<li>加上指定字典<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var segmenter &#x3D; new JiebaSegmenter();</span><br><span class="line">segmenter.LoadUserDict(&quot;D:\\workspace\\jieba-sample\\jieba-sample\\Resources\\dict.txt.big&quot;);</span><br></pre></td></tr></table></figure></li>
-<li>結果有把「自然語言」切出來了，更加準確<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">【精確模式】：我&#x2F; 愛&#x2F; 自然語言&#x2F; 處理</span><br><span class="line">【全模式】：我&#x2F; 愛&#x2F; 自然&#x2F; 自然語言&#x2F; 語言&#x2F; 處理</span><br><span class="line">【搜尋引擎模式】：我&#x2F; 愛&#x2F; 自然&#x2F; 語言&#x2F; 自然語言&#x2F; 處理</span><br></pre></td></tr></table></figure>
-
-</li>
+<li>官方有提供支援繁中的字典 <a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/anderscui/jieba.NET/master/ExtraDicts/dict.txt.big">dict.txt.big</a></li>
+<li>加上指定字典<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var segmenter = new JiebaSegmenter();</span><br><span class="line">segmenter.LoadUserDict(&quot;D:\\workspace\\jieba-sample\\jieba-sample\\Resources\\dict.txt.big&quot;);</span><br></pre></td></tr></table></figure></li>
+<li>結果有把「自然語言」切出來了，更加準確<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">【精確模式】：我/ 愛/ 自然語言/ 處理</span><br><span class="line">【全模式】：我/ 愛/ 自然/ 自然語言/ 語言/ 處理</span><br><span class="line">【搜尋引擎模式】：我/ 愛/ 自然/ 語言/ 自然語言/ 處理</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h1 id="自訂字典"><a href="#自訂字典" class="headerlink" title="自訂字典"></a>自訂字典</h1><ul>
 <li>把文字改成「我愛祈菈貝希毛絲」這樣有專有名詞的情況</li>
-<li>會發現全模式會把貝希毛絲都切開來<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">【精確模式】：我&#x2F; 愛&#x2F; 祈菈&#x2F; 貝希毛絲</span><br><span class="line">【全模式】：我&#x2F; 愛&#x2F; 祈菈&#x2F; 貝&#x2F; 希&#x2F; 毛&#x2F; 絲</span><br><span class="line">【搜尋引擎模式】：我&#x2F; 愛&#x2F; 祈菈&#x2F; 貝希毛絲</span><br></pre></td></tr></table></figure></li>
-<li>在字典中加上 「貝希毛絲 76 n」，再執行一次<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">【精確模式】：我&#x2F; 愛&#x2F; 祈菈&#x2F; 貝希毛絲</span><br><span class="line">【全模式】：我&#x2F; 愛&#x2F; 祈菈&#x2F; 貝希毛絲</span><br><span class="line">【搜尋引擎模式】：我&#x2F; 愛&#x2F; 祈菈&#x2F; 貝希毛絲</span><br></pre></td></tr></table></figure></li>
+<li>會發現全模式會把貝希毛絲都切開來<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">【精確模式】：我/ 愛/ 祈菈/ 貝希毛絲</span><br><span class="line">【全模式】：我/ 愛/ 祈菈/ 貝/ 希/ 毛/ 絲</span><br><span class="line">【搜尋引擎模式】：我/ 愛/ 祈菈/ 貝希毛絲</span><br></pre></td></tr></table></figure></li>
+<li>在字典中加上 「貝希毛絲 76 n」，再執行一次<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">【精確模式】：我/ 愛/ 祈菈/ 貝希毛絲</span><br><span class="line">【全模式】：我/ 愛/ 祈菈/ 貝希毛絲</span><br><span class="line">【搜尋引擎模式】：我/ 愛/ 祈菈/ 貝希毛絲</span><br></pre></td></tr></table></figure></li>
 <li>這樣專有名詞也會正常被當作一個單詞處理</li>
 </ul>
-<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><p><a href="https://github.com/anderscui/jieba.NET/tree/master" target="_blank" rel="noopener">jieba.NET</a></p>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><p><a target="_blank" rel="noopener" href="https://github.com/anderscui/jieba.NET/tree/master">jieba.NET</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2024/11/19/20241119_jieba_sample/" data-id="cm3n9pvjg000fuku6684d6ey7" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2024/11/19/20241119_jieba_sample/" data-id="cml3olssw000oio9z7jlv7grs" class="article-share-link">Share</a>
       
       
     </footer>
@@ -173,27 +941,27 @@
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>為了抓 Youtube 影片資訊來做 side project<br>手動整理影片資訊太累了<br>決定用 Youtube 來抓資料<br>所以首先要先有 API key</p>
 <h2 id="建立-Google-Cloud-專案"><a href="#建立-Google-Cloud-專案" class="headerlink" title="建立 Google Cloud 專案"></a>建立 Google Cloud 專案</h2><ul>
-<li>打開 <a href="https://console.cloud.google.com/apis/dashboard" target="_blank" rel="noopener">Google Console</a></li>
-<li>建立第一個專案<br><img src="/images/get_youtube_api_key_1.PNG" alt=""></li>
-<li>輸入專案名稱並建立專案<br><img src="/images/get_youtube_api_key_2.PNG" alt=""></li>
+<li>打開 <a target="_blank" rel="noopener" href="https://console.cloud.google.com/apis/dashboard">Google Console</a></li>
+<li>建立第一個專案<br><img src="/images/get_youtube_api_key_1.PNG"></li>
+<li>輸入專案名稱並建立專案<br><img src="/images/get_youtube_api_key_2.PNG"></li>
 </ul>
 <h2 id="啟用-Youtube-API"><a href="#啟用-Youtube-API" class="headerlink" title="啟用 Youtube API"></a>啟用 Youtube API</h2><ul>
-<li>啟用 API 和服務<br><img src="/images/get_youtube_api_key_3.PNG" alt=""></li>
-<li>搜尋 <code>youtube data api v3</code><br><img src="/images/get_youtube_api_key_4.PNG" alt=""><br><img src="/images/get_youtube_api_key_5.PNG" alt=""></li>
-<li>啟用 Youtube data api v3<br><img src="/images/get_youtube_api_key_6.PNG" alt=""></li>
+<li>啟用 API 和服務<br><img src="/images/get_youtube_api_key_3.PNG"></li>
+<li>搜尋 <code>youtube data api v3</code><br><img src="/images/get_youtube_api_key_4.PNG"><br><img src="/images/get_youtube_api_key_5.PNG"></li>
+<li>啟用 Youtube data api v3<br><img src="/images/get_youtube_api_key_6.PNG"></li>
 </ul>
 <h2 id="建立金鑰"><a href="#建立金鑰" class="headerlink" title="建立金鑰"></a>建立金鑰</h2><ul>
-<li>到<a href="https://console.cloud.google.com/apis/credentials" target="_blank" rel="noopener">憑證頁面</a></li>
-<li>建立憑證<br><img src="/images/get_youtube_api_key_7.PNG" alt=""></li>
-<li>選擇 API 金鑰<br><img src="/images/get_youtube_api_key_8.PNG" alt=""></li>
-<li>這樣就會產生好金鑰了<br><img src="/images/get_youtube_api_key_9.PNG" alt=""></li>
+<li>到<a target="_blank" rel="noopener" href="https://console.cloud.google.com/apis/credentials">憑證頁面</a></li>
+<li>建立憑證<br><img src="/images/get_youtube_api_key_7.PNG"></li>
+<li>選擇 API 金鑰<br><img src="/images/get_youtube_api_key_8.PNG"></li>
+<li>這樣就會產生好金鑰了<br><img src="/images/get_youtube_api_key_9.PNG"></li>
 </ul>
-<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><p><a href="https://gg90052.github.io/blog/yt_api_key/" target="_blank" rel="noopener">如何取得 Youtube API 金鑰</a></p>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><p><a target="_blank" rel="noopener" href="https://gg90052.github.io/blog/yt_api_key/">如何取得 Youtube API 金鑰</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2024/08/15/20240815_get_youtube_api_key/" data-id="cm3n9pvjd000cuku68eapbazk" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2024/08/15/20240815_get_youtube_api_key/" data-id="cml3olssv000gio9zg0t00nbd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -234,7 +1002,7 @@
 <li>OS : Windows 10</li>
 </ul>
 <h1 id="筆記說明"><a href="#筆記說明" class="headerlink" title="筆記說明"></a>筆記說明</h1><ul>
-<li>程式可以參考我的 <a href="https://github.com/youmu257/laravel-note" target="_blank" rel="noopener">laravel筆記</a></li>
+<li>程式可以參考我的 <a target="_blank" rel="noopener" href="https://github.com/youmu257/laravel-note">laravel筆記</a></li>
 <li>建立 Controller<ul>
 <li><code>php artisan make:controller MailController</code></li>
 </ul>
@@ -243,10 +1011,10 @@
 <li>新增 resources\views\email 來放信件的 html template<ul>
 <li>用 Blade Templates 去建立信件樣板</li>
 <li>可以用 <code>@include</code> 去匯入部分樣板</li>
-<li>我的筆記程式參考這個<a href="https://github.com/ColorlibHQ/email-templates/tree/master/10" target="_blank" rel="noopener">樣板</a></li>
+<li>我的筆記程式參考這個<a target="_blank" rel="noopener" href="https://github.com/ColorlibHQ/email-templates/tree/master/10">樣板</a></li>
 </ul>
 </li>
-<li>在 MailService 用 Mail 去寄信  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$sampleMail &#x3D; new SampleMail($smapleData);</span><br><span class="line">Mail::to($receiverMail)</span><br><span class="line">    -&gt;send($sampleMail);</span><br></pre></td></tr></table></figure>
+<li>在 MailService 用 Mail 去寄信  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$sampleMail = new SampleMail($smapleData);</span><br><span class="line">Mail::to($receiverMail)</span><br><span class="line">    -&gt;send($sampleMail);</span><br></pre></td></tr></table></figure>
 <ul>
 <li>可以傳入 <code>$smapleData</code> 信件需要的資料<ul>
 <li>可以用雙層大括號顯示傳入變數</li>
@@ -255,10 +1023,10 @@
 <li>Mail::to 設定收件者信箱</li>
 </ul>
 </li>
-<li>寄件者和寄件者名稱會吃 env  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MAIL_FROM_ADDRESS&#x3D;&quot;sender@gmail.com&quot;</span><br><span class="line">MAIL_FROM_NAME&#x3D;&quot;寄件者&quot;</span><br></pre></td></tr></table></figure></li>
+<li>寄件者和寄件者名稱會吃 env  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MAIL_FROM_ADDRESS=&quot;sender@gmail.com&quot;</span><br><span class="line">MAIL_FROM_NAME=&quot;寄件者&quot;</span><br></pre></td></tr></table></figure></li>
 <li>在 env 設定 smtp<ul>
-<li>測試寄信結果我會用 <a href="https://mailtrap.io/" target="_blank" rel="noopener">Mailtrap</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">MAIL_MAILER&#x3D;smtp</span><br><span class="line">MAIL_HOST&#x3D;smtp.mailtrap.io</span><br><span class="line">MAIL_PORT&#x3D;2525</span><br><span class="line">MAIL_USERNAME&#x3D;test_username</span><br><span class="line">MAIL_PASSWORD&#x3D;test_password</span><br><span class="line">MAIL_ENCRYPTION&#x3D;tls</span><br></pre></td></tr></table></figure></li>
-<li><img src="https://i.imgur.com/SOijQdm.png" alt=""></li>
+<li>測試寄信結果我會用 <a target="_blank" rel="noopener" href="https://mailtrap.io/">Mailtrap</a>  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">MAIL_MAILER=smtp</span><br><span class="line">MAIL_HOST=smtp.mailtrap.io</span><br><span class="line">MAIL_PORT=2525</span><br><span class="line">MAIL_USERNAME=test_username</span><br><span class="line">MAIL_PASSWORD=test_password</span><br><span class="line">MAIL_ENCRYPTION=tls</span><br></pre></td></tr></table></figure></li>
+<li><img src="https://i.imgur.com/SOijQdm.png"></li>
 </ul>
 </li>
 </ul>
@@ -266,16 +1034,16 @@
 <li>寄信不難，只是麻煩</li>
 </ul>
 <h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><ul>
-<li><a href="https://laravel.com/docs/8.x/controllers" target="_blank" rel="noopener">Laravel Controller</a></li>
-<li><a href="https://laravel.com/docs/8.x/blade" target="_blank" rel="noopener">Blade Templates</a></li>
-<li><a href="https://colorlib.com/wp/responsive-html-email-templates/" target="_blank" rel="noopener">Email template</a></li>
-<li><a href="https://www.itread01.com/content/1549881756.html" target="_blank" rel="noopener">laravel傳送郵件</a></li>
+<li><a target="_blank" rel="noopener" href="https://laravel.com/docs/8.x/controllers">Laravel Controller</a></li>
+<li><a target="_blank" rel="noopener" href="https://laravel.com/docs/8.x/blade">Blade Templates</a></li>
+<li><a target="_blank" rel="noopener" href="https://colorlib.com/wp/responsive-html-email-templates/">Email template</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.itread01.com/content/1549881756.html">laravel傳送郵件</a></li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2021/01/12/20201107_laravel_send_mail/" data-id="cm3n9pvjv000ouku69n9r0blm" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2021/01/12/20201107_laravel_send_mail/" data-id="cml3olsst000bio9z2mrugsya" class="article-share-link">Share</a>
       
       
     </footer>
@@ -326,726 +1094,39 @@
 <li><code>composer require h4cc/wkhtmltoimage-amd64 0.12.x</code></li>
 </ul>
 </li>
-<li>複製檔案到指定位置<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo cp vendor&#x2F;h4cc&#x2F;wkhtmltoimage-amd64&#x2F;bin&#x2F;wkhtmltoimage-amd64 &#x2F;usr&#x2F;local&#x2F;bin&#x2F;</span><br><span class="line">sudo cp vendor&#x2F;h4cc&#x2F;wkhtmltopdf-amd64&#x2F;bin&#x2F;wkhtmltopdf-amd64 &#x2F;usr&#x2F;local&#x2F;bin&#x2F;</span><br></pre></td></tr></table></figure></li>
-<li>修改檔案權限<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod +x &#x2F;usr&#x2F;local&#x2F;bin&#x2F;wkhtmltoimage-amd64 </span><br><span class="line">sudo chmod +x &#x2F;usr&#x2F;local&#x2F;bin&#x2F;wkhtmltopdf-amd64</span><br></pre></td></tr></table></figure></li>
+<li>複製檔案到指定位置  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo cp vendor/h4cc/wkhtmltoimage-amd64/bin/wkhtmltoimage-amd64 /usr/local/bin/</span><br><span class="line">sudo cp vendor/h4cc/wkhtmltopdf-amd64/bin/wkhtmltopdf-amd64 /usr/local/bin/</span><br></pre></td></tr></table></figure></li>
+<li>修改檔案權限  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod +x /usr/local/bin/wkhtmltoimage-amd64 </span><br><span class="line">sudo chmod +x /usr/local/bin/wkhtmltopdf-amd64</span><br></pre></td></tr></table></figure></li>
 <li>sudo apt-get install -y openssl build-essential xorg libssl-dev</li>
 <li>sudo apt install libssl1.0-dev<ul>
-<li><a href="https://github.com/wkhtmltopdf/wkhtmltopdf/issues/3923" target="_blank" rel="noopener">出現Exit with code 1 due to network error: UnknownNetworkError</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/wkhtmltopdf/wkhtmltopdf/issues/3923">出現Exit with code 1 due to network error: UnknownNetworkError</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <h1 id="程式部分"><a href="#程式部分" class="headerlink" title="程式部分"></a>程式部分</h1><ul>
-<li>程式可以參考我的 <a href="https://github.com/youmu257/laravel-note" target="_blank" rel="noopener">laravel筆記</a></li>
-<li>.env 中加入  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">WKHTML_PDF_BINARY&#x3D;&#x2F;usr&#x2F;local&#x2F;bin&#x2F;wkhtmltopdf-amd64</span><br><span class="line">WKHTML_IMG_BINARY&#x3D;&#x2F;usr&#x2F;local&#x2F;bin&#x2F;wkhtmltoimage-amd64</span><br></pre></td></tr></table></figure></li>
-<li>在 config/app.php 中加入 <code>&#39;PDF&#39; =&gt; Barryvdh\Snappy\Facades\SnappyPdf::class,</code></li>
-<li>產生 PDF 可以參考 app/Mail/SamplePdfMail.php 中的寫法</li>
+<li>程式可以參考我的 <a target="_blank" rel="noopener" href="https://github.com/youmu257/laravel-note">laravel筆記</a></li>
+<li>.env 中加入  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">WKHTML_PDF_BINARY=/usr/local/bin/wkhtmltopdf-amd64</span><br><span class="line">WKHTML_IMG_BINARY=/usr/local/bin/wkhtmltoimage-amd64</span><br></pre></td></tr></table></figure></li>
+<li>在 config&#x2F;app.php 中加入 <code>&#39;PDF&#39; =&gt; Barryvdh\Snappy\Facades\SnappyPdf::class,</code></li>
+<li>產生 PDF 可以參考 app&#x2F;Mail&#x2F;SamplePdfMail.php 中的寫法</li>
 <li>宣告 PDF 檔 <code>PDF::loadView(&#39;email.sample_pdf&#39;, $this-&gt;requestData)</code></li>
 <li>產生 PDF 檔並夾帶進信件中 <code>-&gt;attachData($pdf-&gt;output(), &#39;pdf-sample.pdf&#39;)</code></li>
-<li><a href="https://stripo.email/en/demo/?template=6677&project=6782&guid=49908f77-6dd4-4a65-9d2f-032ad469e6da" target="_blank" rel="noopener">參考樣板</a></li>
+<li><a target="_blank" rel="noopener" href="https://stripo.email/en/demo/?template=6677&project=6782&guid=49908f77-6dd4-4a65-9d2f-032ad469e6da">參考樣板</a></li>
 </ul>
 <h1 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h1><ul>
 <li>產生 PDF 就是這麼簡單</li>
 </ul>
 <h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><ul>
-<li><a href="https://github.com/barryvdh/laravel-snappy" target="_blank" rel="noopener">Snappy PDF/Image Wrapper for Laravel 5 and Lumen 5.1
+<li><a target="_blank" rel="noopener" href="https://github.com/barryvdh/laravel-snappy">Snappy PDF&#x2F;Image Wrapper for Laravel 5 and Lumen 5.1
 </a></li>
-<li><a href="https://github.com/KnpLabs/snappy#wkhtmltopdf-binary-as-composer-dependencies" target="_blank" rel="noopener">Snappy</a></li>
-<li><a href="https://stripo.email/templates/type/order/" target="_blank" rel="noopener">樣板來源</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/KnpLabs/snappy#wkhtmltopdf-binary-as-composer-dependencies">Snappy</a></li>
+<li><a target="_blank" rel="noopener" href="https://stripo.email/templates/type/order/">樣板來源</a></li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2021/01/12/20201114_laravel_send_pdf_mail/" data-id="cm3n9pvjv000puku6b2z6349a" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-20210111_git_file_name_note" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/01/12/20210111_git_file_name_note/" class="article-date">
-  <time datetime="2021-01-11T16:20:03.019Z" itemprop="datePublished">2021-01-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/git/">git</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/12/20210111_git_file_name_note/">Sourcetree 檔名大小寫偵測不到問題</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>因為遇到第二次還需要估狗去找解法，還是紀錄一下這麼狀況和解法<br><del>而且最近太少更新筆記了</del></p>
-<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><ul>
-<li>OS : Windows 10</li>
-<li>Sourcetree</li>
-</ul>
-<h1 id="情境"><a href="#情境" class="headerlink" title="情境"></a>情境</h1><ol>
-<li>檔案已經 commit 過了<ul>
-<li>先 commit 一個 test.txt 的檔案<br><img src="https://i.imgur.com/ddDIeo5.png" alt=""></li>
-</ul>
-</li>
-<li>更改檔名時，且只更改大小寫部分<ul>
-<li>改為 Test.txt<br><img src="https://i.imgur.com/QcpkKin.png" alt=""></li>
-</ul>
-</li>
-<li>Sourcetree 切到 File status<ul>
-<li>什麼改變都沒有<br><img src="https://memeprod.sgp1.digitaloceanspaces.com/user-wtf/1587384378140.jpg" alt=""></li>
-</ul>
-</li>
-<li>用指令檢查<ul>
-<li>cmd 輸入 git status<br><img src="https://i.imgur.com/K9TyHwH.png" alt=""></li>
-<li>發現偵測不到改動</li>
-</ul>
-</li>
-</ol>
-<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><ul>
-<li>先把檔名改回去 test.txt</li>
-<li>打開 cmd 輸入指令，用指令更改檔名<ul>
-<li><code>git mv test.txt Test.txt</code></li>
-</ul>
-</li>
-<li>回到 Sourcetree 發現可以正常偵測到改動了</li>
-</ul>
-<h1 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h1><ul>
-<li>事不過三，這次一定記住</li>
-</ul>
-<h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><ul>
-<li><a href="https://gitbook.tw/posts/2018-06-05-case-sensitive" target="_blank" rel="noopener">關於檔名的大小寫</a></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2021/01/12/20210111_git_file_name_note/" data-id="cm3n9pvk0000quku67aemh3pe" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-20200904_laravel_migration" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/01/12/20200904_laravel_migration/" class="article-date">
-  <time datetime="2021-01-11T16:20:03.018Z" itemprop="datePublished">2021-01-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PHP/">PHP</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/12/20200904_laravel_migration/">Laravel migration 和 seed 筆記</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在接觸到 laravel 前我完全不知道有 migration 這樣的東西可以用，只會下 raw sql 去新增表格和調整欄位<br>有了 migration 可以快速 DB 環境，也算是可以對 DB table 做一個版控<br>再搭配 seed 可以把基礎資料也寫入 DB，對於搬移程式碼十分方便<br>簡直看見新大陸  <img src="https://i.imgur.com/qKlTMip.png" width=126 height=116 /></p>
-<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><ul>
-<li>OS : Windows 10</li>
-</ul>
-<h1 id="安裝流程"><a href="#安裝流程" class="headerlink" title="安裝流程"></a>安裝流程</h1><ul>
-<li>下載我的筆記用專案<ul>
-<li><code>git clone https://github.com/youmu257/laravel-note.git</code></li>
-</ul>
-</li>
-<li><code>composer install</code></li>
-<li><code>php artisan key:generate</code></li>
-<li><code>cp .env.example .env</code></li>
-<li>調整 .env<ul>
-<li>寫入你的 DB 設定<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DB_CONNECTION&#x3D;mysql</span><br><span class="line">DB_HOST&#x3D;127.0.0.1</span><br><span class="line">DB_PORT&#x3D;3306</span><br><span class="line">DB_DATABASE&#x3D;laravel</span><br><span class="line">DB_USERNAME&#x3D;user</span><br><span class="line">DB_PASSWORD&#x3D;password</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="建立-migration-檔案"><a href="#建立-migration-檔案" class="headerlink" title="建立 migration 檔案"></a>建立 migration 檔案</h1><ul>
-<li><code>php artisan make:migration create_migration_example_table</code><ul>
-<li>create_order_table 表示建立一個產生 migration_example table 的 migration</li>
-<li>會依照當前時間生成這樣的檔案 2020_09_03_162217_create_migration_example_table.php</li>
-</ul>
-</li>
-</ul>
-<h1 id="migration-寫法"><a href="#migration-寫法" class="headerlink" title="migration 寫法"></a>migration 寫法</h1><ul>
-<li>用法參考<a href="https://laravel.tw/docs/5.2/migrations" target="_blank" rel="noopener">官方文件</a>或我的 <a href="https://github.com/youmu257/laravel-note" target="_blank" rel="noopener">laravel筆記</a></li>
-</ul>
-<h1 id="執行-migration"><a href="#執行-migration" class="headerlink" title="執行 migration"></a>執行 migration</h1><ul>
-<li><code>php artisan migration</code><ul>
-<li>會執行 databases/migrations 中的有 extends Illuminate\Database\Migrations\Migration 的 class </li>
-<li>會執行所有 class 中的 up function<ul>
-<li>如建立 table 或更改欄位</li>
-<li>同時把每個更改紀錄寫入 migrations table (此為<code>php artisan migration</code>自動建立)</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>migrations table 中有一個欄位是 batch<ul>
-<li>如果要做 rollback 可以用 batch 為單位做回朔</li>
-</ul>
-</li>
-<li><code>php artisan migration:rollback</code><ul>
-<li>會執行所有 class 中的 down function<ul>
-<li>所以如果 up 是新建 table，down 就是刪除這張 table</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="Seeder"><a href="#Seeder" class="headerlink" title="Seeder"></a>Seeder</h1><ul>
-<li>都提到 migration 就一起講 seeder<ul>
-<li>基本上就是寫基本資料進資料庫</li>
-</ul>
-</li>
-<li>建立 seeder 指令是 <code>php artisan make:seeder UsersTableSeeder</code><ul>
-<li>UsersTableSeeder 是要建立的 seeder 檔名</li>
-</ul>
-</li>
-<li>會發現預設就有一個 DatabaseSeeder，用途是控制要執行哪些 seeder<ul>
-<li>在 migration 時帶 –seed 參數會執行 DatabaseSeeder<ul>
-<li><code>php artisan migration --seed</code></li>
-</ul>
-</li>
-<li>單純執行 DatabaseSeeder 用 <code>php artisan db:seed</code></li>
-</ul>
-</li>
-<li>如果要執行特定的 seeder 帶 –class 參數<ul>
-<li><code>php artisan db:seed --class=UserTableSeeder</code></li>
-</ul>
-</li>
-</ul>
-<h1 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h1><ul>
-<li>DB schema 的版控機制<ul>
-<li>migration 除了在新環境可以快速建立起基本的 DB 外，同時也能做快速的 rollback</li>
-</ul>
-</li>
-<li>寫得好還可以當一種文件看，寫不好一個 rollback 毀天滅地</li>
-</ul>
-<h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><ul>
-<li><a href="https://laravel.tw/docs/5.2/migrations" target="_blank" rel="noopener">Laravel migration</a></li>
-<li><a href="https://laravel.tw/docs/5.2/seeding" target="_blank" rel="noopener">Laravel Seeder</a></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2021/01/12/20200904_laravel_migration/" data-id="cm3n9pvjc000buku67hn09vlr" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-20200831_rethinkdb" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/31/20200831_rethinkdb/" class="article-date">
-  <time datetime="2020-08-31T14:57:35.374Z" itemprop="datePublished">2020-08-31</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%B3%87%E6%96%99%E5%BA%AB/">資料庫</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/31/20200831_rethinkdb/">rethinkDB 筆記</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>上一篇記錄 <a href="https://youmu257.github.io/2020/08/31/20200831_stf/">stf 的安裝流程</a>，其中有使用到 rethinkdb<br>當時再用時看了老半天才發現他那看起來像 ORM 的寫法就是他的語法<br>害我看教學看好久，想說怎麼都沒有寫 raw sql 的語法</p>
-<h1 id="介紹"><a href="#介紹" class="headerlink" title="介紹"></a>介紹</h1><p>主要講 rethinkDB 的特色，他與傳統資料庫的差異在於適合用於實時的系統上<br>傳統資料在如果要確保資料是最新的必須一直下 SELECT 指令去檢查資料是否有變動<br>但 ReQL (rethinkDB 的查詢語法) 可以用 <a href="https://rethinkdb.com/docs/changefeeds/ruby/" target="_blank" rel="noopener">Changefeeds</a> 去監聽資料是否變動，大幅降低不必要的 request</p>
-<h2 id="後台"><a href="#後台" class="headerlink" title="後台"></a>後台</h2><ul>
-<li><p>確定 rethinkDB 正常運作</p>
-<ul>
-<li>sudo /etc/init.d/rethinkdb start</li>
-</ul>
-</li>
-<li><p>打開瀏覽器輸入 <a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a><br>  <img src="https://i.imgur.com/NryMN3s.png" alt=""></p>
-</li>
-<li><p>切到 Data Explorer</p>
-</li>
-<li><p>輸入指令即可操作 DB</p>
-</li>
-</ul>
-<h2 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h2><ul>
-<li>新建資料庫<ul>
-<li><code>r.dbCreate(&quot;test&quot;)</code></li>
-<li>按下 run，成功會回傳資訊<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;config_changes&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;new_val&quot;: &#123;</span><br><span class="line">                &quot;id&quot;: &quot;e55b79bb-32e8-44d6-9911-d3d44c5cfc5a&quot; ,</span><br><span class="line">                &quot;name&quot;: &quot;test&quot;</span><br><span class="line">            &#125; ,</span><br><span class="line">            &quot;old_val&quot;: null</span><br><span class="line">        &#125;</span><br><span class="line">    ] ,</span><br><span class="line">    &quot;dbs_created&quot;: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>新建 table<ul>
-<li><code>r.db(&quot;test&quot;).tableCreate(&quot;test1&quot;)</code></li>
-<li>按下 run，成功會回傳資訊<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;config_changes&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;new_val&quot;: &#123;</span><br><span class="line">                &quot;db&quot;: &quot;test&quot; ,</span><br><span class="line">                &quot;durability&quot;: &quot;hard&quot; ,</span><br><span class="line">                &quot;id&quot;: &quot;48be759d-7179-498d-be98-6bc45ab9ae46&quot; ,</span><br><span class="line">                &quot;indexes&quot;: [ ],</span><br><span class="line">                &quot;name&quot;: &quot;table1&quot; ,</span><br><span class="line">                &quot;primary_key&quot;: &quot;id&quot; ,</span><br><span class="line">                &quot;shards&quot;: [</span><br><span class="line">                    &#123;</span><br><span class="line">                        &quot;nonvoting_replicas&quot;: [ ],</span><br><span class="line">                        &quot;primary_replica&quot;: &quot;debian_aav&quot; ,</span><br><span class="line">                        &quot;replicas&quot;: [</span><br><span class="line">                            &quot;debian_aav&quot;</span><br><span class="line">                        ]</span><br><span class="line">                    &#125;</span><br><span class="line">                ] ,</span><br><span class="line">                &quot;write_acks&quot;: &quot;majority&quot; ,</span><br><span class="line">                &quot;write_hook&quot;: null</span><br><span class="line">            &#125; ,</span><br><span class="line">            &quot;old_val&quot;: null</span><br><span class="line">        &#125;</span><br><span class="line">    ] ,</span><br><span class="line">    &quot;tables_created&quot;: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>insert 資料<ul>
-<li>寫入資料以 json 格式<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">r.db(&quot;test&quot;).table(&quot;table1&quot;).insert(&#123;</span><br><span class="line">    id: 1,</span><br><span class="line">    title: &quot;test title&quot;,</span><br><span class="line">    content: &quot;test content&quot;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
-<li>按下 run，成功會回傳資訊<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;deleted&quot;: 0 ,</span><br><span class="line">    &quot;errors&quot;: 0 ,</span><br><span class="line">    &quot;inserted&quot;: 1 ,</span><br><span class="line">    &quot;replaced&quot;: 0 ,</span><br><span class="line">    &quot;skipped&quot;: 0 ,</span><br><span class="line">    &quot;unchanged&quot;: 0</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>取得資料<ul>
-<li>get 只能用於主鍵<ul>
-<li><code>r.db(&quot;test&quot;).table(&quot;table1&quot;).get(1)</code></li>
-<li>按下 run，成功會回傳資訊<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;id&quot;: 1,</span><br><span class="line">    &quot;title&quot;: &quot;test title&quot;,</span><br><span class="line">    &quot;content&quot;: &quot;test content&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>filter 可以當成 where 條件<ul>
-<li><code>r.db(&quot;test&quot;).table(&quot;table1&quot;).filter({title: &quot;test title&quot;})</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>更新資料<ul>
-<li>先取得得資料才能更新，跟下 where 條件的概念一樣</li>
-<li><code>r.db(&quot;test&quot;).table(&quot;table1&quot;).get(1).update({title: &quot;new title&quot;})</code></li>
-</ul>
-</li>
-</ul>
-<h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><ul>
-<li><a href="https://rethinkdb.com/docs/changefeeds/ruby/" target="_blank" rel="noopener">Changefeeds in RethinkDB</a></li>
-<li><a href="https://medium.com/bryanyang0528/rethink-db-%E5%88%9D%E6%8E%A2-42d4d477a72b" target="_blank" rel="noopener">Rethink DB 初探</a></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2020/08/31/20200831_rethinkdb/" data-id="cm3n9pvjb0009uku66ozkccfe" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-20200831_stf" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/31/20200831_stf/" class="article-date">
-  <time datetime="2020-08-30T17:27:03.884Z" itemprop="datePublished">2020-08-31</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7%E6%95%99%E5%AD%B8/">工具教學</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/31/20200831_stf/">openSTF 安裝筆記</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本來想先寫 laravel 的筆記，但工作上剛好碰到 openstf 就先來記錄一下安裝流程<br>畢竟這專案沒有繼續維護了，有些套件需要限定版本才能安裝，安裝起來一堆麻煩問題<br>簡單說一下，STF 是一套用 angular 和 nodejs 寫的手機控制系統<br>讓你可以遠端操作實體手機做任何操作，甚至安裝app<br>實現做法是透過 adb 對手機下指令，再搭配 rethinkdb 紀錄裝置資訊<br>我後續也會再寫一篇 rethinkdb 的簡易教學(用法太特別了，跟SQL完全不同) </p>
-<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><ul>
-<li>OS : Debian 10</li>
-<li>VMware Workstation 15 Player</li>
-</ul>
-<h1 id="安裝流程"><a href="#安裝流程" class="headerlink" title="安裝流程"></a>安裝流程</h1><h2 id="安裝-NVM"><a href="#安裝-NVM" class="headerlink" title="安裝 NVM"></a>安裝 NVM</h2><ul>
-<li>下載NVM<ul>
-<li>curl -o- <a href="https://raw.githubusercontent.com/creationix/nvm/v0.33.5/install.sh" target="_blank" rel="noopener">https://raw.githubusercontent.com/creationix/nvm/v0.33.5/install.sh</a> | bash</li>
-</ul>
-</li>
-<li>source ~/.bashrc</li>
-<li>nvm install 8.8.1 –delete-prefix</li>
-<li>確認 NVM 是否安裝成功，安裝成功的話 npm 就可以使用了<ul>
-<li>nvm –version</li>
-<li>npm -v</li>
-</ul>
-</li>
-</ul>
-<h2 id="開始安裝和設定-NPM"><a href="#開始安裝和設定-NPM" class="headerlink" title="開始安裝和設定 NPM"></a>開始安裝和設定 NPM</h2><ul>
-<li>mkdir ~/.npm-global</li>
-<li>安裝 npm 為 6.14.5 版本太新後續會有問題<ul>
-<li>npm install -g <a href="mailto:npm@6.14.5">npm@6.14.5</a></li>
-</ul>
-</li>
-<li>npm config set prefix ‘~/.npm-global’</li>
-<li>vi ~/.profile<ul>
-<li>添加 PATH=~/.npm-global/bin:$PATH</li>
-</ul>
-</li>
-<li>nvm use –delete-prefix v8.8.1 –silent</li>
-<li>source ~/.profile</li>
-<li>NPM_CONFIG=~/.npm-global</li>
-</ul>
-<h2 id="安裝必要套件"><a href="#安裝必要套件" class="headerlink" title="安裝必要套件"></a>安裝必要套件</h2><ul>
-<li>nvm use –delete-prefix v8.8.1</li>
-<li>npm install -g bower gulp<ul>
-<li>確認安裝是否成功<ul>
-<li>bower -v</li>
-<li>gulp -v</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>npm install -g node-sass</li>
-<li>npm install -g gulp-sourcemaps/map-sources</li>
-<li>sudo apt-get install -y yasm pkg-config</li>
-</ul>
-<h2 id="安裝-ADB"><a href="#安裝-ADB" class="headerlink" title="安裝 ADB"></a>安裝 ADB</h2><ul>
-<li>sudo mkdir -p /usr/local/android-sdk</li>
-<li>cd /usr/local/android-sdk/</li>
-<li>sudo curl -OL <a href="https://dl.google.com/android/repository/platform-tools-latest-linux.zip" target="_blank" rel="noopener">https://dl.google.com/android/repository/platform-tools-latest-linux.zip</a></li>
-<li>sudo unzip platform-tools-latest-linux.zip</li>
-<li>sudo rm -f platform-tools-latest-linux.zip</li>
-<li>sudo ln -s /usr/local/android-sdk/platform-tools/adb /usr/bin/adb</li>
-<li>export PATH=/usr/local/android-sdk/platform-tools:${PATH}</li>
-<li>sudo echo “export PATH=/usr/local/android-sdk/platform-tools:${PATH}” &gt;&gt; /etc/profile</li>
-<li>檢查 ADB 是否安裝成功<ul>
-<li>adb version</li>
-</ul>
-</li>
-</ul>
-<h2 id="安裝-rethinkDB"><a href="#安裝-rethinkDB" class="headerlink" title="安裝 rethinkDB"></a>安裝 rethinkDB</h2><ul>
-<li>sudo echo “deb <a href="http://download.rethinkdb.com/repository/debian-$" target="_blank" rel="noopener">http://download.rethinkdb.com/repository/debian-$</a>(lsb_release -cs) $(lsb_release -sc) main” | sudo tee /etc/apt/sources.list.d/rethinkdb.list</li>
-<li>sudo wget -qO- <a href="https://download.rethinkdb.com/repository/raw/pubkey.gpg" target="_blank" rel="noopener">https://download.rethinkdb.com/repository/raw/pubkey.gpg</a> | sudo apt-key add -</li>
-<li>sudo apt-get update</li>
-<li>sudo apt-get install -y rethinkdb</li>
-<li>sudo cp /etc/rethinkdb/default.conf.sample /etc/rethinkdb/instances.d/instance1.conf</li>
-<li>重啟 rethinDB<ul>
-<li>sudo /etc/init.d/rethinkdb restart</li>
-</ul>
-</li>
-</ul>
-<h2 id="安裝-Protocol-Buffers-libaries"><a href="#安裝-Protocol-Buffers-libaries" class="headerlink" title="安裝 Protocol Buffers libaries"></a>安裝 Protocol Buffers libaries</h2><ul>
-<li>sudo apt-get install -y graphicsmagick libzmq3-dev</li>
-<li>裝 3.0.0 版，3.0.0 以下的不支援了</li>
-<li>wget <a href="https://github.com/google/protobuf/releases/download/v3.0.0/protobuf-js-3.0.0.tar.gz" target="_blank" rel="noopener">https://github.com/google/protobuf/releases/download/v3.0.0/protobuf-js-3.0.0.tar.gz</a></li>
-<li>tar -zxvf protobuf-js-3.0.0.tar.gz</li>
-<li>rm protobuf-js-3.0.0.tar.gz</li>
-<li>cd protobuf-3.0.0</li>
-<li>./configure<ul>
-<li>如果出現 configure: error: no acceptable C compiler found in $PATH</li>
-<li>安裝 gcc<ul>
-<li>sudo apt-get install -y build-essential manpages-dev</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>make;make check;make install<ul>
-<li>這會跑 10 分鐘以上，可以放著先去做別的事</li>
-</ul>
-</li>
-<li>sudo /usr/sbin/ldconfig</li>
-<li>確認是否安裝成功<ul>
-<li>protoc –version</li>
-</ul>
-</li>
-</ul>
-<h2 id="安裝-STF"><a href="#安裝-STF" class="headerlink" title="安裝 STF"></a>安裝 STF</h2><ul>
-<li>npm install -g stf –unsafe-perm</li>
-<li>下載 OpenSTF 專案<ul>
-<li>git clone <a href="https://github.com/openstf/stf.git" target="_blank" rel="noopener">https://github.com/openstf/stf.git</a></li>
-</ul>
-</li>
-<li>cd stf</li>
-<li>nvm use 8.8.1</li>
-<li>npm install</li>
-<li>bower install</li>
-<li>gulp build<ul>
-<li>如果出現錯誤刪掉 node_modules 資料夾再重新 npm install</li>
-</ul>
-</li>
-<li>npm link<ul>
-<li>與 stf 連結，確保 stf 是執行當前專案</li>
-</ul>
-</li>
-<li>確認 stf 相關套件都安裝完成<ul>
-<li>stf doctor<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">2020-08-30T17:14:48.535Z INF&#x2F;cli:doctor 29931 [*] OS Arch: x64</span><br><span class="line">2020-08-30T17:14:48.537Z INF&#x2F;cli:doctor 29931 [*] OS Platform: linux</span><br><span class="line">2020-08-30T17:14:48.537Z INF&#x2F;cli:doctor 29931 [*] OS Platform: 4.19.0-10-amd64</span><br><span class="line">2020-08-30T17:14:48.537Z INF&#x2F;cli:doctor 29931 [*] Using Node 8.8.1</span><br><span class="line">2020-08-30T17:14:48.554Z INF&#x2F;cli:doctor 29931 [*] Using ZeroMQ 4.3.1</span><br><span class="line">2020-08-30T17:14:48.579Z INF&#x2F;cli:doctor 29931 [*] Using ADB 1.0.41</span><br><span class="line">2020-08-30T17:14:48.588Z INF&#x2F;cli:doctor 29931 [*] Using ProtoBuf 3.0.0</span><br><span class="line">2020-08-30T17:14:48.608Z INF&#x2F;cli:doctor 29931 [*] Using GraphicsMagick 1.3.35</span><br><span class="line">2020-08-30T17:14:48.618Z INF&#x2F;cli:doctor 29931 [*] Using RethinkDB 2.4.1~0buster</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>執行 stf<ul>
-<li>stf local </li>
-<li>如果是要開放遠端連線<ul>
-<li><code>stf local --cleanup --public-ip 192.168.137.129 --group-timeout 900 --allow-remote</code></li>
-<li>把 192.168.137.129 改成你的 IP</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>打開瀏覽器輸入 localhost:7100<ul>
-<li>成功的話可以看這個畫面，任意輸入名稱跟信箱即可登入<br><img src="https://i.imgur.com/IkW72K0.png" alt=""></li>
-</ul>
-</li>
-</ul>
-<h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><ul>
-<li><a href="https://github.com/openstf/stf" target="_blank" rel="noopener">OpenSTF</a></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2020/08/31/20200831_stf/" data-id="cm3n9pvj90007uku6a660fk7m" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-20200826_nginx" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/26/20200826_nginx/" class="article-date">
-  <time datetime="2020-08-26T15:02:17.687Z" itemprop="datePublished">2020-08-26</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7%E6%95%99%E5%AD%B8/">工具教學</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/26/20200826_nginx/">Nginx 相關筆記</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>第一次碰到 nginx 是在使用 laradock 時，一個輕量設定又簡單的好東西<br>查了一下發現 nginx 在大流量的服務上比起 apache 可以更有效率的處理 request</p>
-<h3 id="好-nginx-不用嗎"><a href="#好-nginx-不用嗎" class="headerlink" title="好 nginx 不用嗎"></a>好 nginx 不用嗎</h3><p><img src="https://pic.pimg.tw/kkjerone/1314647692-695131654.jpg" alt=""></p>
-<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><ul>
-<li>OS : Debian 10</li>
-<li>VMware Workstation 15 Player</li>
-</ul>
-<h1 id="安裝-nginx"><a href="#安裝-nginx" class="headerlink" title="安裝 nginx"></a>安裝 nginx</h1><ul>
-<li><p>安裝 nginx</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install -y nginx</span><br></pre></td></tr></table></figure></li>
-<li><p>確認是否成功啟用</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status nginx</span><br></pre></td></tr></table></figure></li>
-<li><p>前往本地IP位置</p>
-<ul>
-<li><p>確認當前VM IP</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip addr</span><br></pre></td></tr></table></figure></li>
-<li><p>在瀏覽器打上 http://{你的VM IP}</p>
-</li>
-<li><p>看到此畫面就表示 nginx 成功啟動</p>
-<p><img src="https://i.imgur.com/wehxlRU.png" alt=""></p>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="設定-nginx-以-larveal-為例"><a href="#設定-nginx-以-larveal-為例" class="headerlink" title="設定 nginx 以 larveal 為例"></a>設定 nginx 以 larveal 為例</h1><ul>
-<li>先安裝 laravel 可以參考<a href="https://youmu257.github.io/2020/08/07/20200807_laravel/">這篇</a></li>
-<li>把 laravel 專案放到 <code>/var/www/html</code> 中</li>
-<li>到 <code>/etc/nginx/site-available</code> 中<ul>
-<li>可以看到 <code>default</code> 檔案，這就是預設的設定檔</li>
-</ul>
-</li>
-<li>打開 default 可以看到 server 的設定，先講常用的設定<ul>
-<li>root 是用來設定指向到的專案路徑</li>
-<li>index 是指定入口檔案有哪些</li>
-<li>server_name 可以設定特定 host 指向到當前設定的路徑</li>
-</ul>
-</li>
-<li>複製一個新的設定檔<ul>
-<li><code>cp default laravel</code></li>
-<li>編輯設定檔<ul>
-<li>先把 server 中的 default_server 移除</li>
-<li>把 root 指向到自己專案底下的 public</li>
-<li>調整 server_name 為自己的 host name</li>
-<li>fastcgi_pass 指向到安裝的 php 版本</li>
-<li>最後設定檔如下<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80 default_server;</span><br><span class="line">    listen [::]:80 default_server;</span><br><span class="line"></span><br><span class="line">    root &#x2F;var&#x2F;www&#x2F;html&#x2F;laravel&#x2F;public;</span><br><span class="line"></span><br><span class="line">    # Add index.php to the list if you are using PHP</span><br><span class="line">    index index.html index.htm index.nginx-debian.html index.php;</span><br><span class="line"></span><br><span class="line">    server_name leo-laravel.com;</span><br><span class="line"></span><br><span class="line">    location &#x2F; &#123;</span><br><span class="line">        try_files $uri $uri&#x2F; &#x2F;index.php?$query_string;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    # pass PHP scripts to FastCGI server</span><br><span class="line">    location ~ \.php$ &#123;</span><br><span class="line">        include snippets&#x2F;fastcgi-php.conf;</span><br><span class="line"></span><br><span class="line">        fastcgi_pass unix:&#x2F;run&#x2F;php&#x2F;php7.3-fpm.sock;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>如果有調整設定檔，記得要要 reload 設定才會生效<ul>
-<li><code>sudo nginx -s reload</code></li>
-</ul>
-</li>
-<li>這時打開瀏覽器輸入 <code>http://leo-laravel.com/api/hello</code><ul>
-<li>如果是找不到網頁，表示 host 沒有設定<ul>
-<li><code>vim /etc/hosts</code> 加入 <code>127.0.0.1 leo-laravel.com</code></li>
-</ul>
-</li>
-<li>如果是出現 500 server error<ul>
-<li>我在安裝時碰到這個問題時的解法是調整 storage 和 bootstrap 的權限<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;var&#x2F;www&#x2F;html&#x2F;laravel</span><br><span class="line">chmod -R 777 storage</span><br><span class="line">chmod -R 775 bootstrap</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>然後就可以成功看到瀏覽器上印出 hello 了<h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1></li>
-</ul>
-</li>
-<li><a href="https://peterli.website/%e5%9c%a8ubuntu-16-04-%e4%b8%8a%e6%9e%b6%e8%a8%adnginxphp7/" target="_blank" rel="noopener">在Ubuntu 16.04 上架設Nginx + PHP 7</a></li>
-<li><a href="https://laracasts.com/discuss/channels/servers/fixing-http-error-500-nginx-for-every-laravel-route" target="_blank" rel="noopener">Fixing HTTP ERROR 500 (nginx) for every Laravel route</a></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2020/08/26/20200826_nginx/" data-id="cm3n9pvj80005uku65rtrd9pn" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-20200728_Xshell_VM" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/07/20200728_Xshell_VM/" class="article-date">
-  <time datetime="2020-08-06T17:17:11.529Z" itemprop="datePublished">2020-08-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7%E6%95%99%E5%AD%B8/">工具教學</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/07/20200728_Xshell_VM/">用 Xshell 連線進 VituralBox</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h3><p>最近工作公司電腦擋了一堆軟體安裝的權限，只好裝VM起來用，結果連在 VituralBox 上安裝 Guest Additions 也要申請權限。<br>看著超小的畫面也不能共享剪貼簿痛苦萬分之時，前輩對我說怎麼不用 Xshell，反正也只需要 terminal 操作。<br>那就來裝 Xshell 吧!</p>
-<h2 id="安裝-Xshell"><a href="#安裝-Xshell" class="headerlink" title="安裝 Xshell"></a>安裝 Xshell</h2><ul>
-<li>前往 <a href="https://www.netsarang.com/en/free-for-home-school/" target="_blank" rel="noopener">官網免費載點</a></li>
-<li>填寫信箱後會把載點寄到你的信箱</li>
-</ul>
-<p><img src="https://i.imgur.com/oUmQ5EV.png" alt=""></p>
-<ul>
-<li>下載後並安裝</li>
-</ul>
-<h2 id="確認-VM-IP"><a href="#確認-VM-IP" class="headerlink" title="確認 VM IP"></a>確認 VM IP</h2><ul>
-<li>打開 VituralBox<ul>
-<li>本紀錄 OS 是用 Debian 10</li>
-</ul>
-</li>
-<li>打開 terminal</li>
-<li>如果還沒有安裝 OpenSSH 的話，先安裝OpenSSH<ul>
-<li><code>apt-get install -y openssh-server</code></li>
-</ul>
-</li>
-<li>輸入 <code>ip addr</code>確認目VM的IP位置</li>
-</ul>
-<p><img src="https://i.imgur.com/MbacXNS.png" alt=""></p>
-<ul>
-<li><p>如果看到的不是 192.168.X.X 的 IP 檢查一下網路設定</p>
-<ul>
-<li><p>本紀錄是用橋接介面卡</p>
-<p><img src="https://i.imgur.com/nyM6uw5.png" alt=""></p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="打開Xshell"><a href="#打開Xshell" class="headerlink" title="打開Xshell"></a>打開Xshell</h2><ul>
-<li>新增連線</li>
-<li><strong>名稱</strong> 可以輸入自定義的名子</li>
-<li><strong>主機</strong> 輸入VM的IP</li>
-</ul>
-<p><img src="https://i.imgur.com/Rb5cdNJ.png" alt=""></p>
-<ul>
-<li>因為是本地VM 所以就用簡單的密碼登入</li>
-</ul>
-<p><img src="https://i.imgur.com/KNhgTjy.png" alt=""></p>
-<ul>
-<li>最後按連線，一定因為是本機 VM 就按「接受及存檔」吧</li>
-</ul>
-<p><img src="https://i.imgur.com/rE2yOu7.png" alt=""></p>
-<ul>
-<li><p>成功的話就會連上去了</p>
-<p><img src="https://i.imgur.com/iVv4aK8.png" alt=""></p>
-</li>
-</ul>
-<h2 id="題外話"><a href="#題外話" class="headerlink" title="題外話"></a>題外話</h2><ul>
-<li>目前的 IP 其實不是固定的，所以重開 VM 後可能會改變就要重調連線設定</li>
-<li><strong>那就設定成固定 IP 吧!</strong></li>
-<li>編輯網路設定 <code>vim /etc/network/interfaces</code></li>
-<li>輸入  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">iface enp0s3 inet static</span><br><span class="line">address 192.168.1.103</span><br><span class="line">netmask 255.255.255.0</span><br><span class="line">gateway 192.168.1.254</span><br></pre></td></tr></table></figure></li>
-<li>網路設定一樣看 <code>ip addr</code></li>
-<li>這時馬上就能用 Xshell，邊看設定邊編輯</li>
-</ul>
-<p><img src="https://i.imgur.com/2DYDy0v.png" alt=""></p>
-<ul>
-<li>最後記得要重啟網路<ul>
-<li><code>/etc/init.d/networking restart</code></li>
-</ul>
-</li>
-</ul>
-<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
-<li>前輩親手教學</li>
-<li><a href="https://kingjoy1235.pixnet.net/blog/post/28565594" target="_blank" rel="noopener">Debian 手動與自動設定IP</a></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2020/08/07/20200728_Xshell_VM/" data-id="cm3n9pviy0000uku69xd75qr9" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2021/01/12/20201114_laravel_send_pdf_mail/" data-id="cml3olssu000cio9z87hxa31e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1059,7 +1140,7 @@
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -1085,7 +1166,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">十一月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/02/">二月 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/01/">一月 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">五月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">十一月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li></ul>
     </div>
   </div>
 
@@ -1098,23 +1179,23 @@
       <ul>
         
           <li>
-            <a href="/2024/11/19/20241119_jieba_sample/">在 asp.net 用 Jieba 做中文斷詞</a>
+            <a href="/2026/02/01/20260201_mee6_discord_leveling/">MEE6 等級系統教學 - 發言經驗值與排行榜</a>
           </li>
         
           <li>
-            <a href="/2024/08/15/20240815_get_youtube_api_key/">取得 Youtube API 金鑰</a>
+            <a href="/2026/02/01/20260201_mee6_discord_twitter/">MEE6 連結 X(Twitter) 通知教學</a>
           </li>
         
           <li>
-            <a href="/2021/01/12/20201107_laravel_send_mail/">Laravel 寄信範例</a>
+            <a href="/2026/02/01/20260201_mee6_discord_youtube/">MEE6 連結 YouTube 通知教學</a>
           </li>
         
           <li>
-            <a href="/2021/01/12/20201114_laravel_send_pdf_mail/">Laravel 寄信夾帶 PDF 範例</a>
+            <a href="/2026/01/29/20260129_mee6_discord_reaction_roles/">MEE6 建立 Discord 反應身分組設定 - 規範同意後才能進入討論區</a>
           </li>
         
           <li>
-            <a href="/2021/01/12/20210111_git_file_name_note/">Sourcetree 檔名大小寫偵測不到問題</a>
+            <a href="/2026/01/29/20260129_mee6_discord_welcome/">MEE6 建立 Discord 歡迎新用戶加入的設定</a>
           </li>
         
       </ul>
@@ -1129,7 +1210,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2024 Leo Li<br>
+      &copy; 2026 Leo Li<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

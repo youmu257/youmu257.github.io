@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>MEE6 連結 YouTube 通知教學 | Leo&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言MEE6 是 Discord 上非常熱門的機器人，其中一個實用功能就是可以連結 YouTube 頻道，當有新影片上傳時自動發送通知到指定頻道。本篇將介紹兩種設定方式，並說明各自的優缺點。 環境 MEE6 Bot（需要加入你的 Discord 伺服器） YouTube 頻道  方法一：直接連結 YouTube 頻道(比較不推薦)設定步驟 進入 MEE6 Dashboard 選擇你的 Discor">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MEE6 連結 YouTube 通知教學">
+<meta property="og:url" content="https://youmu257.github.io/2026/02/01/20260201_mee6_discord_youtube/index.html">
+<meta property="og:site_name" content="Leo&#39;s Blog">
+<meta property="og:description" content="前言MEE6 是 Discord 上非常熱門的機器人，其中一個實用功能就是可以連結 YouTube 頻道，當有新影片上傳時自動發送通知到指定頻道。本篇將介紹兩種設定方式，並說明各自的優缺點。 環境 MEE6 Bot（需要加入你的 Discord 伺服器） YouTube 頻道  方法一：直接連結 YouTube 頻道(比較不推薦)設定步驟 進入 MEE6 Dashboard 選擇你的 Discor">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://youmu257.github.io/images/mee6_discord_youtube3-1.png">
+<meta property="og:image" content="https://youmu257.github.io/images/mee6_discord_youtube3-2.png">
+<meta property="og:image" content="https://youmu257.github.io/images/mee6_discord_youtube3-3.png">
+<meta property="article:published_time" content="2026-02-01T09:07:34.204Z">
+<meta property="article:modified_time" content="2026-02-01T09:28:12.352Z">
+<meta property="article:author" content="Leo Li">
+<meta property="article:tag" content="技術筆記">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://youmu257.github.io/images/mee6_discord_youtube3-1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Leo&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Leo&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://youmu257.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-20260201_mee6_discord_youtube" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2026/02/01/20260201_mee6_discord_youtube/" class="article-date">
+  <time datetime="2026-02-01T09:07:34.204Z" itemprop="datePublished">2026-02-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7%E6%95%99%E5%AD%B8/">工具教學</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      MEE6 連結 YouTube 通知教學
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>MEE6 是 Discord 上非常熱門的機器人，其中一個實用功能就是可以連結 YouTube 頻道，當有新影片上傳時自動發送通知到指定頻道。本篇將介紹兩種設定方式，並說明各自的優缺點。</p>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><ul>
+<li>MEE6 Bot（需要加入你的 Discord 伺服器）</li>
+<li>YouTube 頻道</li>
+</ul>
+<h2 id="方法一：直接連結-YouTube-頻道-比較不推薦"><a href="#方法一：直接連結-YouTube-頻道-比較不推薦" class="headerlink" title="方法一：直接連結 YouTube 頻道(比較不推薦)"></a>方法一：直接連結 YouTube 頻道(比較不推薦)</h2><h3 id="設定步驟"><a href="#設定步驟" class="headerlink" title="設定步驟"></a>設定步驟</h3><ol>
+<li>進入 <a target="_blank" rel="noopener" href="https://mee6.xyz/dashboard">MEE6 Dashboard</a></li>
+<li>選擇你的 Discord 伺服器</li>
+<li>點擊左側選單的 <strong>社群通知</strong></li>
+<li>找到 <strong>YouTube 通知</strong> 並點擊啟用</li>
+<li>輸入要追蹤的 YouTube 頻道網址或名稱</li>
+<li>選擇要發送通知的 Discord 頻道</li>
+<li>自訂通知訊息（可選）</li>
+<li>儲存設定</li>
+</ol>
+<h3 id="限制說明"><a href="#限制說明" class="headerlink" title="限制說明"></a>限制說明</h3><p>⚠️ <strong>重要提醒：此方法對直播待機室（Premiere&#x2F;預告）無效！</strong></p>
+<p>MEE6 的 YouTube 直接連結功能是透過偵測「新上傳的影片」來觸發通知。這代表：</p>
+<ul>
+<li>✅ 一般上傳影片：正常通知</li>
+<li>❌ 直播待機室：<strong>不會通知</strong></li>
+<li>❌ 預定首播（Premiere）：<strong>不會通知</strong></li>
+<li>✅ 直播結束後：當直播結束並轉為影片存檔時，才會發送通知</li>
+</ul>
+<p>如果你需要在直播開始前（待機室階段）就收到通知，請使用下方的 RSS 訂閱方法。</p>
+<h2 id="方法二：使用-RSS-訂閱（推薦）"><a href="#方法二：使用-RSS-訂閱（推薦）" class="headerlink" title="方法二：使用 RSS 訂閱（推薦）"></a>方法二：使用 RSS 訂閱（推薦）</h2><p>RSS 訂閱可以更即時地偵測到頻道的新內容，包含直播待機室。</p>
+<h3 id="步驟一：取得-YouTube-Channel-ID"><a href="#步驟一：取得-YouTube-Channel-ID" class="headerlink" title="步驟一：取得 YouTube Channel ID"></a>步驟一：取得 YouTube Channel ID</h3><p>YouTube Channel ID 是一串以 <code>UC</code> 開頭的識別碼，取得方式如下：</p>
+<h4 id="方法-A：從頻道頁面網址取得"><a href="#方法-A：從頻道頁面網址取得" class="headerlink" title="方法 A：從頻道頁面網址取得"></a>方法 A：從頻道頁面網址取得</h4><ol>
+<li>前往該 YouTube 頻道頁面</li>
+<li>查看網址列，格式可能是：<ul>
+<li><code>https://www.youtube.com/channel/UC123456789abcdefg</code> → <code>UC123456789abcdefg</code> 就是 Channel ID</li>
+<li>如果網址是 <code>https://www.youtube.com/@頻道名稱</code>，請用下面的方法</li>
+</ul>
+</li>
+</ol>
+<h4 id="方法-B：從頻道頁面原始碼取得"><a href="#方法-B：從頻道頁面原始碼取得" class="headerlink" title="方法 B：從頻道頁面原始碼取得"></a>方法 B：從頻道頁面原始碼取得</h4><ol>
+<li>前往該 YouTube 頻道頁面</li>
+<li>按下 <code>Ctrl + U</code> 開啟原始碼</li>
+<li>按下 <code>Ctrl + F</code> 搜尋 <code>channel_id</code></li>
+<li>找到類似 <code>channel_id=UC123456789abcdefg</code> 的內容</li>
+<li><code>UC</code> 開頭的那串就是 Channel ID</li>
+</ol>
+<h4 id="方法-C：使用線上工具"><a href="#方法-C：使用線上工具" class="headerlink" title="方法 C：使用線上工具"></a>方法 C：使用線上工具</h4><ol>
+<li>前往 <a target="_blank" rel="noopener" href="https://commentpicker.com/youtube-channel-id.php">Comment Picker - YouTube Channel ID</a></li>
+<li>貼上頻道網址</li>
+<li>點擊查詢即可取得 Channel ID</li>
+</ol>
+<h3 id="步驟二：生成-RSS-連結"><a href="#步驟二：生成-RSS-連結" class="headerlink" title="步驟二：生成 RSS 連結"></a>步驟二：生成 RSS 連結</h3><p>取得 Channel ID 後，將其代入以下 RSS 格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.youtube.com/feeds/videos.xml?channel_id=你的CHANNEL_ID</span><br></pre></td></tr></table></figure>
+
+<p>以祈菈‧貝希毛絲的頻道為例 Channel ID 是 <code>UCcOWs8dB_1w9GGYUU6TGATg</code>，則 RSS 連結為：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.youtube.com/feeds/videos.xml?channel_id=UCcOWs8dB_1w9GGYUU6TGATg</span><br></pre></td></tr></table></figure>
+
+<h3 id="步驟三：在-MEE6-設定-RSS-訂閱"><a href="#步驟三：在-MEE6-設定-RSS-訂閱" class="headerlink" title="步驟三：在 MEE6 設定 RSS 訂閱"></a>步驟三：在 MEE6 設定 RSS 訂閱</h3><ol>
+<li>進入 <a target="_blank" rel="noopener" href="https://mee6.xyz/dashboard">MEE6 Dashboard</a></li>
+<li>選擇你的 Discord 伺服器</li>
+<li>點擊左側選單的 <strong>設尋通知</strong></li>
+<li>找到 <strong>RSS 訂閱</strong> 並點擊啟用，建立我的 RSS 來源<br><img src="/images/mee6_discord_youtube3-1.png"></li>
+<li>在 RSS URL 欄位貼上剛才生成的 RSS 連結</li>
+<li>選擇要發送通知的 Discord 頻道<br><img src="/images/mee6_discord_youtube3-2.png"></li>
+<li>儲存設定</li>
+<li>完成會出現一筆啟用的 RSS 訂閱<br><img src="/images/mee6_discord_youtube3-3.png"></li>
+<li>Discord 會馬上收到一筆最新的 youtube 影片&#x2F;直播通知</li>
+</ol>
+<h2 id="兩種方法比較"><a href="#兩種方法比較" class="headerlink" title="兩種方法比較"></a>兩種方法比較</h2><table>
+<thead>
+<tr>
+<th>項目</th>
+<th>直接連結 YouTube</th>
+<th>RSS 訂閱</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>設定難度</td>
+<td>⭐ 簡單</td>
+<td>⭐⭐ 中等</td>
+</tr>
+<tr>
+<td>一般影片通知</td>
+<td>✅ 支援</td>
+<td>✅ 支援</td>
+</tr>
+<tr>
+<td>直播待機室通知</td>
+<td>❌ 不支援</td>
+<td>✅ 支援</td>
+</tr>
+<tr>
+<td>通知速度</td>
+<td>較慢</td>
+<td>較快</td>
+</tr>
+<tr>
+<td>穩定性</td>
+<td>穩定</td>
+<td>穩定</td>
+</tr>
+</tbody></table>
+<h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>如果你只需要追蹤一般上傳影片，直接連結 YouTube 是最簡單的選擇。但如果你需要追蹤直播待機室或想要更即時的通知，建議使用 RSS 訂閱方式。兩種方法可以同時使用，但要注意可能會收到重複通知。</p>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://mee6.xyz/">MEE6 官方網站</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://youmu257.github.io/2026/02/01/20260201_mee6_discord_youtube/" data-id="cml3olssy0014io9zg4s38ym0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2026/02/01/20260201_mee6_discord_twitter/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          MEE6 連結 X(Twitter) 通知教學
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2026/01/29/20260129_mee6_discord_reaction_roles/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">MEE6 建立 Discord 反應身分組設定 - 規範同意後才能進入討論區</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E6%95%99%E5%AD%B8/">工具教學</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B3%87%E6%96%99%E5%BA%AB/">資料庫</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/02/">二月 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/01/">一月 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">五月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">十一月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2026/02/01/20260201_mee6_discord_leveling/">MEE6 等級系統教學 - 發言經驗值與排行榜</a>
+          </li>
+        
+          <li>
+            <a href="/2026/02/01/20260201_mee6_discord_twitter/">MEE6 連結 X(Twitter) 通知教學</a>
+          </li>
+        
+          <li>
+            <a href="/2026/02/01/20260201_mee6_discord_youtube/">MEE6 連結 YouTube 通知教學</a>
+          </li>
+        
+          <li>
+            <a href="/2026/01/29/20260129_mee6_discord_reaction_roles/">MEE6 建立 Discord 反應身分組設定 - 規範同意後才能進入討論區</a>
+          </li>
+        
+          <li>
+            <a href="/2026/01/29/20260129_mee6_discord_welcome/">MEE6 建立 Discord 歡迎新用戶加入的設定</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2026 Leo Li<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

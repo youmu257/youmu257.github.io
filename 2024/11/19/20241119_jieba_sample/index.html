@@ -7,12 +7,12 @@
   
   <title>在 asp.net 用 Jieba 做中文斷詞 | Leo&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言在 asp.net 上跑 jieba 做中文斷詞 先安裝套件 查詢 jieba.NET  簡易 sample code 呼叫 chatgpt 生成簡易程式碼12345678910111213141516using JiebaNet.Segmenter;&#x2F;&#x2F; 初始化 Jiebavar segmenter &#x3D; new JiebaSegmenter();&#x2F;&amp;#">
+  <meta name="description" content="前言在 asp.net 上跑 jieba 做中文斷詞 先安裝套件 查詢 jieba.NET  簡易 sample code 呼叫 chatgpt 生成簡易程式碼12345678910111213141516using JiebaNet.Segmenter;&#x2F;&#x2F; 初始化 Jiebavar segmenter &#x3D; new JiebaSegmenter();&#x2F;&#x2F; 分詞範例string sentence">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在 asp.net 用 Jieba 做中文斷詞">
 <meta property="og:url" content="https://youmu257.github.io/2024/11/19/20241119_jieba_sample/index.html">
 <meta property="og:site_name" content="Leo&#39;s Blog">
-<meta property="og:description" content="前言在 asp.net 上跑 jieba 做中文斷詞 先安裝套件 查詢 jieba.NET  簡易 sample code 呼叫 chatgpt 生成簡易程式碼12345678910111213141516using JiebaNet.Segmenter;&#x2F;&#x2F; 初始化 Jiebavar segmenter &#x3D; new JiebaSegmenter();&#x2F;&amp;#">
+<meta property="og:description" content="前言在 asp.net 上跑 jieba 做中文斷詞 先安裝套件 查詢 jieba.NET  簡易 sample code 呼叫 chatgpt 生成簡易程式碼12345678910111213141516using JiebaNet.Segmenter;&#x2F;&#x2F; 初始化 Jiebavar segmenter &#x3D; new JiebaSegmenter();&#x2F;&#x2F; 分詞範例string sentence">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://youmu257.github.io/images/jieba_sample_1.png">
 <meta property="og:image" content="https://youmu257.github.io/images/jieba_sample_2.png">
@@ -36,7 +36,7 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 4.2.1"></head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 <body>
   <div id="container">
@@ -48,10 +48,6 @@
       <h1 id="logo-wrap">
         <a href="/" id="logo">Leo&#39;s Blog</a>
       </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">替健忘的自己做的筆記</a>
-        </h2>
       
     </div>
     <div id="header-inner" class="inner">
@@ -104,43 +100,41 @@
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在 asp.net 上跑 jieba 做中文斷詞</p>
 <h2 id="先安裝套件"><a href="#先安裝套件" class="headerlink" title="先安裝套件"></a>先安裝套件</h2><ul>
-<li>查詢 jieba.NET<br><img src="/images/jieba_sample_1.png" alt=""></li>
+<li>查詢 jieba.NET<br><img src="/images/jieba_sample_1.png"></li>
 </ul>
 <h2 id="簡易-sample-code"><a href="#簡易-sample-code" class="headerlink" title="簡易 sample code"></a>簡易 sample code</h2><ul>
-<li>呼叫 chatgpt 生成簡易程式碼<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">using JiebaNet.Segmenter;</span><br><span class="line">&#x2F;&#x2F; 初始化 Jieba</span><br><span class="line">var segmenter &#x3D; new JiebaSegmenter();</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 分詞範例</span><br><span class="line">string sentence &#x3D; &quot;我愛自然語言處理&quot;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 默認為精確模式</span><br><span class="line">var segments &#x3D; segmenter.Cut(sentence);</span><br><span class="line">Console.WriteLine(&quot;【精確模式】：&#123;0&#125;&quot;, string.Join(&quot;&#x2F; &quot;, segments));</span><br><span class="line">&#x2F;&#x2F; 全模式</span><br><span class="line">segments &#x3D; segmenter.Cut(sentence, cutAll: true);</span><br><span class="line">Console.WriteLine(&quot;【全模式】：&#123;0&#125;&quot;, string.Join(&quot;&#x2F; &quot;, segments));</span><br><span class="line">&#x2F;&#x2F; 搜尋引擎模式</span><br><span class="line">segments &#x3D; segmenter.CutForSearch(sentence); </span><br><span class="line">Console.WriteLine(&quot;【搜尋引擎模式】：&#123;0&#125;&quot;, string.Join(&quot;&#x2F; &quot;, segments));</span><br></pre></td></tr></table></figure></li>
-<li>快樂得執行看看<br><img src="/images/jieba_sample_2.png" alt=""><br>出現錯誤<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DirectoryNotFoundException: Could not find a part of the path &#39;D:\workspace\jieba-sample\jieba-sample\bin\Debug\net8.0\Resources\prob_trans.json&#39;.</span><br></pre></td></tr></table></figure>
-<img src="/images/jieba_sample_3.jpg" alt=""></li>
+<li>呼叫 chatgpt 生成簡易程式碼<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">using JiebaNet.Segmenter;</span><br><span class="line">// 初始化 Jieba</span><br><span class="line">var segmenter = new JiebaSegmenter();</span><br><span class="line"></span><br><span class="line">// 分詞範例</span><br><span class="line">string sentence = &quot;我愛自然語言處理&quot;;</span><br><span class="line"></span><br><span class="line">// 默認為精確模式</span><br><span class="line">var segments = segmenter.Cut(sentence);</span><br><span class="line">Console.WriteLine(&quot;【精確模式】：&#123;0&#125;&quot;, string.Join(&quot;/ &quot;, segments));</span><br><span class="line">// 全模式</span><br><span class="line">segments = segmenter.Cut(sentence, cutAll: true);</span><br><span class="line">Console.WriteLine(&quot;【全模式】：&#123;0&#125;&quot;, string.Join(&quot;/ &quot;, segments));</span><br><span class="line">// 搜尋引擎模式</span><br><span class="line">segments = segmenter.CutForSearch(sentence); </span><br><span class="line">Console.WriteLine(&quot;【搜尋引擎模式】：&#123;0&#125;&quot;, string.Join(&quot;/ &quot;, segments));</span><br></pre></td></tr></table></figure></li>
+<li>快樂得執行看看<br><img src="/images/jieba_sample_2.png"><br>出現錯誤<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DirectoryNotFoundException: Could not find a part of the path &#x27;D:\workspace\jieba-sample\jieba-sample\bin\Debug\net8.0\Resources\prob_trans.json&#x27;.</span><br></pre></td></tr></table></figure>
+<img src="/images/jieba_sample_3.jpg"></li>
 <li>看來C#的套件沒有包含必要檔案</li>
-<li>只好去 <a href="https://github.com/anderscui/jieba.NET/tree/master/src/Segmenter/Resources" target="_blank" rel="noopener">jieba.NET github</a> 去下載，把 Resources 資料夾丟進去專案裡，預設路徑是 Resources</li>
+<li>只好去 <a target="_blank" rel="noopener" href="https://github.com/anderscui/jieba.NET/tree/master/src/Segmenter/Resources">jieba.NET github</a> 去下載，把 Resources 資料夾丟進去專案裡，預設路徑是 Resources</li>
 </ul>
 <h2 id="執行成功"><a href="#執行成功" class="headerlink" title="執行成功"></a>執行成功</h2><ul>
-<li>可以看到結果長這樣<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">【精確模式】：我&#x2F; 愛自然&#x2F; 語言&#x2F; 處理</span><br><span class="line">【全模式】：我&#x2F; 愛&#x2F; 自&#x2F; 然&#x2F; 語&#x2F; 言&#x2F; 處&#x2F; 理</span><br><span class="line">【搜尋引擎模式】：我&#x2F; 愛自然&#x2F; 語言&#x2F; 處理</span><br></pre></td></tr></table></figure></li>
+<li>可以看到結果長這樣<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">【精確模式】：我/ 愛自然/ 語言/ 處理</span><br><span class="line">【全模式】：我/ 愛/ 自/ 然/ 語/ 言/ 處/ 理</span><br><span class="line">【搜尋引擎模式】：我/ 愛自然/ 語言/ 處理</span><br></pre></td></tr></table></figure></li>
 <li>但總覺得斷字的效果很差啊</li>
 <li>李組長眉頭一皺發現事情並不單純</li>
-<li>原來字典檔根本沒有用到<br><img src="/images/jieba_sample_4.png" alt=""></li>
+<li>原來字典檔根本沒有用到<br><img src="/images/jieba_sample_4.png"></li>
 <li>點一下 dict.txt 在屬性中把「複製到輸出目錄」改成「有更新時才複製」</li>
-<li>重跑一次<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">【精確模式】：我&#x2F; 愛&#x2F; 自然&#x2F; 語言&#x2F; 處理</span><br><span class="line">【全模式】：我&#x2F; 愛&#x2F; 自然&#x2F; 語&#x2F; 言&#x2F; 處&#x2F; 理</span><br><span class="line">【搜尋引擎模式】：我&#x2F; 愛&#x2F; 自然&#x2F; 語言&#x2F; 處理</span><br></pre></td></tr></table></figure></li>
+<li>重跑一次<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">【精確模式】：我/ 愛/ 自然/ 語言/ 處理</span><br><span class="line">【全模式】：我/ 愛/ 自然/ 語/ 言/ 處/ 理</span><br><span class="line">【搜尋引擎模式】：我/ 愛/ 自然/ 語言/ 處理</span><br></pre></td></tr></table></figure></li>
 <li>結果看起來正常多了</li>
 </ul>
 <h1 id="繁中字典"><a href="#繁中字典" class="headerlink" title="繁中字典"></a>繁中字典</h1><ul>
-<li>官方有提供支援繁中的字典 <a href="https://raw.githubusercontent.com/anderscui/jieba.NET/master/ExtraDicts/dict.txt.big" target="_blank" rel="noopener">dict.txt.big</a></li>
-<li>加上指定字典<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var segmenter &#x3D; new JiebaSegmenter();</span><br><span class="line">segmenter.LoadUserDict(&quot;D:\\workspace\\jieba-sample\\jieba-sample\\Resources\\dict.txt.big&quot;);</span><br></pre></td></tr></table></figure></li>
-<li>結果有把「自然語言」切出來了，更加準確<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">【精確模式】：我&#x2F; 愛&#x2F; 自然語言&#x2F; 處理</span><br><span class="line">【全模式】：我&#x2F; 愛&#x2F; 自然&#x2F; 自然語言&#x2F; 語言&#x2F; 處理</span><br><span class="line">【搜尋引擎模式】：我&#x2F; 愛&#x2F; 自然&#x2F; 語言&#x2F; 自然語言&#x2F; 處理</span><br></pre></td></tr></table></figure>
-
-</li>
+<li>官方有提供支援繁中的字典 <a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/anderscui/jieba.NET/master/ExtraDicts/dict.txt.big">dict.txt.big</a></li>
+<li>加上指定字典<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var segmenter = new JiebaSegmenter();</span><br><span class="line">segmenter.LoadUserDict(&quot;D:\\workspace\\jieba-sample\\jieba-sample\\Resources\\dict.txt.big&quot;);</span><br></pre></td></tr></table></figure></li>
+<li>結果有把「自然語言」切出來了，更加準確<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">【精確模式】：我/ 愛/ 自然語言/ 處理</span><br><span class="line">【全模式】：我/ 愛/ 自然/ 自然語言/ 語言/ 處理</span><br><span class="line">【搜尋引擎模式】：我/ 愛/ 自然/ 語言/ 自然語言/ 處理</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h1 id="自訂字典"><a href="#自訂字典" class="headerlink" title="自訂字典"></a>自訂字典</h1><ul>
 <li>把文字改成「我愛祈菈貝希毛絲」這樣有專有名詞的情況</li>
-<li>會發現全模式會把貝希毛絲都切開來<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">【精確模式】：我&#x2F; 愛&#x2F; 祈菈&#x2F; 貝希毛絲</span><br><span class="line">【全模式】：我&#x2F; 愛&#x2F; 祈菈&#x2F; 貝&#x2F; 希&#x2F; 毛&#x2F; 絲</span><br><span class="line">【搜尋引擎模式】：我&#x2F; 愛&#x2F; 祈菈&#x2F; 貝希毛絲</span><br></pre></td></tr></table></figure></li>
-<li>在字典中加上 「貝希毛絲 76 n」，再執行一次<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">【精確模式】：我&#x2F; 愛&#x2F; 祈菈&#x2F; 貝希毛絲</span><br><span class="line">【全模式】：我&#x2F; 愛&#x2F; 祈菈&#x2F; 貝希毛絲</span><br><span class="line">【搜尋引擎模式】：我&#x2F; 愛&#x2F; 祈菈&#x2F; 貝希毛絲</span><br></pre></td></tr></table></figure></li>
+<li>會發現全模式會把貝希毛絲都切開來<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">【精確模式】：我/ 愛/ 祈菈/ 貝希毛絲</span><br><span class="line">【全模式】：我/ 愛/ 祈菈/ 貝/ 希/ 毛/ 絲</span><br><span class="line">【搜尋引擎模式】：我/ 愛/ 祈菈/ 貝希毛絲</span><br></pre></td></tr></table></figure></li>
+<li>在字典中加上 「貝希毛絲 76 n」，再執行一次<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">【精確模式】：我/ 愛/ 祈菈/ 貝希毛絲</span><br><span class="line">【全模式】：我/ 愛/ 祈菈/ 貝希毛絲</span><br><span class="line">【搜尋引擎模式】：我/ 愛/ 祈菈/ 貝希毛絲</span><br></pre></td></tr></table></figure></li>
 <li>這樣專有名詞也會正常被當作一個單詞處理</li>
 </ul>
-<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><p><a href="https://github.com/anderscui/jieba.NET/tree/master" target="_blank" rel="noopener">jieba.NET</a></p>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><p><a target="_blank" rel="noopener" href="https://github.com/anderscui/jieba.NET/tree/master">jieba.NET</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2024/11/19/20241119_jieba_sample/" data-id="cm3n9pvjg000fuku6684d6ey7" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2024/11/19/20241119_jieba_sample/" data-id="cml3olssw000oio9z7jlv7grs" class="article-share-link">Share</a>
       
       
     </footer>
@@ -148,6 +142,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2025/05/14/20250514_ubuntu_docker_install/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          在 Ubuntu 22.04 上安裝 docker
+        
+      </div>
+    </a>
   
   
     <a href="/2024/08/15/20240815_get_youtube_api_key/" id="article-nav-older" class="article-nav-link-wrap">
@@ -183,7 +186,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">十一月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/02/">二月 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/01/">一月 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">五月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">十一月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li></ul>
     </div>
   </div>
 
@@ -196,23 +199,23 @@
       <ul>
         
           <li>
-            <a href="/2024/11/19/20241119_jieba_sample/">在 asp.net 用 Jieba 做中文斷詞</a>
+            <a href="/2026/02/01/20260201_mee6_discord_leveling/">MEE6 等級系統教學 - 發言經驗值與排行榜</a>
           </li>
         
           <li>
-            <a href="/2024/08/15/20240815_get_youtube_api_key/">取得 Youtube API 金鑰</a>
+            <a href="/2026/02/01/20260201_mee6_discord_twitter/">MEE6 連結 X(Twitter) 通知教學</a>
           </li>
         
           <li>
-            <a href="/2021/01/12/20201107_laravel_send_mail/">Laravel 寄信範例</a>
+            <a href="/2026/02/01/20260201_mee6_discord_youtube/">MEE6 連結 YouTube 通知教學</a>
           </li>
         
           <li>
-            <a href="/2021/01/12/20201114_laravel_send_pdf_mail/">Laravel 寄信夾帶 PDF 範例</a>
+            <a href="/2026/01/29/20260129_mee6_discord_reaction_roles/">MEE6 建立 Discord 反應身分組設定 - 規範同意後才能進入討論區</a>
           </li>
         
           <li>
-            <a href="/2021/01/12/20210111_git_file_name_note/">Sourcetree 檔名大小寫偵測不到問題</a>
+            <a href="/2026/01/29/20260129_mee6_discord_welcome/">MEE6 建立 Discord 歡迎新用戶加入的設定</a>
           </li>
         
       </ul>
@@ -227,7 +230,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2024 Leo Li<br>
+      &copy; 2026 Leo Li<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

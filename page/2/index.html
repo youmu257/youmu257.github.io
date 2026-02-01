@@ -29,7 +29,7 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 4.2.1"></head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 <body>
   <div id="container">
@@ -41,10 +41,6 @@
       <h1 id="logo-wrap">
         <a href="/" id="logo">Leo&#39;s Blog</a>
       </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">替健忘的自己做的筆記</a>
-        </h2>
       
     </div>
     <div id="header-inner" class="inner">
@@ -70,6 +66,581 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-20210111_git_file_name_note" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/12/20210111_git_file_name_note/" class="article-date">
+  <time datetime="2021-01-11T16:20:03.019Z" itemprop="datePublished">2021-01-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/git/">git</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/12/20210111_git_file_name_note/">Sourcetree 檔名大小寫偵測不到問題</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>因為遇到第二次還需要估狗去找解法，還是紀錄一下這麼狀況和解法<br><del>而且最近太少更新筆記了</del></p>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><ul>
+<li>OS : Windows 10</li>
+<li>Sourcetree</li>
+</ul>
+<h1 id="情境"><a href="#情境" class="headerlink" title="情境"></a>情境</h1><ol>
+<li>檔案已經 commit 過了<ul>
+<li>先 commit 一個 test.txt 的檔案<br> <img src="https://i.imgur.com/ddDIeo5.png"></li>
+</ul>
+</li>
+<li>更改檔名時，且只更改大小寫部分<ul>
+<li>改為 Test.txt<br> <img src="https://i.imgur.com/QcpkKin.png"></li>
+</ul>
+</li>
+<li>Sourcetree 切到 File status<ul>
+<li>什麼改變都沒有<br> <img src="https://memeprod.sgp1.digitaloceanspaces.com/user-wtf/1587384378140.jpg"></li>
+</ul>
+</li>
+<li>用指令檢查<ul>
+<li>cmd 輸入 git status<br> <img src="https://i.imgur.com/K9TyHwH.png"></li>
+<li>發現偵測不到改動</li>
+</ul>
+</li>
+</ol>
+<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><ul>
+<li>先把檔名改回去 test.txt</li>
+<li>打開 cmd 輸入指令，用指令更改檔名<ul>
+<li><code>git mv test.txt Test.txt</code></li>
+</ul>
+</li>
+<li>回到 Sourcetree 發現可以正常偵測到改動了</li>
+</ul>
+<h1 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h1><ul>
+<li>事不過三，這次一定記住</li>
+</ul>
+<h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://gitbook.tw/posts/2018-06-05-case-sensitive">關於檔名的大小寫</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://youmu257.github.io/2021/01/12/20210111_git_file_name_note/" data-id="cml3olssu000fio9z9sif41yk" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-20200904_laravel_migration" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/12/20200904_laravel_migration/" class="article-date">
+  <time datetime="2021-01-11T16:20:03.018Z" itemprop="datePublished">2021-01-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PHP/">PHP</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/12/20200904_laravel_migration/">Laravel migration 和 seed 筆記</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在接觸到 laravel 前我完全不知道有 migration 這樣的東西可以用，只會下 raw sql 去新增表格和調整欄位<br>有了 migration 可以快速 DB 環境，也算是可以對 DB table 做一個版控<br>再搭配 seed 可以把基礎資料也寫入 DB，對於搬移程式碼十分方便<br>簡直看見新大陸  <img src="https://i.imgur.com/qKlTMip.png" width=126 height=116 /></p>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><ul>
+<li>OS : Windows 10</li>
+</ul>
+<h1 id="安裝流程"><a href="#安裝流程" class="headerlink" title="安裝流程"></a>安裝流程</h1><ul>
+<li>下載我的筆記用專案<ul>
+<li><code>git clone https://github.com/youmu257/laravel-note.git</code></li>
+</ul>
+</li>
+<li><code>composer install</code></li>
+<li><code>php artisan key:generate</code></li>
+<li><code>cp .env.example .env</code></li>
+<li>調整 .env<ul>
+<li>寫入你的 DB 設定  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DB_CONNECTION=mysql</span><br><span class="line">DB_HOST=127.0.0.1</span><br><span class="line">DB_PORT=3306</span><br><span class="line">DB_DATABASE=laravel</span><br><span class="line">DB_USERNAME=user</span><br><span class="line">DB_PASSWORD=password</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h1 id="建立-migration-檔案"><a href="#建立-migration-檔案" class="headerlink" title="建立 migration 檔案"></a>建立 migration 檔案</h1><ul>
+<li><code>php artisan make:migration create_migration_example_table</code><ul>
+<li>create_order_table 表示建立一個產生 migration_example table 的 migration</li>
+<li>會依照當前時間生成這樣的檔案 2020_09_03_162217_create_migration_example_table.php</li>
+</ul>
+</li>
+</ul>
+<h1 id="migration-寫法"><a href="#migration-寫法" class="headerlink" title="migration 寫法"></a>migration 寫法</h1><ul>
+<li>用法參考<a target="_blank" rel="noopener" href="https://laravel.tw/docs/5.2/migrations">官方文件</a>或我的 <a target="_blank" rel="noopener" href="https://github.com/youmu257/laravel-note">laravel筆記</a></li>
+</ul>
+<h1 id="執行-migration"><a href="#執行-migration" class="headerlink" title="執行 migration"></a>執行 migration</h1><ul>
+<li><code>php artisan migration</code><ul>
+<li>會執行 databases&#x2F;migrations 中的有 extends Illuminate\Database\Migrations\Migration 的 class </li>
+<li>會執行所有 class 中的 up function<ul>
+<li>如建立 table 或更改欄位</li>
+<li>同時把每個更改紀錄寫入 migrations table (此為<code>php artisan migration</code>自動建立)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>migrations table 中有一個欄位是 batch<ul>
+<li>如果要做 rollback 可以用 batch 為單位做回朔</li>
+</ul>
+</li>
+<li><code>php artisan migration:rollback</code><ul>
+<li>會執行所有 class 中的 down function<ul>
+<li>所以如果 up 是新建 table，down 就是刪除這張 table</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="Seeder"><a href="#Seeder" class="headerlink" title="Seeder"></a>Seeder</h1><ul>
+<li>都提到 migration 就一起講 seeder<ul>
+<li>基本上就是寫基本資料進資料庫</li>
+</ul>
+</li>
+<li>建立 seeder 指令是 <code>php artisan make:seeder UsersTableSeeder</code><ul>
+<li>UsersTableSeeder 是要建立的 seeder 檔名</li>
+</ul>
+</li>
+<li>會發現預設就有一個 DatabaseSeeder，用途是控制要執行哪些 seeder<ul>
+<li>在 migration 時帶 –seed 參數會執行 DatabaseSeeder<ul>
+<li><code>php artisan migration --seed</code></li>
+</ul>
+</li>
+<li>單純執行 DatabaseSeeder 用 <code>php artisan db:seed</code></li>
+</ul>
+</li>
+<li>如果要執行特定的 seeder 帶 –class 參數<ul>
+<li><code>php artisan db:seed --class=UserTableSeeder</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h1><ul>
+<li>DB schema 的版控機制<ul>
+<li>migration 除了在新環境可以快速建立起基本的 DB 外，同時也能做快速的 rollback</li>
+</ul>
+</li>
+<li>寫得好還可以當一種文件看，寫不好一個 rollback 毀天滅地</li>
+</ul>
+<h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://laravel.tw/docs/5.2/migrations">Laravel migration</a></li>
+<li><a target="_blank" rel="noopener" href="https://laravel.tw/docs/5.2/seeding">Laravel Seeder</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://youmu257.github.io/2021/01/12/20200904_laravel_migration/" data-id="cml3olssv000jio9z8fhvhn67" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-20200831_rethinkdb" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/31/20200831_rethinkdb/" class="article-date">
+  <time datetime="2020-08-31T14:57:35.374Z" itemprop="datePublished">2020-08-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%B3%87%E6%96%99%E5%BA%AB/">資料庫</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/31/20200831_rethinkdb/">rethinkDB 筆記</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>上一篇記錄 <a href="https://youmu257.github.io/2020/08/31/20200831_stf/">stf 的安裝流程</a>，其中有使用到 rethinkdb<br>當時再用時看了老半天才發現他那看起來像 ORM 的寫法就是他的語法<br>害我看教學看好久，想說怎麼都沒有寫 raw sql 的語法</p>
+<h1 id="介紹"><a href="#介紹" class="headerlink" title="介紹"></a>介紹</h1><p>主要講 rethinkDB 的特色，他與傳統資料庫的差異在於適合用於實時的系統上<br>傳統資料在如果要確保資料是最新的必須一直下 SELECT 指令去檢查資料是否有變動<br>但 ReQL (rethinkDB 的查詢語法) 可以用 <a target="_blank" rel="noopener" href="https://rethinkdb.com/docs/changefeeds/ruby/">Changefeeds</a> 去監聽資料是否變動，大幅降低不必要的 request</p>
+<h2 id="後台"><a href="#後台" class="headerlink" title="後台"></a>後台</h2><ul>
+<li><p>確定 rethinkDB 正常運作</p>
+<ul>
+<li>sudo &#x2F;etc&#x2F;init.d&#x2F;rethinkdb start</li>
+</ul>
+</li>
+<li><p>打開瀏覽器輸入 <a target="_blank" rel="noopener" href="http://localhost:8080/">http://localhost:8080</a><br>  <img src="https://i.imgur.com/NryMN3s.png"></p>
+</li>
+<li><p>切到 Data Explorer</p>
+</li>
+<li><p>輸入指令即可操作 DB</p>
+</li>
+</ul>
+<h2 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h2><ul>
+<li>新建資料庫<ul>
+<li><code>r.dbCreate(&quot;test&quot;)</code></li>
+<li>按下 run，成功會回傳資訊  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;config_changes&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;new_val&quot;: &#123;</span><br><span class="line">                &quot;id&quot;: &quot;e55b79bb-32e8-44d6-9911-d3d44c5cfc5a&quot; ,</span><br><span class="line">                &quot;name&quot;: &quot;test&quot;</span><br><span class="line">            &#125; ,</span><br><span class="line">            &quot;old_val&quot;: null</span><br><span class="line">        &#125;</span><br><span class="line">    ] ,</span><br><span class="line">    &quot;dbs_created&quot;: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>新建 table<ul>
+<li><code>r.db(&quot;test&quot;).tableCreate(&quot;test1&quot;)</code></li>
+<li>按下 run，成功會回傳資訊  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;config_changes&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;new_val&quot;: &#123;</span><br><span class="line">                &quot;db&quot;: &quot;test&quot; ,</span><br><span class="line">                &quot;durability&quot;: &quot;hard&quot; ,</span><br><span class="line">                &quot;id&quot;: &quot;48be759d-7179-498d-be98-6bc45ab9ae46&quot; ,</span><br><span class="line">                &quot;indexes&quot;: [ ],</span><br><span class="line">                &quot;name&quot;: &quot;table1&quot; ,</span><br><span class="line">                &quot;primary_key&quot;: &quot;id&quot; ,</span><br><span class="line">                &quot;shards&quot;: [</span><br><span class="line">                    &#123;</span><br><span class="line">                        &quot;nonvoting_replicas&quot;: [ ],</span><br><span class="line">                        &quot;primary_replica&quot;: &quot;debian_aav&quot; ,</span><br><span class="line">                        &quot;replicas&quot;: [</span><br><span class="line">                            &quot;debian_aav&quot;</span><br><span class="line">                        ]</span><br><span class="line">                    &#125;</span><br><span class="line">                ] ,</span><br><span class="line">                &quot;write_acks&quot;: &quot;majority&quot; ,</span><br><span class="line">                &quot;write_hook&quot;: null</span><br><span class="line">            &#125; ,</span><br><span class="line">            &quot;old_val&quot;: null</span><br><span class="line">        &#125;</span><br><span class="line">    ] ,</span><br><span class="line">    &quot;tables_created&quot;: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>insert 資料<ul>
+<li>寫入資料以 json 格式  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">r.db(&quot;test&quot;).table(&quot;table1&quot;).insert(&#123;</span><br><span class="line">    id: 1,</span><br><span class="line">    title: &quot;test title&quot;,</span><br><span class="line">    content: &quot;test content&quot;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>按下 run，成功會回傳資訊  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;deleted&quot;: 0 ,</span><br><span class="line">    &quot;errors&quot;: 0 ,</span><br><span class="line">    &quot;inserted&quot;: 1 ,</span><br><span class="line">    &quot;replaced&quot;: 0 ,</span><br><span class="line">    &quot;skipped&quot;: 0 ,</span><br><span class="line">    &quot;unchanged&quot;: 0</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>取得資料<ul>
+<li>get 只能用於主鍵<ul>
+<li><code>r.db(&quot;test&quot;).table(&quot;table1&quot;).get(1)</code></li>
+<li>按下 run，成功會回傳資訊  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;id&quot;: 1,</span><br><span class="line">    &quot;title&quot;: &quot;test title&quot;,</span><br><span class="line">    &quot;content&quot;: &quot;test content&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>filter 可以當成 where 條件<ul>
+<li><code>r.db(&quot;test&quot;).table(&quot;table1&quot;).filter(&#123;title: &quot;test title&quot;&#125;)</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>更新資料<ul>
+<li>先取得得資料才能更新，跟下 where 條件的概念一樣</li>
+<li><code>r.db(&quot;test&quot;).table(&quot;table1&quot;).get(1).update(&#123;title: &quot;new title&quot;&#125;)</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://rethinkdb.com/docs/changefeeds/ruby/">Changefeeds in RethinkDB</a></li>
+<li><a target="_blank" rel="noopener" href="https://medium.com/bryanyang0528/rethink-db-%E5%88%9D%E6%8E%A2-42d4d477a72b">Rethink DB 初探</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://youmu257.github.io/2020/08/31/20200831_rethinkdb/" data-id="cml3olsst0009io9zfoob2oyv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-20200831_stf" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/31/20200831_stf/" class="article-date">
+  <time datetime="2020-08-30T17:27:03.884Z" itemprop="datePublished">2020-08-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7%E6%95%99%E5%AD%B8/">工具教學</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/31/20200831_stf/">openSTF 安裝筆記</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本來想先寫 laravel 的筆記，但工作上剛好碰到 openstf 就先來記錄一下安裝流程<br>畢竟這專案沒有繼續維護了，有些套件需要限定版本才能安裝，安裝起來一堆麻煩問題<br>簡單說一下，STF 是一套用 angular 和 nodejs 寫的手機控制系統<br>讓你可以遠端操作實體手機做任何操作，甚至安裝app<br>實現做法是透過 adb 對手機下指令，再搭配 rethinkdb 紀錄裝置資訊<br>我後續也會再寫一篇 rethinkdb 的簡易教學(用法太特別了，跟SQL完全不同) </p>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><ul>
+<li>OS : Debian 10</li>
+<li>VMware Workstation 15 Player</li>
+</ul>
+<h1 id="安裝流程"><a href="#安裝流程" class="headerlink" title="安裝流程"></a>安裝流程</h1><h2 id="安裝-NVM"><a href="#安裝-NVM" class="headerlink" title="安裝 NVM"></a>安裝 NVM</h2><ul>
+<li>下載NVM<ul>
+<li>curl -o- <a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/creationix/nvm/v0.33.5/install.sh">https://raw.githubusercontent.com/creationix/nvm/v0.33.5/install.sh</a> | bash</li>
+</ul>
+</li>
+<li>source ~&#x2F;.bashrc</li>
+<li>nvm install 8.8.1 –delete-prefix</li>
+<li>確認 NVM 是否安裝成功，安裝成功的話 npm 就可以使用了<ul>
+<li>nvm –version</li>
+<li>npm -v</li>
+</ul>
+</li>
+</ul>
+<h2 id="開始安裝和設定-NPM"><a href="#開始安裝和設定-NPM" class="headerlink" title="開始安裝和設定 NPM"></a>開始安裝和設定 NPM</h2><ul>
+<li>mkdir ~&#x2F;.npm-global</li>
+<li>安裝 npm 為 6.14.5 版本太新後續會有問題<ul>
+<li>npm install -g <a href="mailto:&#x6e;&#112;&#109;&#64;&#54;&#46;&#x31;&#52;&#46;&#x35;">&#x6e;&#112;&#109;&#64;&#54;&#46;&#x31;&#52;&#46;&#x35;</a></li>
+</ul>
+</li>
+<li>npm config set prefix ‘~&#x2F;.npm-global’</li>
+<li>vi ~&#x2F;.profile<ul>
+<li>添加 PATH&#x3D;~&#x2F;.npm-global&#x2F;bin:$PATH</li>
+</ul>
+</li>
+<li>nvm use –delete-prefix v8.8.1 –silent</li>
+<li>source ~&#x2F;.profile</li>
+<li>NPM_CONFIG&#x3D;~&#x2F;.npm-global</li>
+</ul>
+<h2 id="安裝必要套件"><a href="#安裝必要套件" class="headerlink" title="安裝必要套件"></a>安裝必要套件</h2><ul>
+<li>nvm use –delete-prefix v8.8.1</li>
+<li>npm install -g bower gulp<ul>
+<li>確認安裝是否成功<ul>
+<li>bower -v</li>
+<li>gulp -v</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>npm install -g node-sass</li>
+<li>npm install -g gulp-sourcemaps&#x2F;map-sources</li>
+<li>sudo apt-get install -y yasm pkg-config</li>
+</ul>
+<h2 id="安裝-ADB"><a href="#安裝-ADB" class="headerlink" title="安裝 ADB"></a>安裝 ADB</h2><ul>
+<li>sudo mkdir -p &#x2F;usr&#x2F;local&#x2F;android-sdk</li>
+<li>cd &#x2F;usr&#x2F;local&#x2F;android-sdk&#x2F;</li>
+<li>sudo curl -OL <a target="_blank" rel="noopener" href="https://dl.google.com/android/repository/platform-tools-latest-linux.zip">https://dl.google.com/android/repository/platform-tools-latest-linux.zip</a></li>
+<li>sudo unzip platform-tools-latest-linux.zip</li>
+<li>sudo rm -f platform-tools-latest-linux.zip</li>
+<li>sudo ln -s &#x2F;usr&#x2F;local&#x2F;android-sdk&#x2F;platform-tools&#x2F;adb &#x2F;usr&#x2F;bin&#x2F;adb</li>
+<li>export PATH&#x3D;&#x2F;usr&#x2F;local&#x2F;android-sdk&#x2F;platform-tools:${PATH}</li>
+<li>sudo echo “export PATH&#x3D;&#x2F;usr&#x2F;local&#x2F;android-sdk&#x2F;platform-tools:${PATH}” &gt;&gt; &#x2F;etc&#x2F;profile</li>
+<li>檢查 ADB 是否安裝成功<ul>
+<li>adb version</li>
+</ul>
+</li>
+</ul>
+<h2 id="安裝-rethinkDB"><a href="#安裝-rethinkDB" class="headerlink" title="安裝 rethinkDB"></a>安裝 rethinkDB</h2><ul>
+<li>sudo echo “deb <a target="_blank" rel="noopener" href="http://download.rethinkdb.com/repository/debian-$">http://download.rethinkdb.com/repository/debian-$</a>(lsb_release -cs) $(lsb_release -sc) main” | sudo tee &#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;rethinkdb.list</li>
+<li>sudo wget -qO- <a target="_blank" rel="noopener" href="https://download.rethinkdb.com/repository/raw/pubkey.gpg">https://download.rethinkdb.com/repository/raw/pubkey.gpg</a> | sudo apt-key add -</li>
+<li>sudo apt-get update</li>
+<li>sudo apt-get install -y rethinkdb</li>
+<li>sudo cp &#x2F;etc&#x2F;rethinkdb&#x2F;default.conf.sample &#x2F;etc&#x2F;rethinkdb&#x2F;instances.d&#x2F;instance1.conf</li>
+<li>重啟 rethinDB<ul>
+<li>sudo &#x2F;etc&#x2F;init.d&#x2F;rethinkdb restart</li>
+</ul>
+</li>
+</ul>
+<h2 id="安裝-Protocol-Buffers-libaries"><a href="#安裝-Protocol-Buffers-libaries" class="headerlink" title="安裝 Protocol Buffers libaries"></a>安裝 Protocol Buffers libaries</h2><ul>
+<li>sudo apt-get install -y graphicsmagick libzmq3-dev</li>
+<li>裝 3.0.0 版，3.0.0 以下的不支援了</li>
+<li>wget <a target="_blank" rel="noopener" href="https://github.com/google/protobuf/releases/download/v3.0.0/protobuf-js-3.0.0.tar.gz">https://github.com/google/protobuf/releases/download/v3.0.0/protobuf-js-3.0.0.tar.gz</a></li>
+<li>tar -zxvf protobuf-js-3.0.0.tar.gz</li>
+<li>rm protobuf-js-3.0.0.tar.gz</li>
+<li>cd protobuf-3.0.0</li>
+<li>.&#x2F;configure<ul>
+<li>如果出現 configure: error: no acceptable C compiler found in $PATH</li>
+<li>安裝 gcc<ul>
+<li>sudo apt-get install -y build-essential manpages-dev</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>make;make check;make install<ul>
+<li>這會跑 10 分鐘以上，可以放著先去做別的事</li>
+</ul>
+</li>
+<li>sudo &#x2F;usr&#x2F;sbin&#x2F;ldconfig</li>
+<li>確認是否安裝成功<ul>
+<li>protoc –version</li>
+</ul>
+</li>
+</ul>
+<h2 id="安裝-STF"><a href="#安裝-STF" class="headerlink" title="安裝 STF"></a>安裝 STF</h2><ul>
+<li>npm install -g stf –unsafe-perm</li>
+<li>下載 OpenSTF 專案<ul>
+<li>git clone <a target="_blank" rel="noopener" href="https://github.com/openstf/stf.git">https://github.com/openstf/stf.git</a></li>
+</ul>
+</li>
+<li>cd stf</li>
+<li>nvm use 8.8.1</li>
+<li>npm install</li>
+<li>bower install</li>
+<li>gulp build<ul>
+<li>如果出現錯誤刪掉 node_modules 資料夾再重新 npm install</li>
+</ul>
+</li>
+<li>npm link<ul>
+<li>與 stf 連結，確保 stf 是執行當前專案</li>
+</ul>
+</li>
+<li>確認 stf 相關套件都安裝完成<ul>
+<li>stf doctor  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">2020-08-30T17:14:48.535Z INF/cli:doctor 29931 [*] OS Arch: x64</span><br><span class="line">2020-08-30T17:14:48.537Z INF/cli:doctor 29931 [*] OS Platform: linux</span><br><span class="line">2020-08-30T17:14:48.537Z INF/cli:doctor 29931 [*] OS Platform: 4.19.0-10-amd64</span><br><span class="line">2020-08-30T17:14:48.537Z INF/cli:doctor 29931 [*] Using Node 8.8.1</span><br><span class="line">2020-08-30T17:14:48.554Z INF/cli:doctor 29931 [*] Using ZeroMQ 4.3.1</span><br><span class="line">2020-08-30T17:14:48.579Z INF/cli:doctor 29931 [*] Using ADB 1.0.41</span><br><span class="line">2020-08-30T17:14:48.588Z INF/cli:doctor 29931 [*] Using ProtoBuf 3.0.0</span><br><span class="line">2020-08-30T17:14:48.608Z INF/cli:doctor 29931 [*] Using GraphicsMagick 1.3.35</span><br><span class="line">2020-08-30T17:14:48.618Z INF/cli:doctor 29931 [*] Using RethinkDB 2.4.1~0buster</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>執行 stf<ul>
+<li>stf local </li>
+<li>如果是要開放遠端連線<ul>
+<li><code>stf local --cleanup --public-ip 192.168.137.129 --group-timeout 900 --allow-remote</code></li>
+<li>把 192.168.137.129 改成你的 IP</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>打開瀏覽器輸入 localhost:7100<ul>
+<li>成功的話可以看這個畫面，任意輸入名稱跟信箱即可登入<br>  <img src="https://i.imgur.com/IkW72K0.png"></li>
+</ul>
+</li>
+</ul>
+<h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/openstf/stf">OpenSTF</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://youmu257.github.io/2020/08/31/20200831_stf/" data-id="cml3olsss0008io9z3bxzdq0p" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-20200826_nginx" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/26/20200826_nginx/" class="article-date">
+  <time datetime="2020-08-26T15:02:17.687Z" itemprop="datePublished">2020-08-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7%E6%95%99%E5%AD%B8/">工具教學</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/26/20200826_nginx/">Nginx 相關筆記</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>第一次碰到 nginx 是在使用 laradock 時，一個輕量設定又簡單的好東西<br>查了一下發現 nginx 在大流量的服務上比起 apache 可以更有效率的處理 request</p>
+<h3 id="好-nginx-不用嗎"><a href="#好-nginx-不用嗎" class="headerlink" title="好 nginx 不用嗎"></a>好 nginx 不用嗎</h3><p><img src="https://pic.pimg.tw/kkjerone/1314647692-695131654.jpg"></p>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><ul>
+<li>OS : Debian 10</li>
+<li>VMware Workstation 15 Player</li>
+</ul>
+<h1 id="安裝-nginx"><a href="#安裝-nginx" class="headerlink" title="安裝 nginx"></a>安裝 nginx</h1><ul>
+<li><p>安裝 nginx</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install -y nginx</span><br></pre></td></tr></table></figure></li>
+<li><p>確認是否成功啟用</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status nginx</span><br></pre></td></tr></table></figure></li>
+<li><p>前往本地IP位置</p>
+<ul>
+<li>確認當前VM IP  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip addr</span><br></pre></td></tr></table></figure></li>
+<li>在瀏覽器打上 http:&#x2F;&#x2F;{你的VM IP}</li>
+<li>看到此畫面就表示 nginx 成功啟動</li>
+</ul>
+<p>  <img src="https://i.imgur.com/wehxlRU.png"></p>
+</li>
+</ul>
+<h1 id="設定-nginx-以-larveal-為例"><a href="#設定-nginx-以-larveal-為例" class="headerlink" title="設定 nginx 以 larveal 為例"></a>設定 nginx 以 larveal 為例</h1><ul>
+<li>先安裝 laravel 可以參考<a href="https://youmu257.github.io/2020/08/07/20200807_laravel/">這篇</a></li>
+<li>把 laravel 專案放到 <code>/var/www/html</code> 中</li>
+<li>到 <code>/etc/nginx/site-available</code> 中<ul>
+<li>可以看到 <code>default</code> 檔案，這就是預設的設定檔</li>
+</ul>
+</li>
+<li>打開 default 可以看到 server 的設定，先講常用的設定<ul>
+<li>root 是用來設定指向到的專案路徑</li>
+<li>index 是指定入口檔案有哪些</li>
+<li>server_name 可以設定特定 host 指向到當前設定的路徑</li>
+</ul>
+</li>
+<li>複製一個新的設定檔<ul>
+<li><code>cp default laravel</code></li>
+<li>編輯設定檔<ul>
+<li>先把 server 中的 default_server 移除</li>
+<li>把 root 指向到自己專案底下的 public</li>
+<li>調整 server_name 為自己的 host name</li>
+<li>fastcgi_pass 指向到安裝的 php 版本</li>
+<li>最後設定檔如下  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80 default_server;</span><br><span class="line">    listen [::]:80 default_server;</span><br><span class="line"></span><br><span class="line">    root /var/www/html/laravel/public;</span><br><span class="line"></span><br><span class="line">    # Add index.php to the list if you are using PHP</span><br><span class="line">    index index.html index.htm index.nginx-debian.html index.php;</span><br><span class="line"></span><br><span class="line">    server_name leo-laravel.com;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        try_files $uri $uri/ /index.php?$query_string;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    # pass PHP scripts to FastCGI server</span><br><span class="line">    location ~ \.php$ &#123;</span><br><span class="line">        include snippets/fastcgi-php.conf;</span><br><span class="line"></span><br><span class="line">        fastcgi_pass unix:/run/php/php7.3-fpm.sock;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>如果有調整設定檔，記得要要 reload 設定才會生效<ul>
+<li><code>sudo nginx -s reload</code></li>
+</ul>
+</li>
+<li>這時打開瀏覽器輸入 <code>http://leo-laravel.com/api/hello</code><ul>
+<li>如果是找不到網頁，表示 host 沒有設定<ul>
+<li><code>vim /etc/hosts</code> 加入 <code>127.0.0.1 leo-laravel.com</code></li>
+</ul>
+</li>
+<li>如果是出現 500 server error<ul>
+<li>我在安裝時碰到這個問題時的解法是調整 storage 和 bootstrap 的權限  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /var/www/html/laravel</span><br><span class="line">chmod -R 777 storage</span><br><span class="line">chmod -R 775 bootstrap</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>然後就可以成功看到瀏覽器上印出 hello 了</li>
+</ul>
+</li>
+</ul>
+<h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://peterli.website/%e5%9c%a8ubuntu-16-04-%e4%b8%8a%e6%9e%b6%e8%a8%adnginxphp7/">在Ubuntu 16.04 上架設Nginx + PHP 7</a></li>
+<li><a target="_blank" rel="noopener" href="https://laracasts.com/discuss/channels/servers/fixing-http-error-500-nginx-for-every-laravel-route">Fixing HTTP ERROR 500 (nginx) for every Laravel route</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://youmu257.github.io/2020/08/26/20200826_nginx/" data-id="cml3olsss0006io9zhe9hgs7j" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-20200807_laravel" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -101,43 +672,147 @@
 <li>OS : Debian 10</li>
 </ul>
 <h1 id="安裝前置環境"><a href="#安裝前置環境" class="headerlink" title="安裝前置環境"></a>安裝前置環境</h1><ul>
-<li>安裝 php  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install -y php php-mbstring php-cli php-xml</span><br></pre></td></tr></table></figure>
+<li>安裝 php  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install -y php php-mbstring php-cli php-xml</span><br></pre></td></tr></table></figure>
 <ul>
-<li>確認 php 版本<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">php -v</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 本次紀錄安裝版本為 7.3</span><br><span class="line">PHP 7.3.19-1~deb10u1 (cli) (built: Jul  5 2020 06:46:45) ( NTS )</span><br><span class="line">Copyright (c) 1997-2018 The PHP Group</span><br><span class="line">Zend Engine v3.3.19, Copyright (c) 1998-2018 Zend Technologies</span><br><span class="line">with Zend OPcache v7.3.19-1~deb10u1, Copyright (c) 1999-2018, by Zend Technologies</span><br></pre></td></tr></table></figure></li>
+<li>確認 php 版本  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">php -v</span><br><span class="line"></span><br><span class="line">// 本次紀錄安裝版本為 7.3</span><br><span class="line">PHP 7.3.19-1~deb10u1 (cli) (built: Jul  5 2020 06:46:45) ( NTS )</span><br><span class="line">Copyright (c) 1997-2018 The PHP Group</span><br><span class="line">Zend Engine v3.3.19, Copyright (c) 1998-2018 Zend Technologies</span><br><span class="line">with Zend OPcache v7.3.19-1~deb10u1, Copyright (c) 1999-2018, by Zend Technologies</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li>安裝 Composer  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -s https:&#x2F;&#x2F;getcomposer.org&#x2F;installer | php</span><br><span class="line">mv composer.phar &#x2F;usr&#x2F;local&#x2F;bin&#x2F;composer</span><br></pre></td></tr></table></figure></li>
-<li>下載 <a href="https://github.com/laravel/laravel" target="_blank" rel="noopener">laravel 專案</a>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;laravel&#x2F;laravel.git</span><br></pre></td></tr></table></figure></li>
+<li>安裝 Composer  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -s https://getcomposer.org/installer | php</span><br><span class="line">mv composer.phar /usr/local/bin/composer</span><br></pre></td></tr></table></figure></li>
+<li>下載 <a target="_blank" rel="noopener" href="https://github.com/laravel/laravel">laravel 專案</a>  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/laravel/laravel.git</span><br></pre></td></tr></table></figure></li>
 <li>建置 laravel 專案<ul>
 <li>會依照 <code>composer.json</code> 內的套件去做建置</li>
 <li>建置完成後會產生 <code>composer.lock</code> 紀錄當前所有套件的版本</li>
-<li>安裝的套件都會存放在 <code>vender</code> 的資料夾中<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd laravel</span><br><span class="line">composer install</span><br></pre></td></tr></table></figure>
-
-</li>
+<li>安裝的套件都會存放在 <code>vender</code> 的資料夾中  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd laravel</span><br><span class="line">composer install</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
 <h1 id="簡單測試"><a href="#簡單測試" class="headerlink" title="簡單測試"></a>簡單測試</h1><ul>
 <li><p>在 route 新增一個 api，讓他回傳我們輸入的字串</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim routes&#x2F;api.php</span><br><span class="line">&#x2F;&#x2F; 新增一個 api</span><br><span class="line">Route::get(&#39;echo&#x2F;&#123;name&#125;&#39;, function ($name) &#123;</span><br><span class="line">  return $name;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim routes/api.php</span><br><span class="line">// 新增一個 api</span><br><span class="line">Route::get(&#x27;echo/&#123;name&#125;&#x27;, function ($name) &#123;</span><br><span class="line">  return $name;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
 <li><p>啟動內建伺服器</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">php artisan serve</span><br><span class="line">&#x2F;&#x2F; 顯示以下訊息表示成功啟動</span><br><span class="line">Laravel development server started: http:&#x2F;&#x2F;127.0.0.1:8000</span><br></pre></td></tr></table></figure></li>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">php artisan serve</span><br><span class="line">// 顯示以下訊息表示成功啟動</span><br><span class="line">Laravel development server started: http://127.0.0.1:8000</span><br></pre></td></tr></table></figure></li>
 <li><p>打開瀏覽器前往 <code>http://127.0.0.1:8000/api/echo/leo</code></p>
 <ul>
-<li><p>畫面顯示 leo 表示成功</p>
-<p><img src="https://i.imgur.com/XTWckoL.png" alt=""></p>
-</li>
+<li>畫面顯示 leo 表示成功</li>
 </ul>
+<p>  <img src="https://i.imgur.com/XTWckoL.png"></p>
 </li>
 </ul>
 <h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><ul>
-<li><a href="https://peterli.website/%e5%ae%89%e8%a3%9d-laravel-%e5%88%9d%e5%a7%8b%e5%8c%96%e7%9a%84%e6%a1%86%e6%9e%b6/" target="_blank" rel="noopener">安裝 Laravel 初始化的框架</a></li>
+<li><a target="_blank" rel="noopener" href="https://peterli.website/%e5%ae%89%e8%a3%9d-laravel-%e5%88%9d%e5%a7%8b%e5%8c%96%e7%9a%84%e6%a1%86%e6%9e%b6/">安裝 Laravel 初始化的框架</a></li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://youmu257.github.io/2020/08/07/20200807_laravel/" data-id="cm3n9pvj40002uku628tx238h" class="article-share-link">Share</a>
+      <a data-url="https://youmu257.github.io/2020/08/07/20200807_laravel/" data-id="cml3olssp0001io9zfado3bal" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-20200728_Xshell_VM" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/07/20200728_Xshell_VM/" class="article-date">
+  <time datetime="2020-08-06T17:17:11.529Z" itemprop="datePublished">2020-08-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7%E6%95%99%E5%AD%B8/">工具教學</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/07/20200728_Xshell_VM/">用 Xshell 連線進 VituralBox</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h3><p>最近工作公司電腦擋了一堆軟體安裝的權限，只好裝VM起來用，結果連在 VituralBox 上安裝 Guest Additions 也要申請權限。<br>看著超小的畫面也不能共享剪貼簿痛苦萬分之時，前輩對我說怎麼不用 Xshell，反正也只需要 terminal 操作。<br>那就來裝 Xshell 吧!</p>
+<h2 id="安裝-Xshell"><a href="#安裝-Xshell" class="headerlink" title="安裝 Xshell"></a>安裝 Xshell</h2><ul>
+<li>前往 <a target="_blank" rel="noopener" href="https://www.netsarang.com/en/free-for-home-school/">官網免費載點</a></li>
+<li>填寫信箱後會把載點寄到你的信箱</li>
+</ul>
+<p><img src="https://i.imgur.com/oUmQ5EV.png"></p>
+<ul>
+<li>下載後並安裝</li>
+</ul>
+<h2 id="確認-VM-IP"><a href="#確認-VM-IP" class="headerlink" title="確認 VM IP"></a>確認 VM IP</h2><ul>
+<li>打開 VituralBox<ul>
+<li>本紀錄 OS 是用 Debian 10</li>
+</ul>
+</li>
+<li>打開 terminal</li>
+<li>如果還沒有安裝 OpenSSH 的話，先安裝OpenSSH<ul>
+<li><code>apt-get install -y openssh-server</code></li>
+</ul>
+</li>
+<li>輸入 <code>ip addr</code>確認目VM的IP位置</li>
+</ul>
+<p><img src="https://i.imgur.com/MbacXNS.png"></p>
+<ul>
+<li><p>如果看到的不是 192.168.X.X 的 IP 檢查一下網路設定</p>
+<ul>
+<li>本紀錄是用橋接介面卡</li>
+</ul>
+<p>  <img src="https://i.imgur.com/nyM6uw5.png"></p>
+</li>
+</ul>
+<h2 id="打開Xshell"><a href="#打開Xshell" class="headerlink" title="打開Xshell"></a>打開Xshell</h2><ul>
+<li>新增連線</li>
+<li><strong>名稱</strong> 可以輸入自定義的名子</li>
+<li><strong>主機</strong> 輸入VM的IP</li>
+</ul>
+<p><img src="https://i.imgur.com/Rb5cdNJ.png"></p>
+<ul>
+<li>因為是本地VM 所以就用簡單的密碼登入</li>
+</ul>
+<p><img src="https://i.imgur.com/KNhgTjy.png"></p>
+<ul>
+<li>最後按連線，一定因為是本機 VM 就按「接受及存檔」吧</li>
+</ul>
+<p><img src="https://i.imgur.com/rE2yOu7.png"></p>
+<ul>
+<li>成功的話就會連上去了</li>
+</ul>
+<p> <img src="https://i.imgur.com/iVv4aK8.png"></p>
+<h2 id="題外話"><a href="#題外話" class="headerlink" title="題外話"></a>題外話</h2><ul>
+<li>目前的 IP 其實不是固定的，所以重開 VM 後可能會改變就要重調連線設定</li>
+<li><strong>那就設定成固定 IP 吧!</strong></li>
+<li>編輯網路設定 <code>vim /etc/network/interfaces</code></li>
+<li>輸入  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">iface enp0s3 inet static</span><br><span class="line">address 192.168.1.103</span><br><span class="line">netmask 255.255.255.0</span><br><span class="line">gateway 192.168.1.254</span><br></pre></td></tr></table></figure></li>
+<li>網路設定一樣看 <code>ip addr</code></li>
+<li>這時馬上就能用 Xshell，邊看設定邊編輯</li>
+</ul>
+<p><img src="https://i.imgur.com/2DYDy0v.png"></p>
+<ul>
+<li>最後記得要重啟網路<ul>
+<li><code>/etc/init.d/networking restart</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
+<li>前輩親手教學</li>
+<li><a target="_blank" rel="noopener" href="https://kingjoy1235.pixnet.net/blog/post/28565594">Debian 手動與自動設定IP</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://youmu257.github.io/2020/08/07/20200728_Xshell_VM/" data-id="cml3olssq0003io9zb5n1dzzi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -151,7 +826,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
   </nav>
 
 </section>
@@ -177,7 +852,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">十一月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/02/">二月 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/01/">一月 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">五月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">十一月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li></ul>
     </div>
   </div>
 
@@ -190,23 +865,23 @@
       <ul>
         
           <li>
-            <a href="/2024/11/19/20241119_jieba_sample/">在 asp.net 用 Jieba 做中文斷詞</a>
+            <a href="/2026/02/01/20260201_mee6_discord_leveling/">MEE6 等級系統教學 - 發言經驗值與排行榜</a>
           </li>
         
           <li>
-            <a href="/2024/08/15/20240815_get_youtube_api_key/">取得 Youtube API 金鑰</a>
+            <a href="/2026/02/01/20260201_mee6_discord_twitter/">MEE6 連結 X(Twitter) 通知教學</a>
           </li>
         
           <li>
-            <a href="/2021/01/12/20201107_laravel_send_mail/">Laravel 寄信範例</a>
+            <a href="/2026/02/01/20260201_mee6_discord_youtube/">MEE6 連結 YouTube 通知教學</a>
           </li>
         
           <li>
-            <a href="/2021/01/12/20201114_laravel_send_pdf_mail/">Laravel 寄信夾帶 PDF 範例</a>
+            <a href="/2026/01/29/20260129_mee6_discord_reaction_roles/">MEE6 建立 Discord 反應身分組設定 - 規範同意後才能進入討論區</a>
           </li>
         
           <li>
-            <a href="/2021/01/12/20210111_git_file_name_note/">Sourcetree 檔名大小寫偵測不到問題</a>
+            <a href="/2026/01/29/20260129_mee6_discord_welcome/">MEE6 建立 Discord 歡迎新用戶加入的設定</a>
           </li>
         
       </ul>
@@ -221,7 +896,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2024 Leo Li<br>
+      &copy; 2026 Leo Li<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
